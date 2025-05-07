@@ -1,0 +1,98 @@
+@prefix ex: <http://example.org/shape#> .
+@prefix mds: <https://cwrusdle.bitbucket.io/mds#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+ex:IVMeasurementShape a sh:NodeShape ;
+    sh:property <http://example.org/shape#IVMeasurementShape#Cell_Area_(cm2)>,
+        <http://example.org/shape#IVMeasurementShape#Efficiency_(percent)>,
+        <http://example.org/shape#IVMeasurementShape#FF_(percent)>,
+        <http://example.org/shape#IVMeasurementShape#Imp_(A)>,
+        <http://example.org/shape#IVMeasurementShape#Intensity_(suns)>,
+        <http://example.org/shape#IVMeasurementShape#Isc_(A)>,
+        <http://example.org/shape#IVMeasurementShape#Number_of_Cells_per_String>,
+        <http://example.org/shape#IVMeasurementShape#Number_of_Strings>,
+        <http://example.org/shape#IVMeasurementShape#Pmp_(W)>,
+        <http://example.org/shape#IVMeasurementShape#Reference_Constant_(V/sun)>,
+        <http://example.org/shape#IVMeasurementShape#Resistivity_(ohm-cm)>,
+        <http://example.org/shape#IVMeasurementShape#Rs_(ohm)>,
+        <http://example.org/shape#IVMeasurementShape#Rsh_(ohm)>,
+        <http://example.org/shape#IVMeasurementShape#Sample_Type>,
+        <http://example.org/shape#IVMeasurementShape#Total_Area_(cm2)>,
+        <http://example.org/shape#IVMeasurementShape#Vmp_(V)>,
+        <http://example.org/shape#IVMeasurementShape#Voc_(V)>,
+        <http://example.org/shape#IVMeasurementShape#Voltage_Temperature_Coefficient_(mV/C)> ;
+    sh:targetClass mds:CurrentVoltageResults .
+
+<http://example.org/shape#IVMeasurementShape#Cell_Area_(cm2)> sh:datatype xsd:float ;
+    sh:name "Cell_Area_(cm2)" ;
+    sh:path mds:SampleCellArea .
+
+<http://example.org/shape#IVMeasurementShape#Efficiency_(percent)> sh:datatype xsd:float ;
+    sh:name "Efficiency_(percent)" ;
+    sh:path mds:CellEfficiency .
+
+<http://example.org/shape#IVMeasurementShape#FF_(percent)> sh:datatype xsd:float ;
+    sh:name "FF_(percent)" ;
+    sh:path mds:FillFactor .
+
+<http://example.org/shape#IVMeasurementShape#Imp_(A)> sh:datatype xsd:float ;
+    sh:name "Imp_(A)" ;
+    sh:path mds:CurrentAtMaxPower .
+
+<http://example.org/shape#IVMeasurementShape#Intensity_(suns)> sh:datatype xsd:float ;
+    sh:name "Intensity_(suns)" ;
+    sh:path mds:SunIntensity .
+
+<http://example.org/shape#IVMeasurementShape#Isc_(A)> sh:datatype xsd:float ;
+    sh:name "Isc_(A)" ;
+    sh:path mds:ShortCircuitCurrent .
+
+<http://example.org/shape#IVMeasurementShape#Number_of_Cells_per_String> sh:datatype xsd:float ;
+    sh:name "Number_of_Cells_per_String" ;
+    sh:path mds:NumberOfCellsPerString .
+
+<http://example.org/shape#IVMeasurementShape#Number_of_Strings> sh:datatype xsd:float ;
+    sh:name "Number_of_Strings" ;
+    sh:path mds:NumberStrings .
+
+<http://example.org/shape#IVMeasurementShape#Pmp_(W)> sh:datatype xsd:float ;
+    sh:name "Pmp_(W)" ;
+    sh:path mds:MaximumPowerPoint .
+
+<http://example.org/shape#IVMeasurementShape#Reference_Constant_(V/sun)> sh:datatype xsd:float ;
+    sh:name "Reference_Constant_(V/sun)" ;
+    sh:path mds:CellReferenceConstant .
+
+<http://example.org/shape#IVMeasurementShape#Resistivity_(ohm-cm)> sh:datatype xsd:float ;
+    sh:name "Resistivity_(ohm-cm)" ;
+    sh:path mds:SampleResistivity .
+
+<http://example.org/shape#IVMeasurementShape#Rs_(ohm)> sh:datatype xsd:float ;
+    sh:name "Rs_(ohm)" ;
+    sh:path mds:SeriesResistance .
+
+<http://example.org/shape#IVMeasurementShape#Rsh_(ohm)> sh:datatype xsd:float ;
+    sh:name "Rsh_(ohm)" ;
+    sh:path mds:ShuntResistance .
+
+<http://example.org/shape#IVMeasurementShape#Sample_Type> sh:datatype xsd:float ;
+    sh:name "Sample_Type" ;
+    sh:path mds:CurrentVoltageSample .
+
+<http://example.org/shape#IVMeasurementShape#Total_Area_(cm2)> sh:datatype xsd:float ;
+    sh:name "Total_Area_(cm2)" ;
+    sh:path mds:SampleTotalArea .
+
+<http://example.org/shape#IVMeasurementShape#Vmp_(V)> sh:datatype xsd:float ;
+    sh:name "Vmp_(V)" ;
+    sh:path mds:VoltageAtMaxPower .
+
+<http://example.org/shape#IVMeasurementShape#Voc_(V)> sh:datatype xsd:float ;
+    sh:name "Voc_(V)" ;
+    sh:path mds:OpenCircuitVoltage .
+
+<http://example.org/shape#IVMeasurementShape#Voltage_Temperature_Coefficient_(mV/C)> sh:datatype xsd:float ;
+    sh:name "Voltage_Temperature_Coefficient_(mV/C)" ;
+    sh:path mds:VoltageTemperatureCoefficient .
+
