@@ -1,0 +1,3951 @@
+{
+  "@context": {
+    "brick": "https://brickschema.org/schema/Brick#",
+    "csvw": "http://www.w3.org/ns/csvw#",
+    "dc": "http://purl.org/dc/elements/1.1/",
+    "dcam": "http://purl.org/dc/dcam/",
+    "dcat": "http://www.w3.org/ns/dcat#",
+    "dcmitype": "http://purl.org/dc/dcmitype/",
+    "dcterms": "http://purl.org/dc/terms/",
+    "doap": "http://usefulinc.com/ns/doap#",
+    "foaf": "http://xmlns.com/foaf/0.1/",
+    "geo": "http://www.opengis.net/ont/geosparql#",
+    "mds": "https://cwrusdle.bitbucket.io/mds#",
+    "odrl": "http://www.w3.org/ns/odrl/2/",
+    "org": "http://www.w3.org/ns/org#",
+    "owl": "http://www.w3.org/2002/07/owl#",
+    "pmdco": "https://w3id.org/pmd/co/",
+    "prof": "http://www.w3.org/ns/dx/prof/",
+    "prov": "http://www.w3.org/ns/prov#",
+    "qb": "http://purl.org/linked-data/cube#",
+    "qudt": "http://qudt.org/schema/qudt/",
+    "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "schema": "https://schema.org/",
+    "sh": "http://www.w3.org/ns/shacl#",
+    "skos": "http://www.w3.org/2004/02/skos/core#",
+    "sosa": "http://www.w3.org/ns/sosa/",
+    "ssn": "http://www.w3.org/ns/ssn/",
+    "time": "http://www.w3.org/2006/time#",
+    "vann": "http://purl.org/vocab/vann/",
+    "void": "http://rdfs.org/ns/void#",
+    "wgs": "https://www.w3.org/2003/01/geo/wgs84_pos#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "xsd1": "http://www.w3.org/2001/XMLSchema"
+  },
+  "@graph": [
+    {
+      "@id": "mds:DimensionsImage",
+      "@type": "owl:Class",
+      "rdfs:label": "DimensionsImage",
+      "rdfs:subClassOf": {
+        "@id": "mds:Result"
+      },
+      "skos:definition": "Type of solvent for thin-film preparation."
+    },
+    {
+      "@id": "mds:RecipeFilePath",
+      "@type": "owl:Class",
+      "mds:value": {
+        "@id": "http://www.w3.org/2001/XMLSchemastring"
+      },
+      "rdfs:label": "RecipeFilePath",
+      "rdfs:subClassOf": {
+        "@id": "mds:FilePath"
+      },
+      "skos:broader": {
+        "@id": "mds:Recipe"
+      },
+      "skos:definition": "File path unique to a recipe"
+    },
+    {
+      "@id": "mds:DistanceFromSample",
+      "@type": "owl:Class",
+      "mds:unit": {
+        "@id": "qudt:MilliM"
+      },
+      "mds:value": {
+        "@id": "http://www.w3.org/2001/XMLSchemafloat"
+      },
+      "rdfs:label": "DistanceFromSample",
+      "rdfs:subClassOf": [
+        {
+          "@id": "mds:Distance"
+        },
+        {
+          "@id": "pmdco:ValueObject"
+        }
+      ],
+      "skos:broader": {
+        "@id": "mds:Recipe"
+      },
+      "skos:definition": "Distance of the detector from the sample."
+    },
+    {
+      "@id": "mds:StepTime",
+      "@type": "owl:Class",
+      "rdfs:subClassOf": {
+        "@id": "mds:Recipe"
+      },
+      "skos:definition": "The cummulative time a batch or sample was in exposure."
+    },
+    {
+      "@id": "mds:Phase",
+      "@type": "owl:Class",
+      "rdfs:label": "Phase",
+      "skos:definition": "Drying time in the evaporation process of film preparation."
+    },
+    {
+      "@id": "mds:ExposureConditions",
+      "@type": "owl:Class",
+      "rdfs:label": "ExposureConditions",
+      "rdfs:subClassOf": {
+        "@id": "mds:Recipe"
+      },
+      "skos:definition": "The specific environmental factors and durations to which samples are subjected to before characterization."
+    },
+    {
+      "@id": "mds:Plating",
+      "@type": "owl:Class",
+      "rdfs:label": "Plating",
+      "rdfs:subClassOf": {
+        "@id": "pmdco:ValueObject"
+      },
+      "skos:broader": {
+        "@id": "mds:Sample"
+      },
+      "skos:definition": "Value describing the plating of an interdigitated comb"
+    },
+    {
+      "@id": "mds:Detector",
+      "@type": "owl:Class",
+      "rdfs:label": "Detector",
+      "rdfs:subClassOf": {
+        "@id": "mds:Tool"
+      },
+      "skos:definition": [
+        "A sensitive component that converts infrared radiation from the sample into an electrical signal for spectral analysis.",
+        "Sofwtare used in the instrument"
+      ]
+    },
+    {
+      "@id": "mds:Energy",
+      "@type": "owl:Class",
+      "mds:unit": {
+        "@id": "qudt:KiloEV"
+      },
+      "mds:value": {
+        "@id": "http://www.w3.org/2001/XMLSchemafloat"
+      },
+      "rdfs:label": "Energy",
+      "rdfs:subClassOf": {
+        "@id": "mds:Force"
+      },
+      "skos:definition": "The energy of the incident beam."
+    },
+    {
+      "@id": "mds:ShuntResistance",
+      "@type": "owl:Class",
+      "rdfs:subClassOf": {
+        "@id": "mds:Result"
+      },
+      "skos:definition": "The shunt resistance measured by a current voltage process"
+    },
+    {
+      "@id": "mds:TemperatureCoefficientPower",
+      "@type": "owl:Class",
+      "rdfs:label": "temperature-coefficient-power",
+      "rdfs:subClassOf": {
+        "@id": "mds:Sample"
+      },
+      "skos:definition": "Reduction of some percent of PMP per degree Celsius. Rate at which power changes in reponse to a change in temperature."
+    },
+    {
+      "@id": "mds:CurrentVoltageRecipeAuthor",
+      "@type": "owl:Class",
+      "rdfs:subClassOf": {
+        "@id": "mds:Recipe"
+      },
+      "skos:definition": "The author of a recipe for a current voltage process"
+    },
+    {
+      "@id": "mds:OperatorName",
+      "@type": "owl:Class",
+      "rdfs:label": "OperatorName"
+    },
+    {
+      "@id": "mds:PiezoelectricSensor",
+      "@type": "owl:Class",
+      "rdfs:label": "PiezoelectricSensor",
+      "skos:broader": {
+        "@id": "mds:Tool"
+      }
+    },
+    {
+      "@id": "mds:CurrentAtMaxPower",
+      "@type": "owl:Class",
+      "rdfs:subClassOf": {
+        "@id": "mds:Result"
+      },
+      "skos:definition": "The current at max power measured by a current voltage process"
+    },
+    {
+      "@id": "mds:AmbientTemperature",
+      "@type": "owl:Class",
+      "rdf:label": "AmbientTemperature",
+      "rdfs:subClassOf": {
+        "@id": "mds:PhotovoltaicSiteParameter"
+      }
+    },
+    {
+      "@id": "mds:Department",
+      "@type": "owl:Class",
+      "rdfs:label": "Department",
+      "rdfs:subClassOf": {
+        "@id": "pmdco:Department"
+      },
+      "skos:broader": {
+        "@id": "mds:Tool"
+      }
+    },
+    {
+      "@id": "mds:VoltageAtMaxPower",
+      "@type": "owl:Class",
+      "rdfs:subClassOf": {
+        "@id": "mds:Result"
+      },
+      "skos:definition": "The voltage at max power measured by a current voltage process"
+    },
+    {
+      "@id": "mds:ModuleRatingAtReference",
+      "@type": "owl:Class",
+      "rdfs:subClassOf": {
+        "@id": "mds:Sample"
+      },
+      "skos:definition": "Measurements of a module taken at STC and 1000 W/m^2 irradiance"
+    },
+    {
+      "@id": "mds:Category",
+      "@type": "owl:Class",
+      "rdfs:label": "Category",
+      "rdfs:subClassOf": {
+        "@id": "pmdco:ValueObject"
+      },
+      "skos:broader": {
+        "@id": "mds:Model"
+      }
+    },
+    {
+      "@id": "mds:CurrentShortCircuit",
+      "@type": "owl:Class",
+      "rdf:label": "CurrentShortCircuit",
+      "rdfs:subClassOf": [
+        {
+          "@id": "mds:Sample"
+        },
+        {
+          "@id": "mds:PhotovoltaicCellProperty"
+        }
+      ],
+      "skos:definition": [
+        "Module short circuit current",
+        "Short-circuit current of the cell"
+      ]
+    },
+    {
+      "@id": "mds:CurrentVoltageResultsTimestamp",
+      "@type": "owl:Class",
+      "rdfs:subClassOf": {
+        "@id": "mds:Date"
+      },
+      "skos:definition": "The datetime when a current voltage process was executed"
+    },
+    {
+      "@id": "mds:ScanRate",
+      "@type": "owl:Class",
+      "rdfs:label": "ScanRate",
+      "skos:broader": {
+        "@id": "mds:Recipe"
+      },
+      "skos:definition": "Controls the rate at which the cantilever scans the sample area."
+    },
+    {
+      "@id": "mds:AFMInstrumentModel",
+      "@type": "owl:Class",
+      "rdfs:label": "AFMInstrumentModel",
+      "skos:broader": {
+        "@id": "mds:Tool"
+      },
+      "skos:definition": "Model of the AFM instrument"
+    },
+    {
+      "@id": "mds:SolarSimulatorManufacturer",
+      "@type": "owl:Class",
+      "rdfs:subClassOf": {
+        "@id": "mds:ToolManufacturer"
+      },
+      "skos:definition": "The manufacturer of a solar simulator, i.e. 'Sinton Instruments'"
+    },
+    {
+      "@id": "mds:Value",
+      "@type": "owl:DatatypeProperty",
+      "rdfs:domain": {
+        "@id": "mds:ReadModes"
+      },
+      "rdfs:range": {
+        "@id": "http://www.w3.org/2001/XMLSchemastring"
+      }
+    },
+    {
+      "@id": "mds:SimulatorSpatialUniformity",
+      "@type": "owl:Class",
+      "rdfs:subClassOf": {
+        "@id": "mds:Tool"
+      },
+      "skos:definition": "The spational uniformity of a simulator"
+    },
+    {
+      "@id": "mds:DriveAmplitude",
+      "@type": "owl:Class",
+      "rdfs:label": "DriveAmplitude",
+      "rdfs:subClassOf": {
+        "@id": "mds:Recipe"
+      }
+    },
+    {
+      "@id": "mds:TraceMaterial",
+      "@type": "owl:Class",
+      "rdfs:label": "TraceMaterial",
+      "rdfs:subClassOf": {
+        "@id": "pmdco:ValueObject"
+      },
+      "skos:broader": {
+        "@id": "mds:Recipe"
+      },
+      "skos:definition": "Value describing the material that the finger traces are composed of"
+    },
+    {
+      "@id": "mds:ExposureTemperatureSet",
+      "@type": "owl:Class",
+      "rdfs:subClassOf": {
+        "@id": "mds:Recipe"
+      },
+      "skos:definition": "The temperature set point of the chamber."
+    },
+    {
+      "@id": "mds:ToolCalibrationDate",
+      "@type": "owl:Class",
+      "mds:value": {
+        "@id": "http://www.w3.org/2001/XMLSchemadateTime"
+      },
+      "rdfs:label": "ToolCalibrationDate",
+      "rdfs:subClassOf": {
+        "@id": "mds:Date"
+      },
+      "skos:broader": {
+        "@id": "mds:Tool"
+      },
+      "skos:definition": "Date that a tool is calibrated"
+    },
+    {
+      "@id": "mds:FileExtension",
+      "@type": "owl:Class",
+      "rdfs:label": "FileExtension",
+      "skos:broader": {
+        "@id": "mds:Result"
+      }
+    },
+    {
+      "@id": "mds:BeamSplitter",
+      "@type": "owl:Class",
+      "rdfs:label": "BeamSplitter",
+      "rdfs:subClassOf": {
+        "@id": "mds:Tool"
+      },
+      "skos:definition": "Multiple beamsplitter options are present such as KBr, XT-KBr, and Quartz"
+    },
+    {
+      "@id": "mds:SolventType",
+      "@type": "owl:Class",
+      "rdfs:label": "SolventType",
+      "skos:broader": {
+        "@id": "mds:Recipe"
+      }
+    },
+    {
+      "@id": "mds:FilePath",
+      "@type": "owl:Class",
+      "rdfs:label": "FilePath",
+      "rdfs:subClassOf": {
+        "@id": "pmdco:ValueObject"
+      },
+      "skos:broader": {
+        "@id": "mds:Result"
+      }
+    },
+    {
+      "@id": "mds:BackgroundScans",
+      "@type": "owl:Class",
+      "rdfs:label": "BackgroundScans",
+      "rdfs:subClassOf": {
+        "@id": "mds:Recipe"
+      },
+      "skos:definition": "measurement of the infrared radiation  for baseline correction."
+    },
+    {
+      "@id": "mds:Dimple",
+      "@type": "owl:Class",
+      "rdfs:label": "Dimple",
+      "rdfs:subClassOf": {
+        "@id": "mds:FractographyImageCharacteristic"
+      },
+      "skos:definition": "Tipped structures resulting from ductile failure"
+    },
+    {
+      "@id": "mds:FilterType",
+      "@type": "owl:Class",
+      "rdfs:label": "FilterType",
+      "skos:broader": {
+        "@id": "mds:Tool"
+      }
+    },
+    {
+      "@id": "mds:CurrentVoltageData",
+      "@type": "owl:Class",
+      "rdfs:subClassOf": {
+        "@id": "mds:Result"
+      },
+      "skos:definition": "The raw current voltage data generated by a current voltage process"
+    },
+    {
+      "@id": "mds:Gap",
+      "@type": "owl:Class",
+      "rdfs:label": "Gap",
+      "rdfs:subClassOf": {
+        "@id": "pmdco:ValueObject"
+      },
+      "skos:broader": {
+        "@id": "mds:Sample"
+      },
+      "skos:definition": "Value describing the space between each finger of an interdigitated comb"
+    },
+    {
+      "@id": "mds:PlaneOfArrayIrradiance",
+      "@type": "owl:Class",
+      "rdf:label": "PlaneOfArrayIrradiance",
+      "rdfs:subClassOf": {
+        "@id": "mds:PhotovoltaicSiteParameter"
+      }
+    },
+    {
+      "@id": "mds:ToolCalibrationResults",
+      "@type": "owl:Class",
+      "mds:value": {
+        "@id": "http://www.w3.org/2001/XMLSchemastring"
+      },
+      "rdfs:label": "ToolCalibrationResults",
+      "rdfs:subClassOf": {
+        "@id": "mds:Result"
+      },
+      "skos:broader": {
+        "@id": "mds:Tool"
+      },
+      "skos:definition": "Results of a calibration of a tool"
+    },
+    {
+      "@id": "mds:Tool",
+      "@type": "owl:Class",
+      "rdfs:label": "Tool",
+      "rdfs:subClassOf": {
+        "@id": "pmdco:ProcessingNode"
+      }
+    },
+    {
+      "@id": "mds:ObservedModeTwoFailure",
+      "@type": "owl:Class",
+      "rdfs:label": "ObservedModeTwoFailure",
+      "rdfs:subClassOf": {
+        "@id": "mds:ObservedFailure"
+      },
+      "skos:definition": "Failure of a material by shear stress parallel to the plane of the crack and perpendicular ot the crack front, ie: sliding"
+    },
+    {
+      "@id": "mds:FillFactor",
+      "@type": "owl:Class",
+      "rdfs:subClassOf": {
+        "@id": "mds:Result"
+      },
+      "skos:definition": "The fill factor measured by a current voltage process"
+    },
+    {
+      "@id": "mds:SunIntensity",
+      "@type": "owl:Class",
+      "rdfs:subClassOf": {
+        "@id": "mds:Tool"
+      },
+      "skos:definition": "The established intensity of a current voltage process"
+    },
+    {
+      "@id": "mds:CellArea",
+      "@type": "owl:Class",
+      "rdfs:label": "cell-area",
+      "rdfs:subClassOf": {
+        "@id": "mds:Sample"
+      },
+      "skos:definition": "Total cell surface area."
+    },
+    {
+      "@id": "mds:CellReferenceConstant",
+      "@type": "owl:Class",
+      "rdfs:subClassOf": {
+        "@id": "mds:Tool"
+      },
+      "skos:definition": "A calibration setting that deteremines the irradiance level of a light source, typically determined by a reference cell"
+    },
+    {
+      "@id": "mds:RecipeCreatedDate",
+      "@type": "owl:Class",
+      "mds:value": {
+        "@id": "http://www.w3.org/2001/XMLSchemadateTime"
+      },
+      "rdfs:label": "RecipeCreatedDate",
+      "rdfs:subClassOf": {
+        "@id": "mds:Date"
+      },
+      "skos:broader": {
+        "@id": "mds:Recipe"
+      },
+      "skos:definition": "Date that a recipe is created"
+    },
+    {
+      "@id": "mds:GainParameters",
+      "@type": "owl:Class",
+      "rdfs:label": "GainParameters",
+      "rdfs:subClassOf": {
+        "@id": "mds:Recipe"
+      },
+      "skos:definition": "Amplitude image from AFM instrument."
+    },
+    {
+      "@id": "mds:PhotovoltaicCellID",
+      "@type": "owl:Class",
+      "rdf:label": "PhotovoltaicCellID",
+      "rdfs:subClassOf": {
+        "@id": "mds:SampleID"
+      },
+      "skos:definition": "Identifier for the PV cell"
+    },
+    {
+      "@id": "mds:ToolCalibrationPerson",
+      "@type": "owl:Class",
+      "mds:value": {
+        "@id": "http://www.w3.org/2001/XMLSchemastring"
+      },
+      "rdfs:label": "ToolCalibrationPerson",
+      "rdfs:subClassOf": {
+        "@id": "mds:Person"
+      },
+      "skos:broader": {
+        "@id": "mds:Tool"
+      },
+      "skos:definition": "Person that calibrated a tool"
+    },
+    {
+      "@id": "mds:PhotovoltaicChargeControllerProperty",
+      "@type": "owl:Class",
+      "rdf:label": "PhotovoltaicChargeControllerProperty",
+      "rdfs:subClassOf": {
+        "@id": "mds:Tool"
+      }
+    },
+    {
+      "@id": "mds:SampleDimension",
+      "@type": "owl:Class",
+      "mds:value": {
+        "@id": "http://www.w3.org/2001/XMLSchemafloat"
+      },
+      "rdfs:label": "SampleDimension",
+      "rdfs:subClassOf": {
+        "@id": "pmdco:ValueObject"
+      },
+      "skos:broader": {
+        "@id": "mds:Sample"
+      },
+      "skos:definition": "Dimensions of a sample (if sample is solid)"
+    },
+    {
+      "@id": "mds:PhotovoltaicModuleNote",
+      "@type": "owl:Class",
+      "rdfs:subClassOf": {
+        "@id": "pmdco:Note"
+      }
+    },
+    {
+      "@id": "mds:HotStage",
+      "@type": "owl:Class",
+      "rdfs:label": "HotStage",
+      "skos:broader": {
+        "@id": "mds:Tool"
+      },
+      "skos:definition": "hot stage for temperature dependent AFM experiments"
+    },
+    {
+      "@id": "mds:Masking",
+      "@type": "owl:Class",
+      "rdfs:label": "Masking",
+      "rdfs:subClassOf": {
+        "@id": "pmdco:ValueObject"
+      },
+      "skos:broader": {
+        "@id": "mds:Sample"
+      },
+      "skos:definition": "Value describing the masking of an interdigitated comb"
+    },
+    {
+      "@id": "mds:Width",
+      "@type": "owl:Class",
+      "rdfs:label": "Width",
+      "rdfs:subClassOf": [
+        {
+          "@id": "pmdco:Width"
+        },
+        {
+          "@id": "mds:Result"
+        },
+        {
+          "@id": "mds:Sample"
+        }
+      ],
+      "skos:broader": {
+        "@id": "mds:Recipe"
+      },
+      "skos:definition": [
+        "Width of the sample",
+        "Width of module along shortest side"
+      ]
+    },
+    {
+      "@id": "mds:PiezoelectricSensorLocation",
+      "@type": "owl:Class",
+      "rdfs:label": "PiezoelectricSensorLocation",
+      "skos:broader": {
+        "@id": "mds:Tool"
+      },
+      "skos:definition": "Dimension of the fluoroelastomer film."
+    },
+    {
+      "@id": "pmdco:Sample",
+      "@type": "owl:Class",
+      "rdfs:label": "Sample"
+    },
+    {
+      "@id": "mds:CellTechnology",
+      "@type": "owl:Class",
+      "rdfs:label": "cell-technology",
+      "rdfs:subClassOf": {
+        "@id": "mds:Sample"
+      },
+      "skos:definition": "Technology used on the cell level, i.e., cell architecture. E.g., Al-BSF, PERC, PERT, MWT, IBC, SHJ."
+    },
+    {
+      "@id": "mds:SerialNumber",
+      "@type": "owl:Class",
+      "rdfs:label": "SerialNumber",
+      "rdfs:subClassOf": {
+        "@id": "mds:SerialNumber"
+      },
+      "skos:broader": {
+        "@id": "mds:Tool"
+      },
+      "skos:definition": [
+        "A unique identifier assigned to each individual instrument.",
+        "Serial numer of the instrument"
+      ]
+    },
+    {
+      "@id": "mds:VideoID",
+      "@type": "owl:Class",
+      "rdfs:label": "VideoID",
+      "rdfs:subClassOf": {
+        "@id": "mds:ResultID"
+      }
+    },
+    {
+      "@id": "mds:Solvent",
+      "@type": "owl:Class",
+      "rdfs:label": "Solvent",
+      "skos:broader": {
+        "@id": "mds:Recipe"
+      }
+    },
+    {
+      "@id": "mds:ModelName",
+      "@type": "owl:Class",
+      "mds:value": {
+        "@id": "http://www.w3.org/2001/XMLSchemastring"
+      },
+      "rdfs:label": "ModelName",
+      "rdfs:subClassOf": {
+        "@id": "pmdco:Identifier"
+      },
+      "skos:broader": {
+        "@id": "mds:Model"
+      },
+      "skos:definition": "Human-readable, English name of a model"
+    },
+    {
+      "@id": "mds:Sensor",
+      "@type": "owl:Class",
+      "rdfs:label": "Sensor",
+      "rdfs:subClassOf": {
+        "@id": "mds:Tool"
+      }
+    },
+    {
+      "@id": "mds:LightRange",
+      "@type": "owl:Class",
+      "rdfs:label": "LightRange",
+      "rdfs:subClassOf": {
+        "@id": "mds:Recipe"
+      },
+      "skos:definition": "Range of light levels that can be used"
+    },
+    {
+      "@id": "mds:SubstrateType",
+      "@type": "owl:Class",
+      "rdfs:label": "SubstrateType",
+      "skos:broader": {
+        "@id": "mds:Recipe"
+      }
+    },
+    {
+      "@id": "mds:EnergyUsed",
+      "@type": "owl:Class",
+      "rdfs:label": "EnergyUsed",
+      "skos:broader": {
+        "@id": "mds:Recipe"
+      }
+    },
+    {
+      "@id": "mds:Correction",
+      "@type": "owl:Class",
+      "rdfs:label": "Correction",
+      "rdfs:subClassOf": {
+        "@id": "mds:Tool"
+      },
+      "skos:definition": "The process of adjusting the spectral data to account for any instrumental factor like baseline correction."
+    },
+    {
+      "@id": "pmdco:Force",
+      "@type": "owl:Class",
+      "rdfs:label": "Force"
+    },
+    {
+      "@id": "mds:ObservedFailure",
+      "@type": "owl:Class",
+      "rdfs:label": "ObservedFailure",
+      "rdfs:subClassOf": {
+        "@id": "mds:FractographyImageCharacteristic"
+      },
+      "skos:definition": "Perminant deformation caused by fracture"
+    },
+    {
+      "@id": "mds:NumberCellsX",
+      "@type": "owl:Class",
+      "rdfs:label": "cells-x",
+      "rdfs:subClassOf": {
+        "@id": "mds:Sample"
+      },
+      "skos:definition": "Number of cells in the shortest direction. E.g., 6, 8, 10"
+    },
+    {
+      "@id": "pmdco:ProjectIdentifier",
+      "@type": "owl:Class",
+      "rdfs:label": "ProjectIdentifier"
+    },
+    {
+      "@id": "mds:SampleCellArea",
+      "@type": "owl:Class",
+      "rdfs:subClassOf": {
+        "@id": "mds:Sample"
+      },
+      "skos:definition": "Area of an invididual cell within a module that a current voltage process is being performed on"
+    },
+    {
+      "@id": "mds:SolarSimulatorName",
+      "@type": "owl:Class",
+      "rdfs:subClassOf": {
+        "@id": "mds:ToolName"
+      },
+      "skos:definition": "The name of a solar simulator, i.e. 'Lab 1 Simulator'"
+    },
+    {
+      "@id": "mds:WaferDopingPolarity",
+      "@type": "owl:Class",
+      "rdfs:label": "wafer-doping-polarity",
+      "rdfs:subClassOf": {
+        "@id": "mds:Sample"
+      },
+      "skos:definition": "Doping polarity of absorber. E.g., n-type or p-type."
+    },
+    {
+      "@id": "pmdco:NonTransformativeAnalysisProcess",
+      "@type": "owl:Class",
+      "rdfs:label": "NonTransformativeAnalysisProcess"
+    },
+    {
+      "@id": "mds:Substrate",
+      "@type": "owl:Class",
+      "rdfs:label": "Substrate",
+      "skos:broader": {
+        "@id": "mds:Recipe"
+      }
+    },
+    {
+      "@id": "mds:RelativeHumidity",
+      "@type": "owl:Class",
+      "rdfs:subClassOf": {
+        "@id": "mds:Recipe"
+      },
+      "skos:definition": "Water content in the air divided by maximum water held at that temperature."
+    },
+    {
+      "@id": "mds:composedOf",
+      "@type": "owl:ObjectProperty",
+      "rdfs:domain": {
+        "@id": "mds:PhotovoltaicModule"
+      },
+      "rdfs:range": [
+        {
+          "@id": "mds:Backsheet"
+        },
+        {
+          "@id": "mds:ConnectorType"
+        },
+        {
+          "@id": "mds:Encapsulant"
+        },
+        {
+          "@id": "mds:FrameMaterial"
+        },
+        {
+          "@id": "mds:PhotovoltaicBacksheet"
+        },
+        {
+          "@id": "mds:PhotovoltaicCell"
+        }
+      ]
+    },
+    {
+      "@id": "mds:ObservedModeThreeFailure",
+      "@type": "owl:Class",
+      "rdfs:label": "ObservedModeThreeFailure",
+      "rdfs:subClassOf": {
+        "@id": "mds:ObservedFailure"
+      },
+      "skos:definition": "Failure of a material by shear stress parallel to the plane of the crack and parallel to the crack front, ie: tearing"
+    },
+    {
+      "@id": "mds:PrimaryData",
+      "@type": "owl:Class",
+      "rdfs:label": "PrimaryData",
+      "rdfs:subClassOf": {
+        "@id": "pmdco:PrimaryData"
+      },
+      "skos:broader": {
+        "@id": "mds:Result"
+      }
+    },
+    {
+      "@id": "mds:SampleSize",
+      "@type": "owl:Class",
+      "rdfs:label": "SampleSize",
+      "skos:broader": {
+        "@id": "mds:Sample"
+      },
+      "skos:definition": "Size of samples that are within working range of an AFM instrument"
+    },
+    {
+      "@id": "mds:Ontology",
+      "@type": "owl:Ontology",
+      "dcterms:creator": "SDLE Research Center",
+      "dcterms:description": "MDS-Onto combines concepts from all different the different ontologies in Materials Data Science",
+      "dcterms:license": {
+        "@id": "https://creativecommons.org/licenses/by-sa/4.0/"
+      },
+      "dcterms:title": "MDS-Onto",
+      "owl:versionInfo": "0.3.0.0",
+      "rdfs:label": "MDS-Onto"
+    },
+    {
+      "@id": "mds:Distance",
+      "@type": "owl:Class",
+      "rdfs:label": "Distance",
+      "rdfs:subClassOf": {
+        "@id": "pmdco:Distance"
+      },
+      "skos:broader": {
+        "@id": "mds:Recipe"
+      }
+    },
+    {
+      "@id": "mds:Cell",
+      "@type": "owl:Class",
+      "rdfs:label": "Cell"
+    },
+    {
+      "@id": "mds:PersonORCiD",
+      "@type": "owl:Class",
+      "rdfs:label": "PersonORCiD",
+      "rdfs:subClassOf": {
+        "@id": "mds:Identifier"
+      },
+      "skos:definition": "Unique ID of a person"
+    },
+    {
+      "@id": "mds:PhotovoltaicCell",
+      "@type": "owl:Class",
+      "rdf:label": "PhotovoltaicCell",
+      "rdfs:subClassOf": [
+        {
+          "@id": "mds:ProvidedIdentifier"
+        },
+        {
+          "@id": "mds:Tool"
+        }
+      ],
+      "skos:definition": "PV cell that composes a module"
+    },
+    {
+      "@id": "mds:Laboratory",
+      "@type": "owl:Class",
+      "rdfs:label": "Laboratory",
+      "rdfs:subClassOf": {
+        "@id": "pmdco:Laboratory"
+      },
+      "skos:broader": {
+        "@id": "mds:Tool"
+      }
+    },
+    {
+      "@id": "mds:ModelID",
+      "@type": "owl:Class",
+      "mds:value": {
+        "@id": "http://www.w3.org/2001/XMLSchemastring"
+      },
+      "rdfs:label": "ModelID",
+      "rdfs:subClassOf": {
+        "@id": "pmdco:Identifier"
+      },
+      "skos:broader": {
+        "@id": "mds:Model"
+      },
+      "skos:definition": "Unique ID of a model"
+    },
+    {
+      "@id": "mds:ModulePackaging",
+      "@type": "owl:Class",
+      "rdfs:label": "module-packaging",
+      "rdfs:subClassOf": {
+        "@id": "mds:Sample"
+      },
+      "skos:definition": "The materials used for each layer of the solar panel excluding cell components. Either glass on glass (GG), glass with backsheet  GB), glass with transparent backsheet (GTB)."
+    },
+    {
+      "@id": "pmdco:ValueObject",
+      "@type": "owl:Class",
+      "rdfs:label": "ValueObject"
+    },
+    {
+      "@id": "mds:Result",
+      "@type": "owl:Class",
+      "rdfs:label": "Result",
+      "rdfs:subClassOf": {
+        "@id": "pmdco:PrimaryData"
+      },
+      "skos:definition": "A consequence, effect, or outcome of a process"
+    },
+    {
+      "@id": "mds:AFMTip",
+      "@type": "owl:Class",
+      "rdfs:label": "AFMTip",
+      "skos:broader": {
+        "@id": "mds:Tool"
+      },
+      "skos:definition": "A tip used in an AFM instrument that scans across a sample"
+    },
+    {
+      "@id": "mds:Title",
+      "@type": "owl:Class",
+      "rdfs:label": "Title",
+      "rdfs:subClassOf": {
+        "@id": "pmdco:ProjectIdentifier"
+      }
+    },
+    {
+      "@id": "mds:Person",
+      "@type": "owl:Class",
+      "rdfs:label": "Person",
+      "rdfs:subClassOf": {
+        "@id": "foaf:Person"
+      },
+      "skos:broader": {
+        "@id": "mds:Recipe"
+      }
+    },
+    {
+      "@id": "mds:ScanLines",
+      "@type": "owl:Class",
+      "rdfs:label": "ScanLines",
+      "skos:broader": {
+        "@id": "mds:Recipe"
+      }
+    },
+    {
+      "@id": "mds:ToolModel",
+      "@type": "owl:Class",
+      "mds:value": {
+        "@id": "http://www.w3.org/2001/XMLSchemastring"
+      },
+      "rdfs:label": [
+        "ToolModel",
+        "Model"
+      ],
+      "rdfs:subClassOf": {
+        "@id": "mds:NodeSerialNumber"
+      },
+      "skos:broader": {
+        "@id": "mds:Tool"
+      },
+      "skos:definition": [
+        "Model of a tool",
+        "The specific version or type of instrument."
+      ]
+    },
+    {
+      "@id": "mds:PyrometryMonitor",
+      "@type": "owl:Class",
+      "rdfs:label": "PyrometryMonitor",
+      "rdfs:subClassOf": {
+        "@id": "mds:Tool"
+      },
+      "skos:definition": "In situ monitor of print"
+    },
+    {
+      "@id": "mds:FluorescencePattern",
+      "@type": "owl:Class",
+      "rdfs:subClassOf": {
+        "@id": "mds:Sample"
+      },
+      "skos:definition": "A UVF fluorescence pattern of a module"
+    },
+    {
+      "@id": "mds:RiverPattern",
+      "@type": "owl:Class",
+      "rdfs:label": "RiverPattern",
+      "rdfs:subClassOf": {
+        "@id": "mds:FractographyImageCharacteristic"
+      },
+      "skos:definition": "The pattern which results from fatigue crack growth"
+    },
+    {
+      "@id": "mds:NumberBusbars",
+      "@type": "owl:Class",
+      "rdfs:label": "number-busbars",
+      "rdfs:subClassOf": {
+        "@id": "mds:Sample"
+      },
+      "skos:definition": "Number of busbars present per cell.  Non-ribbon based technologies show none. "
+    },
+    {
+      "@id": "mds:ProfilometryInsturmentID",
+      "@type": "owl:Class",
+      "rdfs:label": "ProfilometryInsturmentID",
+      "rdfs:subClassOf": {
+        "@id": "mds:ToolID"
+      }
+    },
+    {
+      "@id": "mds:FrameRate",
+      "@type": "owl:Class",
+      "rdfs:label": "FrameRate",
+      "skos:broader": {
+        "@id": "mds:Recipe"
+      }
+    },
+    {
+      "@id": "mds:RollRange",
+      "@type": "owl:Class",
+      "rdfs:label": "RollRange",
+      "rdfs:subClassOf": {
+        "@id": "mds:Recipe"
+      },
+      "skos:definition": "Range of roll motion"
+    },
+    {
+      "@id": "mds:ScanSpeed",
+      "@type": "owl:Class",
+      "rdfs:label": "ScanSpeed",
+      "skos:broader": {
+        "@id": "mds:Recipe"
+      },
+      "skos:definition": "The speed range in which the probe moves across a sample"
+    },
+    {
+      "@id": "mds:RecipeModifiedDate",
+      "@type": "owl:Class",
+      "mds:value": {
+        "@id": "http://www.w3.org/2001/XMLSchemadateTime"
+      },
+      "rdfs:label": "RecipeModifiedDate",
+      "rdfs:subClassOf": {
+        "@id": "mds:Date"
+      },
+      "skos:broader": {
+        "@id": "mds:Recipe"
+      },
+      "skos:definition": "Date that a recipe is modified"
+    },
+    {
+      "@id": "mds:EstimatedStressIntensityFactor",
+      "@type": "owl:Class",
+      "rdfs:label": "EstimatedStressIntensityFactor",
+      "rdfs:subClassOf": {
+        "@id": "mds:FractographyImageCharacteristic"
+      },
+      "skos:definition": "An estimation of the stress amplification at the crack tip"
+    },
+    {
+      "@id": "mds:PhotovoltaicModule",
+      "@type": "owl:Class",
+      "rdf:label": "PhotovoltaicModule",
+      "rdfs:subClassOf": [
+        {
+          "@id": "mds:ProvidedIdentifier"
+        },
+        {
+          "@id": "mds:Tool"
+        }
+      ],
+      "skos:definition": "A PV module, comprised of cells, for field deployment"
+    },
+    {
+      "@id": "mds:InitiationSite",
+      "@type": "owl:Class",
+      "rdfs:label": "InitiationSite",
+      "rdfs:subClassOf": {
+        "@id": "mds:FractographyImageCharacteristic"
+      }
+    },
+    {
+      "@id": "mds:WindDirection",
+      "@type": "owl:Class",
+      "rdf:label": "WindDirection",
+      "rdfs:subClassOf": {
+        "@id": "mds:PhotovoltaicSiteParameter"
+      }
+    },
+    {
+      "@id": "foaf:Person",
+      "@type": "owl:Class",
+      "rdfs:label": "Person"
+    },
+    {
+      "@id": "mds:TemperatureCoefficientVoltage",
+      "@type": "owl:Class",
+      "rdfs:label": "temperature-coefficient-voltage",
+      "rdfs:subClassOf": {
+        "@id": "mds:Sample"
+      },
+      "skos:definition": "Reduction of some percent of VOC per degree Celsius. Rate at which a voltage changes in reponse to a change in temperature."
+    },
+    {
+      "@id": "mds:CurrentVoltageRecipeCreatedDate",
+      "@type": "owl:Class",
+      "rdfs:subClassOf": {
+        "@id": "mds:Recipe"
+      },
+      "skos:definition": "The creation date for a current voltage process recipe"
+    },
+    {
+      "@id": "mds:FractographyImage",
+      "@type": "owl:Class",
+      "rdfs:label": "FractographyImage",
+      "rdfs:subClassOf": {
+        "@id": "mds:Result"
+      }
+    },
+    {
+      "@id": "mds:InterdigitatedComb",
+      "@type": "owl:Class",
+      "rdfs:label": "InterdigitatedComb",
+      "rdfs:subClassOf": {
+        "@id": "mds:Sample"
+      },
+      "skos:definition": "Specimen subclass for an individual interdigitated comb"
+    },
+    {
+      "@id": "mds:IntegralGrain",
+      "@type": "owl:Class",
+      "rdfs:label": "IntegralGrain",
+      "skos:broader": {
+        "@id": "mds:Tool"
+      },
+      "skos:definition": "Phase image from AFM instrument."
+    },
+    {
+      "@id": "mds:NumberParallelStrings",
+      "@type": "owl:Class",
+      "rdfs:label": "number-parallel-strings",
+      "rdfs:subClassOf": {
+        "@id": "mds:Sample"
+      },
+      "skos:definition": "Number of series connections present in the module. 1 if all cells in series, 2 or more otherwise."
+    },
+    {
+      "@id": "mds:CellCutType",
+      "@type": "owl:Class",
+      "rdf:label": "CellCutType",
+      "rdfs:label": "CellCutType",
+      "rdfs:subClassOf": [
+        {
+          "@id": "pmdco:ValueObject"
+        },
+        {
+          "@id": "mds:PhotovoltaicCellProperty"
+        }
+      ],
+      "skos:broader": {
+        "@id": "mds:Sample"
+      }
+    },
+    {
+      "@id": "mds:SequenceNumber",
+      "@type": "owl:Class",
+      "rdfs:label": "SequenceNumber",
+      "rdfs:subClassOf": {
+        "@id": "pmdco:SequenceNumber"
+      },
+      "skos:broader": {
+        "@id": "mds:Result"
+      }
+    },
+    {
+      "@id": "mds:Longitude",
+      "@type": "owl:Class",
+      "rdf:label": "Longitude",
+      "rdfs:subClassOf": {
+        "@id": "mds:PhotovoltaicSiteParameter"
+      },
+      "skos:definition": "East/west position of a point on the Earth, decimal format"
+    },
+    {
+      "@id": "mds:FocalDistance",
+      "@type": "owl:Class",
+      "rdfs:label": "FocalDistance",
+      "skos:broader": {
+        "@id": "mds:Tool"
+      }
+    },
+    {
+      "@id": "mds:SetPoint",
+      "@type": "owl:Class",
+      "rdfs:label": "SetPoint",
+      "skos:broader": {
+        "@id": "mds:Recipe"
+      },
+      "skos:definition": "Cleaning process of the substrate."
+    },
+    {
+      "@id": "mds:Recipe",
+      "@type": "owl:Class",
+      "rdfs:label": "Recipe",
+      "rdfs:subClassOf": {
+        "@id": "pmdco:Method"
+      },
+      "skos:definition": "A set of specifications that describes how a process is carried out"
+    },
+    {
+      "@id": "mds:Resolution",
+      "@type": "owl:Class",
+      "rdfs:label": "Resolution",
+      "rdfs:subClassOf": {
+        "@id": "mds:Recipe"
+      },
+      "skos:broader": [
+        {
+          "@id": "mds:Tool"
+        },
+        {
+          "@id": "mds:Recipe"
+        }
+      ],
+      "skos:definition": "The ability of the spectrometer to distinguish between closely spaced spectral features i.e smallest difference in wavenumbers."
+    },
+    {
+      "@id": "mds:LoadVoltage",
+      "@type": "owl:Class",
+      "rdfs:subClassOf": {
+        "@id": "mds:Tool"
+      },
+      "skos:definition": "The standard testing condition load voltage of a sample being measured"
+    },
+    {
+      "@id": "mds:AFMInstrument",
+      "@type": "owl:Class",
+      "rdfs:label": "AFMInstrument",
+      "rdfs:subClassOf": {
+        "@id": "mds:Tool"
+      },
+      "skos:broader": {
+        "@id": "mds:Tool"
+      },
+      "skos:definition": [
+        "Piezoelectric sensor location of the AFM instrument.",
+        "An instrument that does atomic force microscopy (AFM)"
+      ]
+    },
+    {
+      "@id": "mds:Geometry",
+      "@type": "owl:Class",
+      "rdfs:label": "Geometry",
+      "rdfs:subClassOf": {
+        "@id": "pmdco:ValueObject"
+      },
+      "skos:broader": {
+        "@id": "mds:Sample"
+      }
+    },
+    {
+      "@id": "mds:SeriesResistance",
+      "@type": "owl:Class",
+      "rdfs:subClassOf": {
+        "@id": "mds:Result"
+      },
+      "skos:definition": "The series resistance measured by a current voltage process"
+    },
+    {
+      "@id": "mds:Location",
+      "@type": "owl:Class",
+      "rdfs:subClassOf": {
+        "@id": "pmdco:Location"
+      }
+    },
+    {
+      "@id": "pmdco:SequenceNumber",
+      "@type": "owl:Class",
+      "rdfs:label": "SequenceNumber"
+    },
+    {
+      "@id": "mds:FlashWaitTime",
+      "@type": "owl:Class",
+      "rdfs:subClassOf": {
+        "@id": "mds:Recipe"
+      },
+      "skos:definition": "The amount of time between flash pulses"
+    },
+    {
+      "@id": "mds:CellsPerString",
+      "@type": "owl:Class",
+      "rdfs:label": "cells-per-string",
+      "rdfs:subClassOf": {
+        "@id": "mds:Sample"
+      },
+      "skos:definition": "The number of cells in series together per individual string. E.g., 60, 72, etc."
+    },
+    {
+      "@id": "mds:Latitude",
+      "@type": "owl:Class",
+      "rdf:label": "Latitude",
+      "rdfs:subClassOf": {
+        "@id": "mds:PhotovoltaicSiteParameter"
+      },
+      "skos:definition": "North/south position of a point on the Earth, decimal format"
+    },
+    {
+      "@id": "mds:ResultID",
+      "@type": "owl:Class",
+      "mds:value": {
+        "@id": "http://www.w3.org/2001/XMLSchemastring"
+      },
+      "rdfs:label": "ResultID",
+      "rdfs:subClassOf": {
+        "@id": "pmdco:Identifier"
+      },
+      "skos:broader": {
+        "@id": "mds:Result"
+      },
+      "skos:definition": "Unique ID of a result"
+    },
+    {
+      "@id": "mds:ProvidedIdentifier",
+      "@type": "owl:Class",
+      "rdfs:subClassOf": {
+        "@id": "pmdco:ProvidedIdentifier"
+      }
+    },
+    {
+      "@id": "mds:PhotovoltaicChargeControllerID",
+      "@type": "owl:Class",
+      "rdf:label": "PhotovoltaicChargeControllerID",
+      "rdfs:subClassOf": {
+        "@id": "mds:ToolID"
+      },
+      "skos:definition": "Charge controller id."
+    },
+    {
+      "@id": "mds:RecipeID",
+      "@type": "owl:Class",
+      "mds:value": {
+        "@id": "http://www.w3.org/2001/XMLSchemastring"
+      },
+      "rdfs:label": "RecipeID",
+      "rdfs:subClassOf": {
+        "@id": "pmdco:Identifier"
+      },
+      "skos:broader": {
+        "@id": "mds:Recipe"
+      },
+      "skos:definition": "Unique ID for a recipe"
+    },
+    {
+      "@id": "mds:Manufacturer",
+      "@type": "owl:Class",
+      "rdfs:label": "Manufacturer",
+      "rdfs:subClassOf": [
+        {
+          "@id": "pmdco:Manufacturer"
+        },
+        {
+          "@id": "mds:Tool"
+        }
+      ],
+      "skos:broader": {
+        "@id": "mds:Tool"
+      },
+      "skos:definition": [
+        "A company or entity that designs, produces, and supplies the instrument and its accessories.",
+        "Manufacturer of the instrument"
+      ]
+    },
+    {
+      "@id": "mds:Accessory",
+      "@type": "owl:Class",
+      "rdfs:label": "Accessory",
+      "rdfs:subClassOf": {
+        "@id": "mds:Tool"
+      },
+      "skos:definition": [
+        "Accessory used for the measurement",
+        "An additional component or device such as crystal, gas cell, or sample holder, that enhances or modifies the functionality of the instrument."
+      ]
+    },
+    {
+      "@id": "mds:HotStageTemperature",
+      "@type": "owl:Class",
+      "rdfs:label": "HotStageTemperature",
+      "rdfs:subClassOf": {
+        "@id": "mds:Recipe"
+      },
+      "skos:broader": {
+        "@id": "mds:Tool"
+      },
+      "skos:definition": "temperature range of a hotstage in an AFM instrument"
+    },
+    {
+      "@id": "mds:FingerAmount",
+      "@type": "owl:Class",
+      "rdfs:label": "FingerAmount",
+      "rdfs:subClassOf": {
+        "@id": "pmdco:ValueObject"
+      },
+      "skos:broader": {
+        "@id": "mds:Sample"
+      },
+      "skos:definition": "Value describing the number of fingers an interdigitated comb posseses"
+    },
+    {
+      "@id": "pmdco:Algorithm",
+      "@type": "owl:Class",
+      "rdfs:label": "Algorithm"
+    },
+    {
+      "@id": "mds:WaferCrystallinity",
+      "@type": "owl:Class",
+      "rdfs:label": "wafer-crystallinity",
+      "rdfs:subClassOf": {
+        "@id": "mds:Sample"
+      },
+      "skos:definition": "Distinguishes whether the silicon wafer was manufactured as a single crystal, multiple crystals, or no crystal (amorphous); if not silicon, another value is used such as THIN FILM."
+    },
+    {
+      "@id": "mds:NameplateIsc",
+      "@type": "owl:Class",
+      "rdfs:label": "nameplate-isc",
+      "rdfs:subClassOf": {
+        "@id": "mds:Sample"
+      },
+      "skos:definition": "Short-circuit current rated at STC"
+    },
+    {
+      "@id": "mds:FractographyImageCharacteristic",
+      "@type": "owl:Class",
+      "rdfs:label": "FractographyImageCharacteristic",
+      "rdfs:subClassOf": {
+        "@id": "mds:Result"
+      }
+    },
+    {
+      "@id": "mds:ModuleEfficiency",
+      "@type": "owl:Class",
+      "rdfs:subClassOf": {
+        "@id": "mds:Sample"
+      },
+      "skos:definition": "Theoretical efficency of a module"
+    },
+    {
+      "@id": "mds:Irradiance",
+      "@type": "owl:Class",
+      "rdf:label": "Irradiance",
+      "rdfs:subClassOf": {
+        "@id": "mds:PhotovoltaicSiteParameter"
+      }
+    },
+    {
+      "@id": "mds:VoltageAtMaximumPower",
+      "@type": "owl:Class",
+      "rdf:label": "VoltageAtMaximumPower",
+      "rdfs:subClassOf": [
+        {
+          "@id": "mds:Sample"
+        },
+        {
+          "@id": "mds:PhotovoltaicCellProperty"
+        }
+      ],
+      "skos:definition": [
+        "DC voltage at the maximum power point under STC",
+        "DC voltage at the maximum power point of the cell"
+      ]
+    },
+    {
+      "@id": "mds:NameplateImp",
+      "@type": "owl:Class",
+      "rdfs:label": "nameplate-imp",
+      "rdfs:subClassOf": {
+        "@id": "mds:Sample"
+      },
+      "skos:definition": "Current at maximum power point rated at STC."
+    },
+    {
+      "@id": "mds:ImageSequence",
+      "@type": "owl:Class",
+      "mds:value": {
+        "@id": "rdf:Seq"
+      },
+      "rdfs:label": "ImageSequence",
+      "rdfs:subClassOf": {
+        "@id": "mds:SequenceNumber"
+      },
+      "skos:definition": "Running sequence of the image taken."
+    },
+    {
+      "@id": "mds:CellCount",
+      "@type": "owl:Class",
+      "rdfs:subClassOf": {
+        "@id": "mds:Sample"
+      },
+      "skos:definition": "Number of cells in a module"
+    },
+    {
+      "@id": "pmdco:Metadata",
+      "@type": "owl:Class",
+      "rdfs:label": "Metadata"
+    },
+    {
+      "@id": "mds:DetectorLength",
+      "@type": "owl:Class",
+      "mds:characteristicOf": {
+        "@id": "mds:SyncXrayDetector"
+      },
+      "mds:unit": {
+        "@id": "qudt:MilliM"
+      },
+      "mds:value": {
+        "@id": "http://www.w3.org/2001/XMLSchemafloat"
+      },
+      "rdfs:label": "DetectorLength",
+      "rdfs:subClassOf": {
+        "@id": "mds:Length"
+      },
+      "skos:definition": "Length of the detector."
+    },
+    {
+      "@id": "mds:ZCoordinate",
+      "@type": "owl:Class",
+      "rdfs:label": "ZCoordinate",
+      "skos:broader": {
+        "@id": "mds:Result"
+      }
+    },
+    {
+      "@id": "mds:SpotSize",
+      "@type": "owl:Class",
+      "rdfs:label": "SpotSize",
+      "rdfs:subClassOf": {
+        "@id": "pmdco:ValueObject"
+      },
+      "skos:broader": {
+        "@id": "mds:Recipe"
+      }
+    },
+    {
+      "@id": "mds:PhotovoltaicSiteParameter",
+      "@type": "owl:Class",
+      "rdf:label": "PhotovoltaicSiteParameter",
+      "rdfs:subClassOf": {
+        "@id": "mds:Recipe"
+      },
+      "skos:definition": "Parameter or property a PV site has"
+    },
+    {
+      "@id": "mds:CurrentVoltageSample",
+      "@type": "owl:Class",
+      "rdfs:subClassOf": {
+        "@id": "mds:Sample"
+      },
+      "skos:definition": "A sample used in a current voltage process"
+    },
+    {
+      "@id": "mds:InstrumentName",
+      "@type": "owl:Class",
+      "rdfs:label": "InstrumentName",
+      "skos:broader": {
+        "@id": "mds:Tool"
+      }
+    },
+    {
+      "@id": "mds:TrackingAlgorithm",
+      "@type": "owl:Class",
+      "rdf:label": "TrackingAlgorithm",
+      "rdfs:subClassOf": {
+        "@id": "mds:Model"
+      },
+      "skos:definition": "If system is tracking, method used (truetracking, backtracking, diffuse tracking, etc)"
+    },
+    {
+      "@id": "mds:NumberOfCellsPerString",
+      "@type": "owl:Class",
+      "rdfs:subClassOf": {
+        "@id": "mds:Tool"
+      },
+      "skos:definition": "Number of cells in a group of solar panels connected in series in a module"
+    },
+    {
+      "@id": "pmdco:Length",
+      "@type": "owl:Class",
+      "rdfs:label": "Length"
+    },
+    {
+      "@id": "mds:CurrentVoltageStepSize",
+      "@type": "owl:Class",
+      "rdfs:subClassOf": {
+        "@id": "mds:Tool"
+      },
+      "skos:definition": "The step size of the voltage for a current voltage process"
+    },
+    {
+      "@id": "mds:unit",
+      "@type": "owl:ObjectProperty",
+      "rdfs:subPropertyOf": {
+        "@id": "pmdco:unit"
+      }
+    },
+    {
+      "@id": "mds:WavelengthRange",
+      "@type": "owl:Class",
+      "rdfs:label": "WavelengthRange",
+      "rdfs:subClassOf": [
+        {
+          "@id": "pmdco:ValueObject"
+        },
+        {
+          "@id": "mds:Recipe"
+        }
+      ],
+      "skos:broader": {
+        "@id": "mds:Recipe"
+      },
+      "skos:definition": "The span of infrared wavelengths that the instrument can measure."
+    },
+    {
+      "@id": "mds:PowerSTC",
+      "@type": "owl:Class",
+      "rdfs:subClassOf": {
+        "@id": "mds:Sample"
+      },
+      "skos:definition": "Power at refrence conditions"
+    },
+    {
+      "@id": "mds:Force",
+      "@type": "owl:Class",
+      "rdfs:label": "Force",
+      "rdfs:subClassOf": {
+        "@id": "pmdco:Force"
+      },
+      "skos:broader": {
+        "@id": "mds:Recipe"
+      }
+    },
+    {
+      "@id": "mds:LogFile",
+      "@type": "owl:Class",
+      "mds:value": {
+        "@id": "http://www.w3.org/2001/XMLSchemastring"
+      },
+      "rdfs:label": "LogFile",
+      "rdfs:subClassOf": {
+        "@id": "mds:Metadata"
+      },
+      "skos:definition": "Contains log of the results."
+    },
+    {
+      "@id": "mds:PhotovoltaicRacking",
+      "@type": "owl:Class",
+      "rdf:label": "PhotovoltaicRacking",
+      "rdfs:subClassOf": {
+        "@id": "mds:PhotovoltaicSiteParameter"
+      },
+      "skos:definition": "How PV modules are arranged within the system"
+    },
+    {
+      "@id": "mds:PhotovoltaicInverter",
+      "@type": "owl:Class",
+      "rdf:label": "PhotovoltaicInverter",
+      "rdfs:subClassOf": {
+        "@id": "mds:Tool"
+      },
+      "skos:definition": "An inverter to convert DC to AC"
+    },
+    {
+      "@id": "mds:Absorbance",
+      "@type": "owl:Class",
+      "rdfs:label": "Absorbance",
+      "rdfs:subClassOf": {
+        "@id": "mds:Result"
+      },
+      "skos:definition": "absorbance read by instrument"
+    },
+    {
+      "@id": "mds:RecipeAuthor",
+      "@type": "owl:Class",
+      "mds:value": {
+        "@id": "http://www.w3.org/2001/XMLSchemastring"
+      },
+      "rdfs:label": "RecipeAuthor",
+      "rdfs:subClassOf": {
+        "@id": "mds:Person"
+      },
+      "skos:broader": {
+        "@id": "mds:Recipe"
+      },
+      "skos:definition": "Person created a recipe"
+    },
+    {
+      "@id": "mds:Amplitude",
+      "@type": "owl:Class",
+      "rdfs:label": "Amplitude",
+      "rdfs:subClassOf": {
+        "@id": "mds:Recipe"
+      },
+      "skos:definition": "Drying temperature in the evaporation process of film preparation."
+    },
+    {
+      "@id": "mds:OpenCircuitVoltage",
+      "@type": "owl:Class",
+      "rdfs:subClassOf": {
+        "@id": "mds:Result"
+      },
+      "skos:definition": "The open circuit voltage measured by a current voltage process"
+    },
+    {
+      "@id": "pmdco:Department",
+      "@type": "owl:Class",
+      "rdfs:label": "Department"
+    },
+    {
+      "@id": "mds:SimulatorToolSerialNo",
+      "@type": "owl:Class",
+      "rdfs:subClassOf": {
+        "@id": "mds:ToolSerialNo"
+      },
+      "skos:definition": "The serial number of a solar simulator"
+    },
+    {
+      "@id": "mds:ReadingSpeed",
+      "@type": "owl:Class",
+      "rdfs:label": [
+        "ReadingSpeed",
+        "readingTime"
+      ],
+      "rdfs:subClassOf": {
+        "@id": "mds:Recipe"
+      },
+      "skos:definition": "Time the instrument takes for the readings"
+    },
+    {
+      "@id": "mds:NameplateVoc",
+      "@type": "owl:Class",
+      "rdfs:label": "nameplate-voc",
+      "rdfs:subClassOf": {
+        "@id": "mds:Sample"
+      },
+      "skos:definition": "Open-circuit voltage rated at STC"
+    },
+    {
+      "@id": "mds:ValueObject",
+      "@type": "owl:Class",
+      "rdfs:subClassOf": {
+        "@id": "pmdco:ValueObject"
+      }
+    },
+    {
+      "@id": "mds:Turn",
+      "@type": "owl:Class",
+      "rdfs:label": "Turn",
+      "rdfs:subClassOf": {
+        "@id": "pmdco:ValueObject"
+      },
+      "skos:broader": {
+        "@id": "mds:Recipe"
+      }
+    },
+    {
+      "@id": "mds:ShortCircuitCurrent",
+      "@type": "owl:Class",
+      "rdfs:subClassOf": {
+        "@id": "mds:Result"
+      },
+      "skos:definition": "The short circuit current measured by a current voltage process"
+    },
+    {
+      "@id": "mds:ClimateZone",
+      "@type": "owl:Class",
+      "rdf:label": "ClimateZone",
+      "rdfs:subClassOf": {
+        "@id": "mds:PhotovoltaicSiteParameter"
+      }
+    },
+    {
+      "@id": "mds:RackingType",
+      "@type": "owl:Class",
+      "rdf:label": "RackingType",
+      "rdfs:subClassOf": {
+        "@id": "mds:Tool"
+      },
+      "skos:definition": "Type of racking used (open, closed, roof, etc)"
+    },
+    {
+      "@id": "mds:OutputCurrent",
+      "@type": "owl:Class",
+      "rdf:label": "OutputCurrent",
+      "rdfs:subClassOf": {
+        "@id": "mds:PhotovoltaicChargeControllerProperty"
+      },
+      "skos:definition": "Charge controller output voltage [A-dc]."
+    },
+    {
+      "@id": "mds:Model",
+      "@type": "owl:Class",
+      "rdfs:label": "Model",
+      "rdfs:subClassOf": {
+        "@id": "pmdco:Algorithm"
+      },
+      "skos:definition": "An algorithm that describes an underlying relationship between inputs and outputs"
+    },
+    {
+      "@id": "mds:EncapsulantMaterial",
+      "@type": "owl:Class",
+      "rdfs:subClassOf": {
+        "@id": "mds:Sample"
+      },
+      "skos:definition": "Material of the polymer encapsulant"
+    },
+    {
+      "@id": "mds:ExposureStep",
+      "@type": "owl:Class",
+      "rdfs:subClassOf": {
+        "@id": "mds:Result"
+      },
+      "skos:definition": "The step count of the exposure."
+    },
+    {
+      "@id": "mds:NumberStrings",
+      "@type": "owl:Class",
+      "rdfs:subClassOf": {
+        "@id": "mds:Tool"
+      },
+      "skos:definition": "Number of groups of solar panels connected in series in a module"
+    },
+    {
+      "@id": "mds:PhotovoltaicModuleProperty",
+      "@type": "owl:Class",
+      "rdfs:subClassOf": {
+        "@id": "mds:Sample"
+      },
+      "skos:definition": "A property of a PV module"
+    },
+    {
+      "@id": "mds:SampleScans",
+      "@type": "owl:Class",
+      "rdfs:label": "SampleScans",
+      "rdfs:subClassOf": {
+        "@id": "mds:Recipe"
+      },
+      "skos:definition": "The process of collecting infrared spectral data from a sample by measuring the absorption at varoius wavelenghths."
+    },
+    {
+      "@id": "mds:Sensitivity",
+      "@type": "owl:Class",
+      "rdfs:label": "Sensitivity",
+      "rdfs:subClassOf": {
+        "@id": "mds:Recipe"
+      },
+      "skos:definition": [
+        "Equipment sensitivity",
+        "The detector's ability to accurately measure and respond to small amounts of infrared radiation."
+      ]
+    },
+    {
+      "@id": "mds:PhotovoltaicModel",
+      "@type": "owl:Class",
+      "rdfs:label": "model",
+      "rdfs:subClassOf": {
+        "@id": "mds:ProvidedIdentifier"
+      },
+      "skos:broader": {
+        "@id": "mds:Sample"
+      },
+      "skos:definition": "Signifier of series or line of products."
+    },
+    {
+      "@id": "mds:SampleTotalArea",
+      "@type": "owl:Class",
+      "rdfs:subClassOf": {
+        "@id": "mds:Sample"
+      },
+      "skos:definition": "Total area of the module that a current voltage process is being performed on"
+    },
+    {
+      "@id": "mds:HotStageDiameter",
+      "@type": "owl:Class",
+      "rdfs:label": "HotStageDiameter",
+      "skos:broader": {
+        "@id": "mds:Tool"
+      }
+    },
+    {
+      "@id": "mds:InterdigitatedCombIdentifier",
+      "@type": "owl:Class",
+      "rdfs:label": "InterdigitatedCombIdentifier",
+      "rdfs:subClassOf": {
+        "@id": "pmdco:SpecimenName"
+      },
+      "skos:broader": {
+        "@id": "mds:Sample"
+      },
+      "skos:definition": "Identifier for each pattern of a board containing interdigitated combs"
+    },
+    {
+      "@id": "mds:Objective",
+      "@type": "owl:Class",
+      "rdfs:label": "Objective",
+      "rdfs:subClassOf": {
+        "@id": "pmdco:Object"
+      },
+      "skos:broader": {
+        "@id": "mds:Recipe"
+      },
+      "skos:definition": "Objective lens, ex: 5X, 20X"
+    },
+    {
+      "@id": "mds:NumberCellsY",
+      "@type": "owl:Class",
+      "rdfs:label": "cells-y",
+      "rdfs:subClassOf": {
+        "@id": "mds:Sample"
+      },
+      "skos:definition": "Number of cells in the longest direction. E.g., 10, 12, 20 "
+    },
+    {
+      "@id": "mds:ModelFilePath",
+      "@type": "owl:Class",
+      "mds:value": {
+        "@id": "http://www.w3.org/2001/XMLSchemastring"
+      },
+      "rdfs:label": "ModelFilePath",
+      "rdfs:subClassOf": {
+        "@id": "mds:FilePath"
+      },
+      "skos:broader": {
+        "@id": "mds:Model"
+      },
+      "skos:definition": "File path unique to a model"
+    },
+    {
+      "@id": "mds:InterconnectionScheme",
+      "@type": "owl:Class",
+      "rdfs:label": "interconnection-scheme",
+      "rdfs:subClassOf": {
+        "@id": "mds:Sample"
+      },
+      "skos:definition": "Method used to wire cells together. RIBBON, SHINGLED, WIRE"
+    },
+    {
+      "@id": "mds:Identifier",
+      "@type": "owl:Class",
+      "rdfs:label": "Identifier",
+      "rdfs:subClassOf": {
+        "@id": "pmdco:Identifier"
+      }
+    },
+    {
+      "@id": "mds:DateImaged",
+      "@type": "owl:Class",
+      "rdfs:label": "DateImaged",
+      "rdfs:subClassOf": {
+        "@id": "mds:Date"
+      }
+    },
+    {
+      "@id": "mds:CantileverForceConstant",
+      "@type": "owl:Class",
+      "rdfs:label": "CantileverForceConstant",
+      "skos:broader": {
+        "@id": "mds:Recipe"
+      },
+      "skos:definition": "the force constant of the cantilever; depends on the material"
+    },
+    {
+      "@id": "mds:NameplatePmp",
+      "@type": "owl:Class",
+      "rdfs:label": "nameplate-pmp",
+      "rdfs:subClassOf": {
+        "@id": "mds:Sample"
+      },
+      "skos:definition": "Maximum power rated at STC."
+    },
+    {
+      "@id": "mds:PowerDC",
+      "@type": "owl:Class",
+      "rdf:label": "PowerDC",
+      "rdfs:subClassOf": [
+        {
+          "@id": "mds:Sample"
+        },
+        {
+          "@id": "mds:PhotovoltaicCellProperty"
+        }
+      ],
+      "skos:definition": [
+        "DC power at STC, 1 sun of irradiance",
+        "DC power produced by the cell"
+      ]
+    },
+    {
+      "@id": "mds:ProcessingNode",
+      "@type": "owl:Class",
+      "rdfs:subClassOf": {
+        "@id": "pmdco:ProcessingNode"
+      }
+    },
+    {
+      "@id": "mds:Facility",
+      "@type": "owl:Class",
+      "mds:value": {
+        "@id": "http://www.w3.org/2001/XMLSchemastring"
+      },
+      "rdfs:label": "Facility",
+      "rdfs:subClassOf": {
+        "@id": "mds:Laboratory"
+      },
+      "skos:definition": "Facility where the experiment was performed."
+    },
+    {
+      "@id": "mds:NodeSerialNumber",
+      "@type": "owl:Class",
+      "rdfs:label": "NodeSerialNumber",
+      "rdfs:subClassOf": {
+        "@id": "pmdco:NodeSerialNumber"
+      },
+      "skos:broader": {
+        "@id": "mds:Tool"
+      }
+    },
+    {
+      "@id": "mds:OrangeButtonTerm",
+      "@type": "owl:Class",
+      "rdfs:subClassOf": {
+        "@id": "mds:ValueObject"
+      },
+      "skos:definition": "Term from the OrangeButton Taxonomy"
+    },
+    {
+      "@id": "mds:PhotovoltaicSiteNote",
+      "@type": "owl:Class",
+      "rdf:label": "PhotovoltaicSiteNote",
+      "rdfs:subClassOf": {
+        "@id": "mds:Recipe"
+      }
+    },
+    {
+      "@id": "mds:CurrentVoltageRecipeID",
+      "@type": "owl:Class",
+      "rdfs:subClassOf": {
+        "@id": "mds:RecipeID"
+      },
+      "skos:definition": "The identification number for a current voltage recipe"
+    },
+    {
+      "@id": "mds:PhotovoltaicSiteID",
+      "@type": "owl:Class",
+      "rdf:label": "PhotovoltaicSiteID",
+      "rdfs:subClassOf": {
+        "@id": "mds:Recipe"
+      },
+      "skos:definition": "Site identifier"
+    },
+    {
+      "@id": "mds:SampleID",
+      "@type": "owl:Class",
+      "mds:value": {
+        "@id": "http://www.w3.org/2001/XMLSchemastring"
+      },
+      "rdfs:label": "SampleID",
+      "rdfs:subClassOf": {
+        "@id": "pmdco:Identifier"
+      },
+      "skos:broader": {
+        "@id": "mds:Sample"
+      },
+      "skos:definition": [
+        "Unique ID of a sample",
+        "Controls response time of the feedback loop; can dramatically affect the image quality and dependent on both the duration and magnitude of the error signal."
+      ]
+    },
+    {
+      "@id": "mds:SpincoatingParameters",
+      "@type": "owl:Class",
+      "rdfs:label": "SpincoatingParameters",
+      "skos:broader": {
+        "@id": "mds:Recipe"
+      }
+    },
+    {
+      "@id": "mds:PyrometerReading",
+      "@type": "owl:Class",
+      "rdfs:label": "PyrometerReading"
+    },
+    {
+      "@id": "mds:TipMaterial",
+      "@type": "owl:Class",
+      "rdfs:label": "TipMaterial",
+      "skos:broader": {
+        "@id": "mds:Tool"
+      },
+      "skos:definition": "The material of the AFM tip"
+    },
+    {
+      "@id": "mds:NumberofScan",
+      "@type": "owl:Class",
+      "rdfs:label": "NumberofScan",
+      "rdfs:subClassOf": {
+        "@id": "mds:Recipe"
+      }
+    },
+    {
+      "@id": "mds:FilmPreparation",
+      "@type": "owl:Class",
+      "rdfs:label": "FilmPreparation",
+      "rdfs:subClassOf": {
+        "@id": "mds:Recipe"
+      }
+    },
+    {
+      "@id": "mds:ToolID",
+      "@type": "owl:Class",
+      "mds:value": {
+        "@id": "http://www.w3.org/2001/XMLSchemastring"
+      },
+      "rdfs:label": "ToolID",
+      "rdfs:subClassOf": {
+        "@id": "pmdco:Identifier"
+      },
+      "skos:broader": {
+        "@id": "mds:Tool"
+      },
+      "skos:definition": "Unique ID of a tool"
+    },
+    {
+      "@id": "mds:Striation",
+      "@type": "owl:Class",
+      "rdfs:label": [
+        "Striation",
+        "Beach Mark"
+      ],
+      "rdfs:subClassOf": {
+        "@id": "mds:FractographyImageCharacteristic"
+      },
+      "skos:definition": "A mark caused by a changing stress state"
+    },
+    {
+      "@id": "mds:ModelResults",
+      "@type": "owl:Class",
+      "mds:value": {
+        "@id": "http://www.w3.org/2001/XMLSchemastring"
+      },
+      "rdfs:label": "ModelResults",
+      "rdfs:subClassOf": {
+        "@id": "mds:Result"
+      },
+      "skos:broader": {
+        "@id": "mds:Model"
+      },
+      "skos:definition": "Results of a model"
+    },
+    {
+      "@id": "mds:ConnectorType",
+      "@type": "owl:Class",
+      "rdfs:label": "connector-type",
+      "rdfs:subClassOf": {
+        "@id": "mds:Sample"
+      },
+      "skos:definition": "Which version of lead connection is used to connect panel. E.g, MC4, MC3, T4."
+    },
+    {
+      "@id": "mds:NumberJunctionBox",
+      "@type": "owl:Class",
+      "rdfs:label": "number-junction-box",
+      "rdfs:subClassOf": {
+        "@id": "mds:Sample"
+      },
+      "skos:definition": "Total number of junction boxes present on the module."
+    },
+    {
+      "@id": "skos:broader",
+      "@type": [
+        "rdf:Property",
+        "owl:ObjectProperty"
+      ],
+      "rdfs:comment": {
+        "@language": "en",
+        "@value": "Broader concepts are typically rendered as parents in a concept hierarchy (tree)."
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "http://www.w3.org/2004/02/skos/core"
+      },
+      "rdfs:label": {
+        "@language": "en",
+        "@value": "has broader"
+      },
+      "skos:definition": {
+        "@language": "en",
+        "@value": "Relates a concept to a concept that is more general in meaning."
+      }
+    },
+    {
+      "@id": "mds:Software",
+      "@type": "owl:Class",
+      "rdfs:label": "Software",
+      "rdfs:subClassOf": {
+        "@id": "mds:Tool"
+      },
+      "skos:broader": {
+        "@id": "mds:Tool"
+      },
+      "skos:definition": [
+        "Software used by the instrument to perform AFM technique",
+        "Software used in the instrument",
+        "the computer programs used to control the  instrument."
+      ]
+    },
+    {
+      "@id": "mds:CurrentAtMaximumPower",
+      "@type": "owl:Class",
+      "rdf:label": "CurrentAtMaximumPower",
+      "rdfs:label": "CurrentAtMaximumPower",
+      "rdfs:subClassOf": [
+        {
+          "@id": "mds:Sample"
+        },
+        {
+          "@id": "mds:PhotovoltaicCellProperty"
+        }
+      ],
+      "skos:definition": [
+        "DC current at the maximum power point under STC",
+        "DC current at maximum power point"
+      ]
+    },
+    {
+      "@id": "mds:Measurement",
+      "@type": "owl:Class",
+      "rdfs:label": "Measurement",
+      "rdfs:subClassOf": {
+        "@id": "mds:Result"
+      },
+      "skos:definition": "Chemical analysis carried out on the sample."
+    },
+    {
+      "@id": "mds:BoardType",
+      "@type": "owl:Class",
+      "rdfs:label": "BoardType",
+      "rdfs:subClassOf": {
+        "@id": "pmdco:Shape"
+      },
+      "skos:broader": {
+        "@id": "mds:Sample"
+      },
+      "skos:definition": "Shape describing the interdigitated comb board"
+    },
+    {
+      "@id": "mds:Temperature",
+      "@type": "owl:Class",
+      "rdfs:label": "Temperature",
+      "rdfs:subClassOf": {
+        "@id": "pmdco:Temperature"
+      },
+      "skos:broader": {
+        "@id": "mds:Recipe"
+      }
+    },
+    {
+      "@id": "pmdco:Method",
+      "@type": "owl:Class",
+      "rdfs:label": "Method"
+    },
+    {
+      "@id": "mds:CurrentVoltageAnalysis",
+      "@type": "owl:Class",
+      "rdfs:subClassOf": {
+        "@id": "mds:Analysis"
+      },
+      "skos:definition": "The analysis method used on a raw dataset generated by a current voltage process"
+    },
+    {
+      "@id": "mds:ToolSoftware",
+      "@type": "owl:Class",
+      "mds:value": {
+        "@id": "http://www.w3.org/2001/XMLSchemastring"
+      },
+      "rdfs:label": "ToolSoftware",
+      "rdfs:subClassOf": {
+        "@id": "pmdco:ProcessingNode"
+      },
+      "skos:broader": {
+        "@id": "mds:Tool"
+      },
+      "skos:definition": "Software used by a tool"
+    },
+    {
+      "@id": "mds:SaturationCurrentDensity",
+      "@type": "owl:Class",
+      "rdfs:subClassOf": {
+        "@id": "mds:Result"
+      },
+      "skos:definition": "The saturation current density measured by a current voltage process"
+    },
+    {
+      "@id": "mds:ZRange",
+      "@type": "owl:Class",
+      "rdfs:label": "ZRange",
+      "rdfs:subClassOf": {
+        "@id": "mds:Recipe"
+      },
+      "skos:definition": "Range in the Z direction of the probe"
+    },
+    {
+      "@id": "mds:characteristicOf",
+      "@type": "owl:ObjectProperty",
+      "rdfs:domain": [
+        {
+          "@id": "mds:Sample"
+        },
+        {
+          "@id": "mds:PhotovoltaicModule"
+        }
+      ],
+      "rdfs:range": [
+        {
+          "@id": "mds:CellArea"
+        },
+        {
+          "@id": "mds:CellTechnology"
+        },
+        {
+          "@id": "mds:CellsPerString"
+        },
+        {
+          "@id": "mds:InterconnectionScheme"
+        },
+        {
+          "@id": "mds:JunctionBoxLocations"
+        },
+        {
+          "@id": "mds:ModuleArc"
+        },
+        {
+          "@id": "mds:ModuleArea"
+        },
+        {
+          "@id": "mds:ModulePackaging"
+        },
+        {
+          "@id": "mds:NameplateImp"
+        },
+        {
+          "@id": "mds:NameplateIsc"
+        },
+        {
+          "@id": "mds:NameplatePmp"
+        },
+        {
+          "@id": "mds:NameplateVmp"
+        },
+        {
+          "@id": "mds:NameplateVoc"
+        },
+        {
+          "@id": "mds:NumberBusbars"
+        },
+        {
+          "@id": "mds:NumberCellsX"
+        },
+        {
+          "@id": "mds:NumberCellsY"
+        },
+        {
+          "@id": "mds:NumberJunctionBox"
+        },
+        {
+          "@id": "mds:NumberParallelStrings"
+        },
+        {
+          "@id": "mds:Sample"
+        },
+        {
+          "@id": "mds:PhotovoltaicSite"
+        },
+        {
+          "@id": "mds:TemperatureCoefficientCurrent"
+        },
+        {
+          "@id": "mds:TemperatureCoefficientPower"
+        },
+        {
+          "@id": "mds:TemperatureCoefficientVoltage"
+        },
+        {
+          "@id": "mds:WaferCrystallinity"
+        },
+        {
+          "@id": "mds:WaferDopingPolarity"
+        }
+      ],
+      "rdfs:subPropertyOf": {
+        "@id": "pmdco:characteristicOf"
+      }
+    },
+    {
+      "@id": "mds:OutputVoltage",
+      "@type": "owl:Class",
+      "rdf:label": "OutputVoltage",
+      "rdfs:subClassOf": {
+        "@id": "mds:PhotovoltaicChargeControllerProperty"
+      },
+      "skos:definition": "Charge controller output voltage [V-dc]."
+    },
+    {
+      "@id": "mds:Beamsplitter",
+      "@type": "owl:Class",
+      "rdfs:label": "Beamsplitter",
+      "rdfs:subClassOf": {
+        "@id": "mds:Tool"
+      },
+      "skos:definition": "Multiple beamsplitter options are present such as KBr, XT-KBr, and Quartz"
+    },
+    {
+      "@id": "pmdco:PrimaryData",
+      "@type": "owl:Class",
+      "rdfs:label": "PrimaryData"
+    },
+    {
+      "@id": "mds:Power",
+      "@type": "owl:Class",
+      "rdfs:label": "Power",
+      "rdfs:subClassOf": {
+        "@id": "pmdco:ValueObject"
+      },
+      "skos:broader": {
+        "@id": "mds:Recipe"
+      }
+    },
+    {
+      "@id": "pmdco:ProcessingNode",
+      "@type": "owl:Class",
+      "rdfs:label": "ProcessingNode"
+    },
+    {
+      "@id": "mds:ToolSerialNo",
+      "@type": "owl:Class",
+      "mds:value": {
+        "@id": "http://www.w3.org/2001/XMLSchemastring"
+      },
+      "rdfs:label": "ToolSerialNo",
+      "rdfs:subClassOf": {
+        "@id": "mds:NodeSerialNumber"
+      },
+      "skos:broader": {
+        "@id": "mds:Tool"
+      },
+      "skos:definition": "Unique serial number of a tool (assigned by manufacturer)"
+    },
+    {
+      "@id": "mds:VoltageTemperatureCoefficient",
+      "@type": "owl:Class",
+      "rdfs:subClassOf": {
+        "@id": "mds:Sample"
+      },
+      "skos:definition": "The amount a cell's output voltage changes due to temperature"
+    },
+    {
+      "@id": "mds:ProfilometryInsturment",
+      "@type": "owl:Class",
+      "rdfs:label": "ProfilometryInsturment",
+      "rdfs:subClassOf": {
+        "@id": "pmdco:ProcessingNode"
+      }
+    },
+    {
+      "@id": "mds:ToolManufacturer",
+      "@type": "owl:Class",
+      "mds:value": {
+        "@id": "http://www.w3.org/2001/XMLSchemastring"
+      },
+      "rdfs:label": "ToolManufacturer",
+      "rdfs:subClassOf": {
+        "@id": "mds:Manufacturer"
+      },
+      "skos:broader": {
+        "@id": "mds:Tool"
+      },
+      "skos:definition": "Manufacturer of a tool"
+    },
+    {
+      "@id": "mds:Size",
+      "@type": "owl:Class",
+      "rdfs:label": "Size",
+      "skos:broader": {
+        "@id": "mds:Recipe"
+      }
+    },
+    {
+      "@id": "mds:PlateNumber",
+      "@type": "owl:Class",
+      "rdfs:label": "PlateNumber",
+      "rdfs:subClassOf": {
+        "@id": "pmdco:NodeSerialNumber"
+      },
+      "skos:broader": {
+        "@id": "mds:Tool"
+      },
+      "skos:definition": "A subcomponent of an occurent"
+    },
+    {
+      "@id": "mds:Elevation",
+      "@type": "owl:Class",
+      "rdf:label": "Elevation",
+      "rdfs:subClassOf": {
+        "@id": "mds:PhotovoltaicSiteParameter"
+      },
+      "skos:definition": "Elevation above sea level"
+    },
+    {
+      "@id": "mds:ZSensorNoise",
+      "@type": "owl:Class",
+      "rdfs:label": "ZSensorNoise",
+      "rdfs:subClassOf": {
+        "@id": "mds:Recipe"
+      },
+      "skos:definition": "Noise level of the Z sensor"
+    },
+    {
+      "@id": "pmdco:Width",
+      "@type": "owl:Class",
+      "rdfs:label": "Width"
+    },
+    {
+      "@id": "mds:ObservedModeOneFailure",
+      "@type": "owl:Class",
+      "rdfs:label": "ObservedModeOneFailure",
+      "rdfs:subClassOf": {
+        "@id": "mds:ObservedFailure"
+      },
+      "skos:definition": "Failure of a material by tensile stress normal to the plane of the crack, ie: opening"
+    },
+    {
+      "@id": "mds:WaferDopingType",
+      "@type": "owl:Class",
+      "rdfs:subClassOf": {
+        "@id": "mds:Sample"
+      },
+      "skos:definition": "Doping type of the wafer that a current voltage process is being performed on"
+    },
+    {
+      "@id": "mds:TearBand",
+      "@type": "owl:Class",
+      "rdfs:label": "TearBand",
+      "rdfs:subClassOf": {
+        "@id": "mds:FractographyImageCharacteristic"
+      },
+      "skos:definition": "A mark perpendicular to the direction of faitgue crack growth"
+    },
+    {
+      "@id": "mds:SyncXrayDetector",
+      "@type": "owl:Class",
+      "mds:hasIdentifier": {
+        "@id": "mds:DetectorName"
+      },
+      "rdfs:label": "SyncXrayDetector",
+      "rdfs:subClassOf": {
+        "@id": "mds:MeasuringDevice"
+      },
+      "skos:definition": "The detector used to capture the transmitted X-rays."
+    },
+    {
+      "@id": "mds:CurrentVoltageRecipe",
+      "@type": "owl:Class",
+      "rdfs:subClassOf": {
+        "@id": "mds:Recipe"
+      },
+      "skos:broader": {
+        "@id": "mds:Recipe"
+      },
+      "skos:definition": "A recipe describing the settings for a current voltage process"
+    },
+    {
+      "@id": "mds:Scale",
+      "@type": "owl:Class",
+      "rdfs:label": "Scale",
+      "skos:broader": {
+        "@id": "mds:Recipe"
+      }
+    },
+    {
+      "@id": "mds:SimulatorVoltageRange",
+      "@type": "owl:Class",
+      "rdfs:subClassOf": {
+        "@id": "mds:Recipe"
+      },
+      "skos:definition": "The working range of the voltage of a simulator"
+    },
+    {
+      "@id": "mds:InstrumentID",
+      "@type": "owl:Class",
+      "rdfs:label": "InstrumentID",
+      "skos:broader": {
+        "@id": "mds:Tool"
+      }
+    },
+    {
+      "@id": "mds:TipRadius",
+      "@type": "owl:Class",
+      "rdfs:label": "TipRadius",
+      "rdfs:subClassOf": {
+        "@id": "mds:Tool"
+      },
+      "skos:definition": "The radius of the AFM tip"
+    },
+    {
+      "@id": "mds:SimulatorToolModel",
+      "@type": "owl:Class",
+      "rdfs:subClassOf": {
+        "@id": "mds:ToolModel"
+      },
+      "skos:definition": "The model of the solar simulator, i.e. FMT-350"
+    },
+    {
+      "@id": "mds:ReadingTime",
+      "@type": "owl:Class",
+      "rdfs:label": [
+        "ReadingTime",
+        "ReadingSpeed"
+      ],
+      "rdfs:subClassOf": {
+        "@id": "skos:Recipe"
+      },
+      "skos:definition": "Time the instrument takes for the readings"
+    },
+    {
+      "@id": "mds:Sample",
+      "@type": "owl:Class",
+      "rdfs:label": "Sample",
+      "rdfs:subClassOf": {
+        "@id": "pmdco:Sample"
+      }
+    },
+    {
+      "@id": "mds:WindSpeed",
+      "@type": "owl:Class",
+      "rdf:label": "WindSpeed",
+      "rdfs:subClassOf": {
+        "@id": "mds:PhotovoltaicSiteParameter"
+      }
+    },
+    {
+      "@id": "mds:value",
+      "@type": "owl:DatatypeProperty",
+      "rdfs:domain": [
+        {
+          "@id": "mds:Backsheet"
+        },
+        {
+          "@id": "mds:CellArea"
+        },
+        {
+          "@id": "mds:CellCount"
+        },
+        {
+          "@id": "mds:CellTechnology"
+        },
+        {
+          "@id": "mds:CellsPerString"
+        },
+        {
+          "@id": "mds:ConnectorType"
+        },
+        {
+          "@id": "mds:Encapsulant"
+        },
+        {
+          "@id": "mds:FrameMaterial"
+        },
+        {
+          "@id": "mds:InterconnectionScheme"
+        },
+        {
+          "@id": "mds:JunctionBoxLocations"
+        },
+        {
+          "@id": "mds:Length"
+        },
+        {
+          "@id": "mds:Make"
+        },
+        {
+          "@id": "mds:Model"
+        },
+        {
+          "@id": "mds:ModuleArc"
+        },
+        {
+          "@id": "mds:ModuleArea"
+        },
+        {
+          "@id": "mds:ModuleEfficiency"
+        },
+        {
+          "@id": "mds:ModulePackaging"
+        },
+        {
+          "@id": "mds:Sample"
+        },
+        {
+          "@id": "mds:ModuleTemperature"
+        },
+        {
+          "@id": "mds:NameplateImp"
+        },
+        {
+          "@id": "mds:NameplateIsc"
+        },
+        {
+          "@id": "mds:NameplatePmp"
+        },
+        {
+          "@id": "mds:NameplateVmp"
+        },
+        {
+          "@id": "mds:NameplateVoc"
+        },
+        {
+          "@id": "mds:NumberBusbars"
+        },
+        {
+          "@id": "mds:NumberCellsX"
+        },
+        {
+          "@id": "mds:NumberCellsY"
+        },
+        {
+          "@id": "mds:NumberJunctionBox"
+        },
+        {
+          "@id": "mds:NumberParallelStrings"
+        },
+        {
+          "@id": "mds:PhotovoltaicModuleID"
+        },
+        {
+          "@id": "mds:PhotovoltaicModuleNote"
+        },
+        {
+          "@id": "mds:TemperatureCoefficientCurrent"
+        },
+        {
+          "@id": "mds:TemperatureCoefficientPower"
+        },
+        {
+          "@id": "mds:TemperatureCoefficientVoltage"
+        },
+        {
+          "@id": "mds:Thickness"
+        },
+        {
+          "@id": "mds:WaferCrystallinity"
+        },
+        {
+          "@id": "mds:WaferDopingPolarity"
+        },
+        {
+          "@id": "mds:Weight"
+        },
+        {
+          "@id": "mds:Width"
+        }
+      ],
+      "rdfs:range": [
+        {
+          "@id": "http://www.w3.org/2001/XMLSchemaboolean"
+        },
+        {
+          "@id": "http://www.w3.org/2001/XMLSchemafloat"
+        },
+        {
+          "@id": "http://www.w3.org/2001/XMLSchemainteger"
+        },
+        {
+          "@id": "http://www.w3.org/2001/XMLSchemastring"
+        }
+      ],
+      "rdfs:subPropertyOf": {
+        "@id": "pmdco:value"
+      }
+    },
+    {
+      "@id": "mds:StackNumber",
+      "@type": "owl:Class",
+      "mds:value": {
+        "@id": "http://www.w3.org/2001/XMLSchemainteger"
+      },
+      "rdfs:label": "StackNumber",
+      "rdfs:subClassOf": {
+        "@id": "mds:ProjectIdentifier"
+      },
+      "skos:definition": "The stack of the data."
+    },
+    {
+      "@id": "mds:TiltRange",
+      "@type": "owl:Class",
+      "rdfs:label": "TiltRange",
+      "rdfs:subClassOf": {
+        "@id": "mds:Recipe"
+      },
+      "skos:definition": "Range of tilt motion"
+    },
+    {
+      "@id": "mds:SampleDate",
+      "@type": "owl:Class",
+      "mds:value": {
+        "@id": "http://www.w3.org/2001/XMLSchemadateTime"
+      },
+      "rdfs:label": "SampleDate",
+      "rdfs:subClassOf": {
+        "@id": "mds:Date"
+      },
+      "skos:broader": {
+        "@id": "mds:Sample"
+      },
+      "skos:definition": "Date that a sample was created"
+    },
+    {
+      "@id": "mds:RunEndDate",
+      "@type": "owl:Class",
+      "rdfs:label": "RunEndDate",
+      "skos:broader": {
+        "@id": "mds:Recipe"
+      }
+    },
+    {
+      "@id": "mds:SampleResistivity",
+      "@type": "owl:Class",
+      "rdfs:subClassOf": {
+        "@id": "mds:Sample"
+      },
+      "skos:definition": "Resisitivity of the sample that a current voltage is being performed on"
+    },
+    {
+      "@id": "mds:PhotovoltaicCellProperty",
+      "@type": "owl:Class",
+      "rdf:label": "PhotovoltaicCellProperty",
+      "rdfs:subClassOf": {
+        "@id": "mds:Sample"
+      },
+      "skos:definition": "A property of a PV cell"
+    },
+    {
+      "@id": "mds:YRange",
+      "@type": "owl:Class",
+      "rdfs:label": "YRange",
+      "rdfs:subClassOf": {
+        "@id": "mds:Recipe"
+      },
+      "skos:definition": [
+        "Range in the Y direction of the probe",
+        "Range of motion along the Y-axis"
+      ]
+    },
+    {
+      "@id": "pmdco:Distance",
+      "@type": "owl:Class",
+      "rdfs:label": "Distance"
+    },
+    {
+      "@id": "mds:SimulatorMeasurementType",
+      "@type": "owl:Class",
+      "rdfs:subClassOf": {
+        "@id": "mds:Tool"
+      },
+      "skos:definition": "Type of measurement a simulator is performing"
+    },
+    {
+      "@id": "mds:MountingType",
+      "@type": "owl:Class",
+      "rdf:label": "MountingType",
+      "rdfs:subClassOf": {
+        "@id": "mds:Tool"
+      },
+      "skos:definition": "How the arrays are mounted (fixed, one axis tracker, two axis tracker, vertical, etc)"
+    },
+    {
+      "@id": "mds:Station",
+      "@type": "owl:Class",
+      "mds:value": {
+        "@id": "http://www.w3.org/2001/XMLSchemastring"
+      },
+      "rdfs:label": "Station",
+      "rdfs:subClassOf": {
+        "@id": "mds:Department"
+      },
+      "skos:definition": "Particular beamline within the facility."
+    },
+    {
+      "@id": "mds:VoltageOpenCircuit",
+      "@type": "owl:Class",
+      "rdf:label": "VoltageOpenCircuit",
+      "rdfs:subClassOf": [
+        {
+          "@id": "mds:Sample"
+        },
+        {
+          "@id": "mds:PhotovoltaicCellProperty"
+        }
+      ],
+      "skos:definition": [
+        "Module open circuit voltage, maximum voltage the module can provide",
+        "Open-circuit voltage of the cell"
+      ]
+    },
+    {
+      "@id": "mds:Backsheet",
+      "@type": "owl:Class",
+      "rdfs:label": "backsheet",
+      "rdfs:subClassOf": {
+        "@id": "mds:Sample"
+      },
+      "skos:definition": "Material used to cover the rear of the module. E.g., TPT, Tedlar."
+    },
+    {
+      "@id": "mds:PyrometryInstrument",
+      "@type": "owl:Class",
+      "rdfs:label": "PyrometryInstrument",
+      "rdfs:subClassOf": {
+        "@id": "mds:Tool"
+      }
+    },
+    {
+      "@id": "mds:PhotovoltaicChargeControllerNote",
+      "@type": "owl:Class",
+      "rdf:label": "PhotovoltaicChargeControllerNote",
+      "rdfs:subClassOf": {
+        "@id": "mds:Tool"
+      }
+    },
+    {
+      "@id": "mds:NumberInverters",
+      "@type": "owl:Class",
+      "rdf:label": "NumberInverters",
+      "rdfs:subClassOf": {
+        "@id": "mds:PhotovoltaicSiteParameter"
+      },
+      "skos:definition": "Number of inverters located at the site"
+    },
+    {
+      "@id": "mds:Analysis",
+      "@type": "owl:Class",
+      "rdfs:label": "Analysis",
+      "rdfs:subClassOf": {
+        "@id": "pmdco:NonTransformativeAnalysisProcess"
+      },
+      "skos:broader": {
+        "@id": "mds:Model"
+      },
+      "skos:definition": "A process using statistical techniques to examine data to extract underlying relationships"
+    },
+    {
+      "@id": "mds:ZSensor",
+      "@type": "owl:Class",
+      "rdfs:label": "ZSensor",
+      "skos:broader": {
+        "@id": "mds:Tool"
+      }
+    },
+    {
+      "@id": "mds:PhotovoltaicBacksheet",
+      "@type": "owl:Class",
+      "rdfs:subClassOf": {
+        "@id": "mds:ProcessingNode"
+      },
+      "skos:definition": "Polymer backsheet of a PV cell or module"
+    },
+    {
+      "@id": "mds:CurrentVoltageRecipeFilePath",
+      "@type": "owl:Class",
+      "rdfs:subClassOf": {
+        "@id": "mds:Recipe"
+      },
+      "skos:definition": "The file path for a current voltage process recipe"
+    },
+    {
+      "@id": "mds:SubstrateDimensions",
+      "@type": "owl:Class",
+      "rdfs:label": "SubstrateDimensions",
+      "skos:broader": {
+        "@id": "mds:Recipe"
+      }
+    },
+    {
+      "@id": "mds:MaterialType",
+      "@type": "owl:Class",
+      "rdfs:label": "MaterialType",
+      "rdfs:subClassOf": {
+        "@id": "mds:Sample"
+      },
+      "skos:definition": "The type of material used as sample"
+    },
+    {
+      "@id": "mds:NameplateVmp",
+      "@type": "owl:Class",
+      "rdfs:label": "nameplate-vmp",
+      "rdfs:subClassOf": {
+        "@id": "mds:Sample"
+      },
+      "skos:definition": "Voltage at maximum power point rated at STC."
+    },
+    {
+      "@id": "mds:ProfilometryModel",
+      "@type": "owl:Class",
+      "rdfs:label": "ProfilometryModel",
+      "rdfs:subClassOf": {
+        "@id": "pmdco:NodeModel"
+      },
+      "skos:broader": {
+        "@id": "mds:Tool"
+      },
+      "skos:definition": "Model of the insturment being used"
+    },
+    {
+      "@id": "mds:Cantilever",
+      "@type": "owl:Class",
+      "rdfs:label": "Cantilever",
+      "rdfs:subClassOf": {
+        "@id": "mds:Tool"
+      }
+    },
+    {
+      "@id": "mds:ChargeControllerType",
+      "@type": "owl:Class",
+      "rdf:label": "ChargeControllerType",
+      "rdfs:subClassOf": {
+        "@id": "mds:PhotovoltaicChargeControllerProperty"
+      },
+      "skos:definition": "Charge controller type."
+    },
+    {
+      "@id": "mds:ModuleArc",
+      "@type": "owl:Class",
+      "rdfs:label": "module-arc",
+      "rdfs:subClassOf": {
+        "@id": "mds:Sample"
+      },
+      "skos:definition": "Front glass module anti-reflective coating. Boolean."
+    },
+    {
+      "@id": "mds:ExposureTime",
+      "@type": "owl:Class",
+      "rdfs:label": "ExposureTime",
+      "skos:broader": {
+        "@id": "mds:Recipe"
+      }
+    },
+    {
+      "@id": "mds:Ad2",
+      "@type": "owl:Class",
+      "rdfs:label": "Ad2",
+      "rdfs:subClassOf": {
+        "@id": "pmdco:ValueObject"
+      },
+      "skos:broader": {
+        "@id": "mds:Result"
+      }
+    },
+    {
+      "@id": "mds:CantileverMaterial",
+      "@type": "owl:Class",
+      "rdfs:label": "CantileverMaterial",
+      "skos:broader": {
+        "@id": "mds:Tool"
+      },
+      "skos:definition": "the material of the AFM cantilever"
+    },
+    {
+      "@id": "mds:Encapsulant",
+      "@type": "owl:Class",
+      "rdfs:label": "encapsulant",
+      "rdfs:subClassOf": {
+        "@id": "mds:Sample"
+      },
+      "skos:definition": "Polymer material used to hold front sheet and back sheet together. Eg., EVA, POE, etc."
+    },
+    {
+      "@id": "mds:ReadingMode",
+      "@type": "owl:Class",
+      "rdfs:label": [
+        "ReadingMode",
+        "ReadMode"
+      ],
+      "rdfs:subClassOf": {
+        "@id": "mds:Recipe"
+      },
+      "skos:definition": "The specific method or setting used by the spectrometer to acquire spectral data from the sample."
+    },
+    {
+      "@id": "mds:CellTechnologyType",
+      "@type": "owl:Class",
+      "rdf:label": "CellTechnologyType",
+      "rdfs:label": "CellTechnologyType",
+      "rdfs:subClassOf": [
+        {
+          "@id": "pmdco:ValueObject"
+        },
+        {
+          "@id": "mds:PhotovoltaicCellProperty"
+        }
+      ],
+      "skos:broader": {
+        "@id": "mds:Sample"
+      },
+      "skos:definition": "Cell technology (PERC, TOPCon, Al-BSF, CdTe, CIGS, etc)"
+    },
+    {
+      "@id": "mds:PyrometerInstrument",
+      "@type": "owl:Class",
+      "rdfs:label": "PyrometerInstrument",
+      "rdfs:subClassOf": {
+        "@id": "mds:Tool"
+      }
+    },
+    {
+      "@id": "mds:DetectionWavelength",
+      "@type": "owl:Class",
+      "rdfs:label": "DetectionWavelength",
+      "skos:broader": {
+        "@id": "mds:Recipe"
+      }
+    },
+    {
+      "@id": "mds:Magnification",
+      "@type": "owl:Class",
+      "rdfs:label": "Magnification",
+      "skos:broader": {
+        "@id": "mds:Recipe"
+      }
+    },
+    {
+      "@id": "mds:CaptureRateMin",
+      "@type": "owl:Class",
+      "rdfs:label": "CaptureRateMin",
+      "skos:broader": {
+        "@id": "mds:Recipe"
+      }
+    },
+    {
+      "@id": "mds:ScanAngle",
+      "@type": "owl:Class",
+      "rdfs:label": "ScanAngle",
+      "skos:broader": {
+        "@id": "mds:Recipe"
+      },
+      "skos:definition": "Angle at which the scanning occurs."
+    },
+    {
+      "@id": "mds:Date",
+      "@type": "owl:Class",
+      "rdfs:label": "Date",
+      "rdfs:subClassOf": {
+        "@id": "pmdco:Date"
+      },
+      "skos:broader": {
+        "@id": "mds:Recipe"
+      }
+    },
+    {
+      "@id": "mds:ScanParameters",
+      "@type": "owl:Class",
+      "rdfs:label": "ScanParameters",
+      "skos:broader": {
+        "@id": "mds:Recipe"
+      },
+      "skos:definition": "Size of the AFM scan along one side of the square."
+    },
+    {
+      "@id": "mds:DetectorName",
+      "@type": "owl:Class",
+      "mds:value": {
+        "@id": "http://www.w3.org/2001/XMLSchemastring"
+      },
+      "rdfs:label": "DetectorName",
+      "rdfs:subClassOf": {
+        "@id": "mds:Identifier"
+      },
+      "skos:definition": "Name of the detector."
+    },
+    {
+      "@id": "mds:ZStop",
+      "@type": "owl:Class",
+      "rdfs:label": "ZStop",
+      "rdfs:subClassOf": {
+        "@id": "mds:Recipe"
+      },
+      "skos:definition": "Point at which the Z-stop is set, minimum Z value."
+    },
+    {
+      "@id": "mds:CaptureRateMax",
+      "@type": "owl:Class",
+      "rdfs:label": "CaptureRateMax",
+      "skos:broader": {
+        "@id": "mds:Recipe"
+      }
+    },
+    {
+      "@id": "mds:ModuleTemperature",
+      "@type": "owl:Class",
+      "rdfs:subClassOf": {
+        "@id": "mds:Sample"
+      }
+    },
+    {
+      "@id": "mds:ModuleEncapsulant",
+      "@type": "owl:Class",
+      "rdfs:subClassOf": {
+        "@id": "mds:Sample"
+      },
+      "skos:definition": "Polymer encapsulant of a module"
+    },
+    {
+      "@id": "mds:CantileverResonanceFrequency",
+      "@type": "owl:Class",
+      "rdfs:label": "CantileverResonanceFrequency",
+      "skos:broader": {
+        "@id": "mds:Recipe"
+      },
+      "skos:definition": "the resonance frequency of the cantilever; depends on the material"
+    },
+    {
+      "@id": "mds:hasIdentifier",
+      "@type": "owl:ObjectProperty",
+      "rdfs:domain": {
+        "@id": "mds:PhotovoltaicModule"
+      },
+      "rdfs:range": [
+        {
+          "@id": "mds:Make"
+        },
+        {
+          "@id": "mds:Model"
+        },
+        {
+          "@id": "mds:PhotovoltaicModuleID"
+        }
+      ],
+      "rdfs:subPropertyOf": {
+        "@id": "pmdco:hasIdentifier"
+      }
+    },
+    {
+      "@id": "mds:AFMChannel",
+      "@type": "owl:Class",
+      "rdfs:label": "AFMChannel",
+      "rdfs:subClassOf": {
+        "@id": "mds:Tool"
+      },
+      "skos:definition": "Speed of spin-coating."
+    },
+    {
+      "@id": "mds:SensorPosition",
+      "@type": "owl:Class",
+      "rdfs:label": "SensorPosition",
+      "rdfs:subClassOf": {
+        "@id": "pmdco:ValueObject"
+      },
+      "skos:broader": {
+        "@id": "mds:Recipe"
+      },
+      "skos:definition": "Coaxial vs concentric"
+    },
+    {
+      "@id": "mds:SimulatorCurrentRange",
+      "@type": "owl:Class",
+      "rdfs:subClassOf": {
+        "@id": "mds:Recipe"
+      },
+      "skos:definition": "The working range of the current of a simulator"
+    },
+    {
+      "@id": "mds:Instrument",
+      "@type": "owl:Class",
+      "rdfs:label": "Instrument",
+      "rdfs:subClassOf": {
+        "@id": "mds:Tool"
+      },
+      "skos:definition": [
+        "A NicoletFTIR-OpticalSpectroscopy for chemical analysis",
+        "An AgilentFTIR-OpticalSpectroscopy for chemical analysis"
+      ]
+    },
+    {
+      "@id": "mds:JunctionBoxLocations",
+      "@type": "owl:Class",
+      "rdfs:label": "junction-box-locations",
+      "rdfs:subClassOf": {
+        "@id": "mds:Sample"
+      },
+      "skos:definition": "Location on rear of module housing junction box(es). Location could be on module EDGE; CENTER or SPLIT are commonly seen on half-cell modules."
+    },
+    {
+      "@id": "mds:TemperatureCoefficientCurrent",
+      "@type": "owl:Class",
+      "rdfs:label": "temperature-coefficient-current",
+      "rdfs:subClassOf": {
+        "@id": "mds:Sample"
+      },
+      "skos:definition": "Reduction of some percent of ISC per degree Celsius. Rate at which current changes in reponse to a change in temperature."
+    },
+    {
+      "@id": "mds:SolarSimulatorID",
+      "@type": "owl:Class",
+      "rdfs:subClassOf": {
+        "@id": "mds:ToolID"
+      },
+      "skos:definition": "The identification number of a solar simulator"
+    },
+    {
+      "@id": "mds:PreFiltration",
+      "@type": "owl:Class",
+      "rdfs:label": "PreFiltration",
+      "skos:broader": {
+        "@id": "mds:Recipe"
+      }
+    },
+    {
+      "@id": "mds:Make",
+      "@type": "owl:Class",
+      "rdfs:label": "make",
+      "rdfs:subClassOf": {
+        "@id": "mds:Manufacturer"
+      },
+      "skos:definition": "Manufacturer or creator of device."
+    },
+    {
+      "@id": "pmdco:Identifier",
+      "@type": "owl:Class",
+      "rdfs:label": "Identifier"
+    },
+    {
+      "@id": "mds:FieldOfView",
+      "@type": "owl:Class",
+      "rdfs:label": "FieldOfView",
+      "skos:definition": "the field of view of an AFM scan"
+    },
+    {
+      "@id": "mds:FrameMaterial",
+      "@type": "owl:Class",
+      "rdfs:label": "frame-material",
+      "rdfs:subClassOf": {
+        "@id": "mds:Sample"
+      },
+      "skos:definition": "Material used for the module frame. "
+    },
+    {
+      "@id": "mds:MetadataFormat",
+      "@type": "owl:Class",
+      "rdfs:label": "MetadataFormat",
+      "skos:broader": {
+        "@id": "mds:Result"
+      }
+    },
+    {
+      "@id": "mds:MaximumPowerPoint",
+      "@type": "owl:Class",
+      "rdfs:subClassOf": {
+        "@id": "mds:Result"
+      },
+      "skos:definition": "The maximum power point measured by a current voltage process"
+    },
+    {
+      "@id": "mds:CellEfficiency",
+      "@type": "owl:Class",
+      "rdfs:subClassOf": {
+        "@id": "mds:Result"
+      },
+      "skos:definition": "The cell efficiency measured by a current voltage process"
+    },
+    {
+      "@id": "pmdco:Temperature",
+      "@type": "owl:Class",
+      "rdfs:label": "Temperature"
+    },
+    {
+      "@id": "mds:PhotovoltaicChargeController",
+      "@type": "owl:Class",
+      "rdf:label": "PhotovoltaicChargeController",
+      "rdfs:subClassOf": {
+        "@id": "mds:Tool"
+      }
+    },
+    {
+      "@id": "mds:ModuleRatingCondition",
+      "@type": "owl:Class",
+      "rdf:label": "ModuleRatingCondition",
+      "rdfs:subClassOf": [
+        {
+          "@id": "mds:Sample"
+        },
+        {
+          "@id": "mds:PhotovoltaicCellProperty"
+        }
+      ],
+      "skos:definition": [
+        "Condition of the module",
+        "Condition of the cell"
+      ]
+    },
+    {
+      "@id": "mds:hasSource",
+      "@type": "owl:ObjectProperty",
+      "rdfs:domain": {
+        "@id": "mds:Sample"
+      },
+      "rdfs:range": {
+        "@id": "mds:OrangeButtonTerm"
+      }
+    },
+    {
+      "@id": "mds:ResonanceFrequency",
+      "@type": "owl:Class",
+      "rdfs:label": "ResonanceFrequency",
+      "skos:broader": {
+        "@id": "mds:Tool"
+      },
+      "skos:definition": "Solvent concentration."
+    },
+    {
+      "@id": "mds:XRange",
+      "@type": "owl:Class",
+      "rdfs:label": "XRange",
+      "rdfs:subClassOf": {
+        "@id": "mds:Recipe"
+      },
+      "skos:definition": [
+        "Range in the X direction of probe",
+        "Range of motion along the X-axis"
+      ]
+    },
+    {
+      "@id": "mds:LoadPulseLength",
+      "@type": "owl:Class",
+      "rdfs:subClassOf": {
+        "@id": "mds:Recipe"
+      },
+      "skos:definition": "The amount of time data is acquired during flash pulses"
+    },
+    {
+      "@id": "mds:FilmDimentions",
+      "@type": "owl:Class",
+      "rdfs:label": "FilmDimentions",
+      "rdfs:subClassOf": {
+        "@id": "mds:Recipe"
+      }
+    },
+    {
+      "@id": "mds:characteristic",
+      "@type": "owl:ObjectProperty",
+      "rdfs:domain": {
+        "@id": "mds:PhotovoltaicModule"
+      },
+      "rdfs:range": {
+        "@id": "mds:PhotovoltaicModuleNote"
+      }
+    },
+    {
+      "@id": "mds:CurrentVoltageResults",
+      "@type": "owl:Class",
+      "rdfs:subClassOf": {
+        "@id": "mds:Result"
+      },
+      "skos:definition": "The parameters that resulted from the current voltage process "
+    },
+    {
+      "@id": "mds:ExposureType",
+      "@type": "owl:Class",
+      "rdfs:subClassOf": {
+        "@id": "mds:Recipe"
+      },
+      "skos:definition": "The type of exposure e.g. damp heat, cyclic UV, outdoors."
+    },
+    {
+      "@id": "mds:CharacteristicOf",
+      "@type": "owl:ObjectProperty",
+      "rdfs:domain": {
+        "@id": "mds:Measurement"
+      },
+      "rdfs:range": [
+        {
+          "@id": "mds:NumScans"
+        },
+        {
+          "@id": "mds:ReadModes"
+        }
+      ]
+    },
+    {
+      "@id": "mds:Wavelength",
+      "@type": "owl:Class",
+      "mds:unit": {
+        "@id": "qudt:ANGSTROM"
+      },
+      "mds:value": {
+        "@id": "http://www.w3.org/2001/XMLSchemafloat"
+      },
+      "rdfs:label": "Wavelength",
+      "rdfs:subClassOf": [
+        {
+          "@id": "mds:Length"
+        },
+        {
+          "@id": "mds:Recipe"
+        }
+      ],
+      "skos:definition": [
+        "The wavelength used for the experiment.",
+        "Wavelength(s) of light being used for analysis",
+        "wavelength of reading"
+      ]
+    },
+    {
+      "@id": "mds:ModelType",
+      "@type": "owl:Class",
+      "mds:value": {
+        "@id": "http://www.w3.org/2001/XMLSchemastring"
+      },
+      "rdfs:label": "ModelType",
+      "rdfs:subClassOf": {
+        "@id": "mds:Category"
+      },
+      "skos:broader": {
+        "@id": "mds:Model"
+      },
+      "skos:definition": "Type of a model (linear, regression, logistic, etc.)"
+    },
+    {
+      "@id": "mds:SimulatorIntensityRange",
+      "@type": "owl:Class",
+      "rdfs:subClassOf": {
+        "@id": "mds:Recipe"
+      },
+      "skos:definition": "The working range of the intensity of a simulator"
+    },
+    {
+      "@id": "mds:Weight",
+      "@type": "owl:Class",
+      "rdfs:subClassOf": {
+        "@id": "mds:Sample"
+      },
+      "skos:definition": "Module weight"
+    },
+    {
+      "@id": "mds:SpectralRange",
+      "@type": "owl:Class",
+      "rdfs:label": "SpectralRange",
+      "rdfs:subClassOf": {
+        "@id": "mds:Recipe"
+      },
+      "skos:definition": [
+        "Spectral Range",
+        "The range of infrared wavelengths the instrument measured"
+      ]
+    },
+    {
+      "@id": "mds:HatchDistance",
+      "@type": "owl:Class",
+      "rdfs:label": "HatchDistance",
+      "skos:broader": {
+        "@id": "mds:Recipe"
+      }
+    },
+    {
+      "@id": "mds:FacilityAmbientTemperature",
+      "@type": "owl:Class",
+      "rdfs:subClassOf": {
+        "@id": "mds:Recipe"
+      },
+      "skos:definition": "The ambient temperature of the room that a current voltage process is being performed in"
+    },
+    {
+      "@id": "mds:SolarSimulator",
+      "@type": "owl:Class",
+      "rdfs:subClassOf": {
+        "@id": "mds:Tool"
+      },
+      "skos:definition": "A tool used to simulate the environment of a sun for a PV module, to perform a current voltage measurement"
+    },
+    {
+      "@id": "mds:Cleanliness",
+      "@type": "owl:Class",
+      "rdfs:label": "Cleanliness",
+      "rdfs:subClassOf": {
+        "@id": "pmdco:ValueObject"
+      },
+      "skos:broader": {
+        "@id": "mds:Sample"
+      },
+      "skos:definition": "Value describing the cleanliness of the interdigitated comb"
+    },
+    {
+      "@id": "mds:PixelSize",
+      "@type": "owl:Class",
+      "mds:characteristicOf": {
+        "@id": "mds:SyncXrayDetector"
+      },
+      "mds:unit": {
+        "@id": "qudt:MicroM"
+      },
+      "mds:value": {
+        "@id": "http://www.w3.org/2001/XMLSchemafloat"
+      },
+      "rdfs:label": "PixelSize",
+      "rdfs:subClassOf": {
+        "@id": "mds:Length"
+      },
+      "skos:definition": "Pixel size of the detector."
+    },
+    {
+      "@id": "mds:Thickness",
+      "@type": "owl:Class",
+      "rdfs:label": "Thickness",
+      "rdfs:subClassOf": [
+        {
+          "@id": "mds:Result"
+        },
+        {
+          "@id": "mds:Sample"
+        }
+      ],
+      "skos:definition": [
+        "Thickness of the sample",
+        "Thickness of the module, not counting the framing"
+      ]
+    },
+    {
+      "@id": "mds:ProjectIdentifier",
+      "@type": "owl:Class",
+      "rdfs:label": "ProjectIdentifier",
+      "rdfs:subClassOf": {
+        "@id": "pmdco:ProjectIdentifier"
+      },
+      "skos:broader": {
+        "@id": "mds:Result"
+      }
+    },
+    {
+      "@id": "mds:Intensity",
+      "@type": "owl:Class",
+      "rdfs:label": "Intensity",
+      "rdfs:subClassOf": {
+        "@id": "pmdco:NodeInfo"
+      },
+      "skos:broader": [
+        {
+          "@id": "mds:Tool"
+        },
+        {
+          "@id": "mds:Recipe"
+        }
+      ]
+    },
+    {
+      "@id": "mds:MeasuringDevice",
+      "@type": "owl:Class",
+      "rdfs:label": "MeasuringDevice",
+      "rdfs:subClassOf": {
+        "@id": "pmdco:MeasuringDevice"
+      },
+      "skos:broader": {
+        "@id": "mds:Tool"
+      }
+    },
+    {
+      "@id": "mds:CurrentVoltageDataFilePath",
+      "@type": "owl:Class",
+      "rdfs:subClassOf": {
+        "@id": "mds:FilePath"
+      },
+      "skos:definition": "The file path of a dataset generated by a current voltage process"
+    },
+    {
+      "@id": "pmdco:Laboratory",
+      "@type": "owl:Class",
+      "rdfs:label": "Laboratory"
+    },
+    {
+      "@id": "mds:NumScans",
+      "@type": "owl:Class",
+      "rdfs:label": "NumScans",
+      "rdfs:subClassOf": {
+        "@id": "mds:Recipe"
+      },
+      "skos:definition": "Number of scans for each run"
+    },
+    {
+      "@id": "pmdco:MeasuringDevice",
+      "@type": "owl:Class",
+      "rdfs:label": "MeasuringDevice"
+    },
+    {
+      "@id": "mds:SubstrateMaterial",
+      "@type": "owl:Class",
+      "rdfs:label": "SubstrateMaterial",
+      "rdfs:subClassOf": {
+        "@id": "pmdco:ValueObject"
+      },
+      "skos:broader": {
+        "@id": "mds:Recipe"
+      },
+      "skos:definition": "Value describing the material that the substrate on which the interdigitated combs lie on is composed of"
+    },
+    {
+      "@id": "mds:RunStartDate",
+      "@type": "owl:Class",
+      "rdfs:label": "RunStartDate",
+      "skos:broader": {
+        "@id": "mds:Recipe"
+      }
+    },
+    {
+      "@id": "pmdco:Manufacturer",
+      "@type": "owl:Class",
+      "rdfs:label": "Manufacturer"
+    },
+    {
+      "@id": "mds:DetectorWidth",
+      "@type": "owl:Class",
+      "mds:characteristicOf": {
+        "@id": "mds:SyncXrayDetector"
+      },
+      "mds:unit": {
+        "@id": "qudt:MilliM"
+      },
+      "mds:value": {
+        "@id": "http://www.w3.org/2001/XMLSchemafloat"
+      },
+      "rdfs:label": "DetectorWidth",
+      "rdfs:subClassOf": {
+        "@id": "mds:Width"
+      },
+      "skos:definition": "Width of the detector."
+    },
+    {
+      "@id": "mds:Metadata",
+      "@type": "owl:Class",
+      "rdfs:label": "Metadata",
+      "rdfs:subClassOf": {
+        "@id": "pmdco:Metadata"
+      },
+      "skos:broader": {
+        "@id": "mds:Result"
+      }
+    },
+    {
+      "@id": "pmdco:NodeSerialNumber",
+      "@type": "owl:Class",
+      "rdfs:label": "NodeSerialNumber"
+    },
+    {
+      "@id": "mds:SampleRate",
+      "@type": "owl:Class",
+      "rdfs:label": "SampleRate",
+      "rdfs:subClassOf": {
+        "@id": "pmdco:ValueObject"
+      },
+      "skos:broader": {
+        "@id": "mds:Recipe"
+      },
+      "skos:definition": "output sampling rate"
+    },
+    {
+      "@id": "mds:Length",
+      "@type": "owl:Class",
+      "rdfs:label": "Length",
+      "rdfs:subClassOf": [
+        {
+          "@id": "pmdco:Length"
+        },
+        {
+          "@id": "mds:Result"
+        },
+        {
+          "@id": "mds:Sample"
+        }
+      ],
+      "skos:broader": {
+        "@id": "mds:Recipe"
+      },
+      "skos:definition": [
+        "Length of the sample",
+        "Length of the module along longest side"
+      ]
+    },
+    {
+      "@id": "mds:MaterialName",
+      "@type": "owl:Class",
+      "rdfs:label": "MaterialName",
+      "rdfs:subClassOf": {
+        "@id": "mds:Sample"
+      },
+      "skos:definition": "The name of the sample"
+    },
+    {
+      "@id": "mds:Transmittance",
+      "@type": "owl:Class",
+      "rdfs:label": "Transmittance",
+      "rdfs:subClassOf": {
+        "@id": "mds:Result"
+      },
+      "skos:definition": "transmittance read by instrument"
+    },
+    {
+      "@id": "mds:ModuleArea",
+      "@type": "owl:Class",
+      "rdfs:label": "module-area",
+      "rdfs:subClassOf": {
+        "@id": "mds:Sample"
+      },
+      "skos:definition": "Total area of module surface in cm2."
+    },
+    {
+      "@id": "mds:PhotovoltaicModuleID",
+      "@type": "owl:Class",
+      "rdfs:subClassOf": {
+        "@id": "mds:SampleID"
+      },
+      "skos:definition": "Module identifier"
+    },
+    {
+      "@id": "mds:Position",
+      "@type": "owl:Class",
+      "rdfs:label": "Position",
+      "rdfs:subClassOf": {
+        "@id": "pmdco:ValueObject"
+      },
+      "skos:broader": {
+        "@id": "mds:Result"
+      },
+      "skos:definition": "Position of ---"
+    },
+    {
+      "@id": "pmdco:Date",
+      "@type": "owl:Class",
+      "rdfs:label": "Date"
+    },
+    {
+      "@id": "mds:ModuleJunctionBox",
+      "@type": "owl:Class",
+      "rdfs:subClassOf": {
+        "@id": "mds:Sample"
+      },
+      "skos:definition": "Electrical junction box for connection to the module"
+    },
+    {
+      "@id": "mds:SensorType",
+      "@type": "owl:Class",
+      "rdfs:label": "SensorType",
+      "rdfs:subClassOf": {
+        "@id": "pmdco:ValueObject"
+      },
+      "skos:broader": {
+        "@id": "mds:Tool"
+      },
+      "skos:definition": "Wavelength range"
+    },
+    {
+      "@id": "mds:SpincoaterInstrument",
+      "@type": "owl:Class",
+      "rdfs:label": "SpincoaterInstrument",
+      "skos:broader": {
+        "@id": "mds:Tool"
+      }
+    },
+    {
+      "@id": "mds:PhotovoltaicSite",
+      "@type": "owl:Class",
+      "rdf:label": "PhotovoltaicSite",
+      "rdfs:subClassOf": [
+        {
+          "@id": "mds:Location"
+        },
+        {
+          "@id": "mds:Recipe"
+        }
+      ],
+      "skos:definition": "Physical location of a PV site"
+    },
+    {
+      "@id": "mds:DetectorType",
+      "@type": "owl:Class",
+      "rdfs:label": "DetectorType",
+      "skos:broader": {
+        "@id": "mds:Tool"
+      }
+    }
+  ]
+}

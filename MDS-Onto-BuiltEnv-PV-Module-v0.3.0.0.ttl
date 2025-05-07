@@ -1,0 +1,440 @@
+@prefix brick: <https://brickschema.org/schema/Brick#> .
+@prefix csvw: <http://www.w3.org/ns/csvw#> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dcam: <http://purl.org/dc/dcam/> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dcmitype: <http://purl.org/dc/dcmitype/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix doap: <http://usefulinc.com/ns/doap#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix geo: <http://www.opengis.net/ont/geosparql#> .
+@prefix mds: <https://cwrusdle.bitbucket.io/mds/> .
+@prefix mds1: <https://cwrusdle.bitbucket.io/mds#> .
+@prefix odrl: <http://www.w3.org/ns/odrl/2/> .
+@prefix org: <http://www.w3.org/ns/org#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix pmdco: <https://w3id.org/pmd/co/> .
+@prefix prof: <http://www.w3.org/ns/dx/prof/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix qb: <http://purl.org/linked-data/cube#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <https://schema.org/> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix sosa: <http://www.w3.org/ns/sosa/> .
+@prefix ssn: <http://www.w3.org/ns/ssn/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix vann: <http://purl.org/vocab/vann/> .
+@prefix void: <http://rdfs.org/ns/void#> .
+@prefix wgs: <https://www.w3.org/2003/01/geo/wgs84_pos#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+mds:CurrentAtMaximumPower a owl:Class ;
+    rdfs:subClassOf mds:ModuleRatingAtReference ;
+    skos:definition "DC current at the maximum power point under STC" .
+
+mds:CurrentShortCircuit a owl:Class ;
+    rdfs:subClassOf mds:ModuleRatingAtReference ;
+    skos:definition "Module short circuit current" .
+
+mds:EncapsulantMaterial a owl:Class ;
+    rdfs:subClassOf mds:PhotovoltaicModuleProperty ;
+    skos:definition "Material of the polymer encapsulant" .
+
+mds:FluorescencePattern a owl:Class ;
+    rdfs:subClassOf mds:PhotovoltaicModuleProperty ;
+    skos:definition "A UVF fluorescence pattern of a module" .
+
+mds:ModuleEncapsulant a owl:Class ;
+    rdfs:subClassOf mds:PhotovoltaicModuleProperty ;
+    skos:definition "Polymer encapsulant of a module" .
+
+mds:ModuleJunctionBox a owl:Class ;
+    rdfs:subClassOf mds:PhotovoltaicModuleProperty ;
+    skos:definition "Electrical junction box for connection to the module" .
+
+mds:ModuleRatingCondition a owl:Class ;
+    rdfs:subClassOf mds:ModuleRatingAtReference ;
+    skos:definition "Condition of the module" .
+
+mds:PowerDC a owl:Class ;
+    rdfs:subClassOf mds:ModuleRatingAtReference ;
+    skos:definition "DC power at STC, 1 sun of irradiance" .
+
+mds:PowerSTC a owl:Class ;
+    rdfs:subClassOf mds:ModuleRatingAtReference ;
+    skos:definition "Power at refrence conditions" .
+
+mds:Pv-module a owl:Ontology ;
+    dcterms:creator "SDLE Research Center" ;
+    dcterms:description "" ;
+    dcterms:title "Pv-module" ;
+    owl:imports <http://purl.org/dc/dcam/> ,
+        <http://purl.org/dc/dcmitype/> ,
+        <http://purl.org/dc/elements/1.1/> ,
+        <http://purl.org/dc/terms/> ,
+        <http://purl.org/linked-data/cube#> ,
+        <http://purl.org/vocab/vann/> ,
+        <http://rdfs.org/ns/void#> ,
+        <http://usefulinc.com/ns/doap#> ,
+        <http://www.opengis.net/ont/geosparql#> ,
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#> ,
+        <http://www.w3.org/2000/01/rdf-schema#> ,
+        <http://www.w3.org/2001/XMLSchema#> ,
+        <http://www.w3.org/2002/07/owl#> ,
+        <http://www.w3.org/2004/02/skos/core#> ,
+        <http://www.w3.org/2006/time#> ,
+        <http://www.w3.org/XML/1998/namespace> ,
+        <http://www.w3.org/ns/csvw#> ,
+        <http://www.w3.org/ns/dcat#> ,
+        <http://www.w3.org/ns/dx/prof/> ,
+        <http://www.w3.org/ns/odrl/2/> ,
+        <http://www.w3.org/ns/org#> ,
+        <http://www.w3.org/ns/prov#> ,
+        <http://www.w3.org/ns/shacl#> ,
+        <http://www.w3.org/ns/sosa/> ,
+        <http://www.w3.org/ns/ssn/> ,
+        <http://xmlns.com/foaf/0.1/> ,
+        <https://brickschema.org/schema/Brick#> ,
+        <https://cwrusdle.bitbucket.io/mds#> ,
+        <https://cwrusdle.bitbucket.io/mds/> ,
+        <https://schema.org/> ,
+        <https://w3id.org/pmd/co/> ,
+        <https://www.w3.org/2003/01/geo/wgs84_pos#>  ;
+    owl:versionInfo "0.3.0.0" .
+
+mds:VoltageAtMaximumPower a owl:Class ;
+    rdfs:subClassOf mds:ModuleRatingAtReference ;
+    skos:definition "DC voltage at the maximum power point under STC" .
+
+mds:VoltageOpenCircuit a owl:Class ;
+    rdfs:subClassOf mds:ModuleRatingAtReference ;
+    skos:definition "Module open circuit voltage, maximum voltage the module can provide" .
+
+mds:characteristic a owl:ObjectProperty ;
+    rdfs:domain mds:PhotovoltaicModule ;
+    rdfs:range mds:PhotovoltaicModuleNote .
+
+mds:characteristicOf a owl:ObjectProperty ;
+    rdfs:domain mds:ModuleRatingAtReference,
+        mds:PhotovoltaicModule ;
+    rdfs:range mds:CellArea,
+        mds:CellTechnology,
+        mds:CellsPerString,
+        mds:InterconnectionScheme,
+        mds:JunctionBoxLocations,
+        mds:ModuleArc,
+        mds:ModuleArea,
+        mds:ModulePackaging,
+        mds:NameplateImp,
+        mds:NameplateIsc,
+        mds:NameplatePmp,
+        mds:NameplateVmp,
+        mds:NameplateVoc,
+        mds:NumberBusbars,
+        mds:NumberCellsX,
+        mds:NumberCellsY,
+        mds:NumberJunctionBox,
+        mds:NumberParallelStrings,
+        mds:PhotovoltaicModuleProperty,
+        mds:PhotovoltaicSite,
+        mds:TemperatureCoefficientCurrent,
+        mds:TemperatureCoefficientPower,
+        mds:TemperatureCoefficientVoltage,
+        mds:WaferCrystallinity,
+        mds:WaferDopingPolarity .
+
+mds:composedOf a owl:ObjectProperty ;
+    rdfs:domain mds:PhotovoltaicModule ;
+    rdfs:range mds:Backsheet,
+        mds:ConnectorType,
+        mds:Encapsulant,
+        mds:FrameMaterial,
+        mds:PhotovoltaicBacksheet,
+        mds:PhotovoltaicCell .
+
+mds:hasIdentifier a owl:ObjectProperty ;
+    rdfs:domain mds:PhotovoltaicModule ;
+    rdfs:range mds:Make,
+        mds:Model,
+        mds:PhotovoltaicModuleID .
+
+mds:hasSource a owl:ObjectProperty ;
+    rdfs:domain mds:ModuleRatingAtReference ;
+    rdfs:range mds:OrangeButtonTerm .
+
+mds:value a owl:DatatypeProperty ;
+    rdfs:domain mds:Backsheet,
+        mds:CellArea,
+        mds:CellCount,
+        mds:CellTechnology,
+        mds:CellsPerString,
+        mds:ConnectorType,
+        mds:Encapsulant,
+        mds:FrameMaterial,
+        mds:InterconnectionScheme,
+        mds:JunctionBoxLocations,
+        mds:Length,
+        mds:Make,
+        mds:Model,
+        mds:ModuleArc,
+        mds:ModuleArea,
+        mds:ModuleEfficiency,
+        mds:ModulePackaging,
+        mds:ModuleRatingAtReference,
+        mds:ModuleTemperature,
+        mds:NameplateImp,
+        mds:NameplateIsc,
+        mds:NameplatePmp,
+        mds:NameplateVmp,
+        mds:NameplateVoc,
+        mds:NumberBusbars,
+        mds:NumberCellsX,
+        mds:NumberCellsY,
+        mds:NumberJunctionBox,
+        mds:NumberParallelStrings,
+        mds:PhotovoltaicModuleID,
+        mds:PhotovoltaicModuleNote,
+        mds:TemperatureCoefficientCurrent,
+        mds:TemperatureCoefficientPower,
+        mds:TemperatureCoefficientVoltage,
+        mds:Thickness,
+        mds:WaferCrystallinity,
+        mds:WaferDopingPolarity,
+        mds:Weight,
+        mds:Width ;
+    rdfs:range xsd:boolean,
+        xsd:float,
+        xsd:integer,
+        xsd:string .
+
+
+mds:CellCount a owl:Class ;
+    rdfs:subClassOf mds:PhotovoltaicModuleProperty ;
+    skos:definition "Number of cells in a module" .
+
+mds:Length a owl:Class ;
+    rdfs:subClassOf mds:PhotovoltaicModuleProperty ;
+    skos:definition "Length of the module along longest side" .
+
+mds:Location a owl:Class ;
+    rdfs:subClassOf pmdco:Location .
+
+mds:Manufacturer a owl:Class ;
+    rdfs:subClassOf pmdco:Manufacturer .
+
+mds:ModuleEfficiency a owl:Class ;
+    rdfs:subClassOf mds:ModuleRatingAtReference ;
+    skos:definition "Theoretical efficency of a module" .
+
+mds:ModuleTemperature a owl:Class ;
+    rdfs:subClassOf mds:PhotovoltaicModuleProperty .
+
+mds:OrangeButtonTerm a owl:Class ;
+    rdfs:subClassOf mds:ValueObject ;
+    skos:definition "Term from the OrangeButton Taxonomy" .
+
+mds:PhotovoltaicBacksheet a owl:Class ;
+    rdfs:subClassOf mds:ProcessingNode ;
+    skos:definition "Polymer backsheet of a PV cell or module" .
+
+mds:PhotovoltaicCell a owl:Class ;
+    rdfs:subClassOf mds:ProvidedIdentifier ;
+    skos:definition "PV cell that composes a module" .
+
+mds:PhotovoltaicSite a owl:Class ;
+    rdfs:subClassOf mds:Location ;
+    skos:definition "Physical location of a PV site" .
+
+mds:ProcessingNode a owl:Class ;
+    rdfs:subClassOf pmdco:ProcessingNode .
+
+mds:SerialNumber a owl:Class ;
+    rdfs:subClassOf mds:SerialNumber .
+
+mds:Thickness a owl:Class ;
+    rdfs:subClassOf mds:PhotovoltaicModuleProperty ;
+    skos:definition "Thickness of the module, not counting the framing" .
+
+mds:Weight a owl:Class ;
+    rdfs:subClassOf mds:PhotovoltaicModuleProperty ;
+    skos:definition "Module weight" .
+
+mds:Width a owl:Class ;
+    rdfs:subClassOf mds:PhotovoltaicModuleProperty ;
+    skos:definition "Width of module along shortest side" .
+
+
+mds:Backsheet a owl:Class ;
+    rdfs:subClassOf mds:PhotovoltaicModuleProperty ;
+    skos:altLabel "backsheet" ;
+    skos:definition "Material used to cover the rear of the module. E.g., TPT, Tedlar." .
+
+mds:CellArea a owl:Class ;
+    rdfs:subClassOf mds:PhotovoltaicModuleProperty ;
+    skos:altLabel "cell-area" ;
+    skos:definition "Total cell surface area." .
+
+mds:CellTechnology a owl:Class ;
+    rdfs:subClassOf mds:PhotovoltaicModuleProperty ;
+    skos:altLabel "cell-technology" ;
+    skos:definition "Technology used on the cell level, i.e., cell architecture. E.g., Al-BSF, PERC, PERT, MWT, IBC, SHJ." .
+
+mds:CellsPerString a owl:Class ;
+    rdfs:subClassOf mds:PhotovoltaicModuleProperty ;
+    skos:altLabel "cells-per-string" ;
+    skos:definition "The number of cells in series together per individual string. E.g., 60, 72, etc." .
+
+mds:ConnectorType a owl:Class ;
+    rdfs:subClassOf mds:PhotovoltaicModuleProperty ;
+    skos:altLabel "connector-type" ;
+    skos:definition "Which version of lead connection is used to connect panel. E.g, MC4, MC3, T4." .
+
+mds:Encapsulant a owl:Class ;
+    rdfs:subClassOf mds:PhotovoltaicModuleProperty ;
+    skos:altLabel "encapsulant" ;
+    skos:definition "Polymer material used to hold front sheet and back sheet together. Eg., EVA, POE, etc." .
+
+mds:FrameMaterial a owl:Class ;
+    rdfs:subClassOf mds:PhotovoltaicModuleProperty ;
+    skos:altLabel "frame-material" ;
+    skos:definition "Material used for the module frame. " .
+
+mds:InterconnectionScheme a owl:Class ;
+    rdfs:subClassOf mds:PhotovoltaicModuleProperty ;
+    skos:altLabel "interconnection-scheme" ;
+    skos:definition "Method used to wire cells together. RIBBON, SHINGLED, WIRE" .
+
+mds:JunctionBoxLocations a owl:Class ;
+    rdfs:subClassOf mds:PhotovoltaicModuleProperty ;
+    skos:altLabel "junction-box-locations" ;
+    skos:definition "Location on rear of module housing junction box(es). Location could be on module EDGE; CENTER or SPLIT are commonly seen on half-cell modules." .
+
+mds:Make a owl:Class ;
+    rdfs:subClassOf mds:Manufacturer ;
+    skos:altLabel "make" ;
+    skos:definition "Manufacturer or creator of device." .
+
+mds:PhotovoltaicModel a owl:Class ;
+    rdfs:subClassOf mds:ProvidedIdentifier ;
+    skos:broader mds:Sample ;
+    skos:altLabel "model" ;
+    skos:definition "Signifier of series or line of products." .
+
+mds:ModuleArc a owl:Class ;
+    rdfs:subClassOf mds:PhotovoltaicModuleProperty ;
+    skos:altLabel "module-arc" ;
+    skos:definition "Front glass module anti-reflective coating. Boolean." .
+
+mds:ModuleArea a owl:Class ;
+    rdfs:subClassOf mds:PhotovoltaicModuleProperty ;
+    skos:altLabel "module-area" ;
+    skos:definition "Total area of module surface in cm2." .
+
+mds:ModulePackaging a owl:Class ;
+    rdfs:subClassOf mds:PhotovoltaicModuleProperty ;
+    skos:altLabel "module-packaging" ;
+    skos:definition "The materials used for each layer of the solar panel excluding cell components. Either glass on glass (GG), glass with backsheet  GB), glass with transparent backsheet (GTB)." .
+
+mds:NameplateImp a owl:Class ;
+    rdfs:subClassOf mds:ModuleRatingAtReference ;
+    skos:altLabel "nameplate-imp" ;
+    skos:definition "Current at maximum power point rated at STC." .
+
+mds:NameplateIsc a owl:Class ;
+    rdfs:subClassOf mds:ModuleRatingAtReference ;
+    skos:altLabel "nameplate-isc" ;
+    skos:definition "Short-circuit current rated at STC" .
+
+mds:NameplatePmp a owl:Class ;
+    rdfs:subClassOf mds:ModuleRatingAtReference ;
+    skos:altLabel "nameplate-pmp" ;
+    skos:definition "Maximum power rated at STC." .
+
+mds:NameplateVmp a owl:Class ;
+    rdfs:subClassOf mds:ModuleRatingAtReference ;
+    skos:altLabel "nameplate-vmp" ;
+    skos:definition "Voltage at maximum power point rated at STC." .
+
+mds:NameplateVoc a owl:Class ;
+    rdfs:subClassOf mds:ModuleRatingAtReference ;
+    skos:altLabel "nameplate-voc" ;
+    skos:definition "Open-circuit voltage rated at STC" .
+
+mds:NumberBusbars a owl:Class ;
+    rdfs:subClassOf mds:PhotovoltaicModuleProperty ;
+    skos:altLabel "number-busbars" ;
+    skos:definition "Number of busbars present per cell.  Non-ribbon based technologies show none. " .
+
+mds:NumberCellsX a owl:Class ;
+    rdfs:subClassOf mds:PhotovoltaicModuleProperty ;
+    skos:altLabel "cells-x" ;
+    skos:definition "Number of cells in the shortest direction. E.g., 6, 8, 10" .
+
+mds:NumberCellsY a owl:Class ;
+    rdfs:subClassOf mds:PhotovoltaicModuleProperty ;
+    skos:altLabel "cells-y" ;
+    skos:definition "Number of cells in the longest direction. E.g., 10, 12, 20 " .
+
+mds:NumberJunctionBox a owl:Class ;
+    rdfs:subClassOf mds:PhotovoltaicModuleProperty ;
+    skos:altLabel "number-junction-box" ;
+    skos:definition "Total number of junction boxes present on the module." .
+
+mds:NumberParallelStrings a owl:Class ;
+    rdfs:subClassOf mds:PhotovoltaicModuleProperty ;
+    skos:altLabel "number-parallel-strings" ;
+    skos:definition "Number of series connections present in the module. 1 if all cells in series, 2 or more otherwise." .
+
+mds:PhotovoltaicModuleID a owl:Class ;
+    rdfs:subClassOf mds:SampleID ;
+    skos:definition "Module identifier" .
+
+mds:PhotovoltaicModuleNote a owl:Class ;
+    rdfs:subClassOf pmdco:Note .
+
+mds:TemperatureCoefficientCurrent a owl:Class ;
+    rdfs:subClassOf mds:ModuleRatingAtReference ;
+    skos:altLabel "temperature-coefficient-current" ;
+    skos:definition "Reduction of some percent of ISC per degree Celsius. Rate at which current changes in reponse to a change in temperature." .
+
+mds:TemperatureCoefficientPower a owl:Class ;
+    rdfs:subClassOf mds:ModuleRatingAtReference ;
+    skos:altLabel "temperature-coefficient-power" ;
+    skos:definition "Reduction of some percent of PMP per degree Celsius. Rate at which power changes in reponse to a change in temperature." .
+
+mds:TemperatureCoefficientVoltage a owl:Class ;
+    rdfs:subClassOf mds:ModuleRatingAtReference ;
+    skos:altLabel "temperature-coefficient-voltage" ;
+    skos:definition "Reduction of some percent of VOC per degree Celsius. Rate at which a voltage changes in reponse to a change in temperature." .
+
+mds:ValueObject a owl:Class ;
+    rdfs:subClassOf pmdco:ValueObject .
+
+mds:WaferCrystallinity a owl:Class ;
+    rdfs:subClassOf mds:PhotovoltaicModuleProperty ;
+    skos:altLabel "wafer-crystallinity" ;
+    skos:definition "Distinguishes whether the silicon wafer was manufactured as a single crystal, multiple crystals, or no crystal (amorphous); if not silicon, another value is used such as THIN FILM." .
+
+mds:WaferDopingPolarity a owl:Class ;
+    rdfs:subClassOf mds:PhotovoltaicModuleProperty ;
+    skos:altLabel "wafer-doping-polarity" ;
+    skos:definition "Doping polarity of absorber. E.g., n-type or p-type." .
+
+mds:PhotovoltaicModule a owl:Class ;
+    rdfs:subClassOf mds:ProvidedIdentifier ;
+    skos:definition "A PV module, comprised of cells, for field deployment" .
+
+mds:ProvidedIdentifier a owl:Class ;
+    rdfs:subClassOf pmdco:ProvidedIdentifier .
+
+mds:ModuleRatingAtReference a owl:Class ;
+    rdfs:subClassOf mds:PhotovoltaicModuleProperty ;
+    skos:definition "Measurements of a module taken at STC and 1000 W/m^2 irradiance" .
+
+mds:PhotovoltaicModuleProperty a owl:Class ;
+    rdfs:subClassOf mds:Sample ;
+    skos:definition "A property of a PV module" .
+

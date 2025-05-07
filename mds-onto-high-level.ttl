@@ -1,0 +1,336 @@
+@prefix brick: <https://brickschema.org/schema/Brick#> .
+@prefix csvw: <http://www.w3.org/ns/csvw#> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dcam: <http://purl.org/dc/dcam/> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dcmitype: <http://purl.org/dc/dcmitype/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix doap: <http://usefulinc.com/ns/doap#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix geo: <http://www.opengis.net/ont/geosparql#> .
+@prefix mds: <https://cwrusdle.bitbucket.io/mds/> .
+@prefix odrl: <http://www.w3.org/ns/odrl/2/> .
+@prefix org: <http://www.w3.org/ns/org#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix pmdco: <https://w3id.org/pmd/co/> .
+@prefix prof: <http://www.w3.org/ns/dx/prof/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix qb: <http://purl.org/linked-data/cube#> .
+@prefix qudt: <http://qudt.org/2.1/vocab/unit/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <https://schema.org/> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix sosa: <http://www.w3.org/ns/sosa/> .
+@prefix ssn: <http://www.w3.org/ns/ssn/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix vann: <http://purl.org/vocab/vann/> .
+@prefix void: <http://rdfs.org/ns/void#> .
+@prefix wgs: <https://www.w3.org/2003/01/geo/wgs84_pos#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+mds:Analysis a owl:Class ;
+    rdfs:subClassOf pmdco:NonTransformativeAnalysisProcess ;
+    skos:broader mds: ;
+    skos:definition "A process using statistical techniques to examine data to extract underlying relationships" .
+
+mds:Department a owl:Class ;
+    rdfs:subClassOf pmdco:Department ;
+    skos:broader mds:Tool .
+
+mds:Distance a owl:Class ;
+    rdfs:subClassOf pmdco:Distance ;
+    skos:broader mds:Recipe .
+
+mds:Force a owl:Class ;
+    rdfs:subClassOf pmdco:Force ;
+    skos:broader mds:Recipe .
+
+mds:Laboratory a owl:Class ;
+    rdfs:subClassOf pmdco:Laboratory ;
+    skos:broader mds:Tool .
+
+mds:Length a owl:Class ;
+    rdfs:subClassOf pmdco:Length ;
+    skos:broader mds:Recipe .
+
+mds:MeasuringDevice a owl:Class ;
+    rdfs:subClassOf pmdco:MeasuringDevice ;
+    skos:broader mds:Tool .
+
+mds:Metadata a owl:Class ;
+    rdfs:subClassOf pmdco:Metadata ;
+    skos:broader mds:Result .
+
+mds:ModelFilePath a owl:Class ;
+    rdfs:subClassOf mds:FilePath ;
+    skos:broader mds: ;
+    skos:definition "File path unique to a model" .
+
+mds:ModelID a owl:Class ;
+    rdfs:subClassOf pmdco:Identifier ;
+    skos:broader mds:Model ;
+    skos:definition "Unique ID of a model" .
+
+mds:ModelName a owl:Class ;
+    rdfs:subClassOf pmdco:Identifier ;
+    skos:broader mds:Model ;
+    skos:definition "Human-readable, English name of a model" .
+
+mds:ModelResults a owl:Class ;
+    rdfs:subClassOf mds:Result ;
+    skos:broader mds: ;
+    skos:definition "Results of a model" .
+
+mds:ModelType a owl:Class ;
+    rdfs:subClassOf mds:Category ;
+    skos:broader mds: ;
+    skos:definition "Type of a model (linear, regression, logistic, etc.)" .
+
+mds:PersonORCiD a owl:Class ;
+    rdfs:subClassOf mds:Identifier ;
+    skos:broader mds: ;
+    skos:definition "Unique ID of a person" .
+
+mds:PrimaryData a owl:Class ;
+    rdfs:subClassOf pmdco:PrimaryData ;
+    skos:broader mds:Result .
+
+mds:ProjectIdentifier a owl:Class ;
+    rdfs:subClassOf pmdco:ProjectIdentifier ;
+    skos:broader mds:Result .
+
+mds:RecipeAuthor a owl:Class ;
+    rdfs:subClassOf mds:Person ;
+    skos:broader mds: ;
+    skos:definition "Person created a recipe" .
+
+mds:RecipeCreatedDate a owl:Class ;
+    rdfs:subClassOf mds:Date ;
+    skos:broader mds: ;
+    skos:definition "Date that a recipe is created" .
+
+mds:RecipeFilePath a owl:Class ;
+    rdfs:subClassOf mds:FilePath ;
+    skos:broader mds: ;
+    skos:definition "File path unique to a recipe" .
+
+mds:RecipeID a owl:Class ;
+    rdfs:subClassOf pmdco:Identifier ;
+    skos:broader mds:Recipe ;
+    skos:definition "Unique ID for a recipe" .
+
+mds:RecipeModifiedDate a owl:Class ;
+    rdfs:subClassOf mds:Date ;
+    skos:broader mds: ;
+    skos:definition "Date that a recipe is modified" .
+
+mds:ResultID a owl:Class ;
+    rdfs:subClassOf pmdco:Identifier ;
+    skos:broader mds:Result ;
+    skos:definition "Unique ID of a result" .
+
+mds:SampleDate a owl:Class ;
+    rdfs:subClassOf mds:Date ;
+    skos:broader mds: ;
+    skos:definition "Date that a sample was created" .
+
+mds:SampleDimension a owl:Class ;
+    rdfs:subClassOf pmdco:ValueObject ;
+    skos:broader mds:Sample ;
+    skos:definition "Dimensions of a sample (if sample is solid)" .
+
+mds:SampleID a owl:Class ;
+    rdfs:subClassOf pmdco:Identifier ;
+    skos:broader mds:Sample ;
+    skos:definition "Unique ID of a sample" .
+
+mds:SequenceNumber a owl:Class ;
+    rdfs:subClassOf pmdco:SequenceNumber ;
+    skos:broader mds:Result .
+
+mds:Temperature a owl:Class ;
+    rdfs:subClassOf pmdco:Temperature ;
+    skos:broader mds:Recipe .
+
+mds:ToolCalibrationDate a owl:Class ;
+    rdfs:subClassOf mds:Date ;
+    skos:broader mds: ;
+    skos:definition "Date that a tool is calibrated" .
+
+mds:ToolCalibrationPerson a owl:Class ;
+    rdfs:subClassOf mds:Person ;
+    skos:broader mds: ;
+    skos:definition "Person that calibrated a tool" .
+
+mds:ToolCalibrationResults a owl:Class ;
+    rdfs:subClassOf mds:Result ;
+    skos:broader mds: ;
+    skos:definition "Results of a calibration of a tool" .
+
+mds:ToolID a owl:Class ;
+    rdfs:subClassOf pmdco:Identifier ;
+    skos:broader mds:Tool ;
+    skos:definition "Unique ID of a tool" .
+
+mds:ToolManufacturer a owl:Class ;
+    rdfs:subClassOf mds:Manufacturer ;
+    skos:broader mds: ;
+    skos:definition "Manufacturer of a tool" .
+
+mds:ToolModel a owl:Class ;
+    rdfs:subClassOf mds:NodeSerialNumber ;
+    skos:broader mds: ;
+    skos:definition "Model of a tool" .
+
+mds:ToolSerialNo a owl:Class ;
+    rdfs:subClassOf mds:NodeSerialNumber ;
+    skos:broader mds: ;
+    skos:definition "Unique serial number of a tool (assigned by manufacturer)" .
+
+mds:ToolSoftware a owl:Class ;
+    rdfs:subClassOf pmdco:ProcessingNode ;
+    skos:broader mds:Tool ;
+    skos:definition "Software used by a tool" .
+
+mds:Width a owl:Class ;
+    rdfs:subClassOf pmdco:Width ;
+    skos:broader mds:Recipe .
+
+mds:High-Level a owl:Ontology ;
+    dcterms:creator "SDLE Research Center" ;
+    dcterms:description "Ontology describing high level concepts in MDS-Onto" ;
+    dcterms:title "High-Level" ;
+    owl:imports <http://purl.org/dc/dcam/> ,
+        <http://purl.org/dc/dcmitype/> ,
+        <http://purl.org/dc/elements/1.1/> ,
+        <http://purl.org/dc/terms/> ,
+        <http://purl.org/linked-data/cube#> ,
+        <http://purl.org/vocab/vann/> ,
+        <http://qudt.org/2.1/vocab/unit/> ,
+        <http://rdfs.org/ns/void#> ,
+        <http://usefulinc.com/ns/doap#> ,
+        <http://www.opengis.net/ont/geosparql#> ,
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#> ,
+        <http://www.w3.org/2000/01/rdf-schema#> ,
+        <http://www.w3.org/2001/XMLSchema#> ,
+        <http://www.w3.org/2002/07/owl#> ,
+        <http://www.w3.org/2004/02/skos/core#> ,
+        <http://www.w3.org/2006/time#> ,
+        <http://www.w3.org/XML/1998/namespace> ,
+        <http://www.w3.org/ns/csvw#> ,
+        <http://www.w3.org/ns/dcat#> ,
+        <http://www.w3.org/ns/dx/prof/> ,
+        <http://www.w3.org/ns/odrl/2/> ,
+        <http://www.w3.org/ns/org#> ,
+        <http://www.w3.org/ns/prov#> ,
+        <http://www.w3.org/ns/shacl#> ,
+        <http://www.w3.org/ns/sosa/> ,
+        <http://www.w3.org/ns/ssn/> ,
+        <http://xmlns.com/foaf/0.1/> ,
+        <https://brickschema.org/schema/Brick#> ,
+        <https://cwrusdle.bitbucket.io/mds/> ,
+        <https://schema.org/> ,
+        <https://w3id.org/pmd/co/> ,
+        <https://www.w3.org/2003/01/geo/wgs84_pos#>  ;
+    owl:versionInfo "" .
+
+foaf:Person a owl:Class .
+
+mds:Category a owl:Class ;
+    rdfs:subClassOf pmdco:ValueObject ;
+    skos:broader mds:Model .
+
+mds:Identifier a owl:Class ;
+    rdfs:subClassOf pmdco:Identifier ;
+    skos:broader mds: .
+
+mds:Manufacturer a owl:Class ;
+    rdfs:subClassOf pmdco:Manufacturer ;
+    skos:broader mds:Tool .
+
+pmdco:Algorithm a owl:Class .
+
+pmdco:Date a owl:Class .
+
+pmdco:Department a owl:Class .
+
+pmdco:Distance a owl:Class .
+
+pmdco:Force a owl:Class .
+
+pmdco:Laboratory a owl:Class .
+
+pmdco:Length a owl:Class .
+
+pmdco:Manufacturer a owl:Class .
+
+pmdco:MeasuringDevice a owl:Class .
+
+pmdco:Metadata a owl:Class .
+
+pmdco:Method a owl:Class .
+
+pmdco:NodeSerialNumber a owl:Class .
+
+pmdco:NonTransformativeAnalysisProcess a owl:Class .
+
+pmdco:ProjectIdentifier a owl:Class .
+
+pmdco:Sample a owl:Class .
+
+pmdco:SequenceNumber a owl:Class .
+
+pmdco:Temperature a owl:Class .
+
+pmdco:Width a owl:Class .
+
+mds:FilePath a owl:Class ;
+    rdfs:subClassOf pmdco:ValueObject ;
+    skos:broader mds:Result .
+
+mds:NodeSerialNumber a owl:Class ;
+    rdfs:subClassOf pmdco:NodeSerialNumber ;
+    skos:broader mds:Tool .
+
+mds:Person a owl:Class ;
+    rdfs:subClassOf foaf:Person ;
+    skos:broader mds:Recipe .
+
+mds:Sample a owl:Class ;
+    rdfs:subClassOf pmdco:Sample ;
+    skos:broader mds: .
+
+pmdco:PrimaryData a owl:Class .
+
+pmdco:ProcessingNode a owl:Class .
+
+pmdco:ValueObject a owl:Class .
+
+mds:Date a owl:Class ;
+    rdfs:subClassOf pmdco:Date ;
+    skos:broader mds:Recipe .
+
+mds:Model a owl:Class ;
+    rdfs:subClassOf pmdco:Algorithm ;
+    skos:broader mds:Model ;
+    skos:definition "An algorithm that describes an underlying relationship between inputs and outputs" .
+
+mds:Tool a owl:Class ;
+    rdfs:subClassOf pmdco:ProcessingNode ;
+    skos:broader mds: .
+
+pmdco:Identifier a owl:Class .
+
+mds:Recipe a owl:Class ;
+    rdfs:subClassOf pmdco:Method ;
+    skos:broader mds: ;
+    skos:definition "A set of specifications that describes how a process is carried out" .
+
+mds:Result a owl:Class ;
+    rdfs:subClassOf pmdco:PrimaryData ;
+    skos:broader mds: ;
+    skos:definition "A consequence, effect, or outcome of a process" .
+

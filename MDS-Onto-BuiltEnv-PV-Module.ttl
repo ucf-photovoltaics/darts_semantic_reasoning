@@ -1,0 +1,283 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix qudt: <http://qudt.org/2.1/vocab/unit#> .
+@prefix sd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix pmd: <https://w3id.org/pmd/co/> .
+@prefix PMDCo: <https://w3id.org/pmd/co#> .
+@prefix QUDT: <https://qudt.org/vocab/unit/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix mds: <https://cwrusdle.bitbucket.io/mds#> .
+
+mds:BacksheetColor
+    rdf:label "BacksheetColor" ;
+    a owl:Class ;
+    rdfs:subClassOf mds:Color ;
+    skos:definition "Color of the backsheet" .
+
+mds:BacksheetMaterial
+    rdf:label "BacksheetMaterial" ;
+    a owl:Class ;
+    rdfs:subClassOf PMDCo:MaterialDesignation ;
+    skos:definition "Material the backsheet is made out of" .
+
+mds:CellCount
+    rdf:label "CellCount" ;
+    a owl:Class ;
+    rdfs:subClassOf PMDCo:ValueObject ;
+    skos:definition "The number of cells in a module" .
+
+mds:Color
+    rdf:label "Color" ;
+    a owl:Class ;
+    rdfs:subClassOf PMDCo:ValueObject ;
+    skos:definition "the visual perception based on the electromagnetic spectrum" .
+
+mds:EncapsulantMaterial
+    rdf:label "EncapsulantMaterial" ;
+    a owl:Class ;
+    rdfs:subClassOf PMDCo:MaterialDesignation ;
+    skos:definition "Material the encapsulant is made out of" .
+
+mds:FluorescencePattern
+    rdf:label "FluorescencePattern" ;
+    a owl:Class ;
+    rdfs:subClassOf PMDCo:ValueObject ;
+    skos:definition "Pattern of modules under UV Fluorescence (square or ring)" .
+
+mds:FrameColor
+    rdf:label "FrameColor" ;
+    a owl:Class ;
+    rdfs:subClassOf mds:Color ;
+    skos:definition "The color of the module frame" .
+
+mds:ModuleEfficiency
+    rdf:label "ModuleEfficiency" ;
+    a owl:Class ;
+    rdfs:subClassOf PMDCo:ValueObject ;
+    skos:definition "The efficiency of the solar module at standard test condition (STC)" .
+
+mds:MDS-Onto-BuiltEnv-PV-Module
+    dcterms:creator """Alexander C. Harding Bradley,Balashanmuga Priyan Rajamohan,Raymond Wieser,Benjamin
+Pierce,Jarod Kaltenbaugh,Hayden Caldwell,Arafath Nihar,Kiefer Lin,Jiana Kanbo,Mengjie Li,Kris Davis,Yinghui Wu,Laura S. Bruckman,Erika
+I. Barcelos,Roger H. French""" ;
+    dcterms:description "An ontology describing the characteristics of a PV Module." ;
+    dcterms:title "MDS-Onto-BuiltEnv-PV-Module" ;
+    rdf:label mds:MDS-Onto-BuiltEnv-PV-Module ;
+    a owl:Ontology ;
+    owl:versionInfo "0.2.0.6" .
+
+mds:PowerSTC
+    rdf:label "PowerSTC" ;
+    a owl:Class ;
+    rdfs:subClassOf PMDCo:ValueObject ;
+    skos:definition "DC power at Standard Test Condition (STC). STC is defined as 1000 W/m2 irradiance, 25C and ASTM G173-03 standard solar spectrum" ;
+    PMDCo:unit QUDT:KiloW .
+
+mds:ProdBacksheet
+    rdf:label "ProdBacksheet" ;
+    a owl:Class ;
+    rdfs:subClassOf PMDCo:Component ;
+    skos:definition "A backsheet of a photovoltaic module" .
+
+mds:ProdEncapsulant
+    rdf:label "ProdEncapsulant" ;
+    a owl:Class ;
+    rdfs:subClassOf PMDCo:Component ;
+    skos:definition "An encapsulant of a photovoltaic module" .
+
+mds:ProdJunctionBox
+    rdf:label "ProdJunctionBox" ;
+    a owl:Class ;
+    rdfs:subClassOf PMDCo:Component ;
+    skos:definition "An encapsulant of a photovoltaic module" .
+
+mds:ProdModule
+    rdf:label "ProdModule" ;
+    a owl:Class ;
+    rdfs:subClassOf PMDCo:ProcessingNode ;
+    skos:definition "A solar module product" .
+
+mds:ProdModuleID
+    rdf:label "ProdModuleID" ;
+    a owl:Class ;
+    rdfs:subClassOf PMDCo:NodeSerialNumber ;
+    skos:definition "Alphanumeric identifier for the metadata document" .
+
+mds:TemperatureNOCT
+    rdf:label "TemperatureNOCT" ;
+    a owl:Class ;
+    rdfs:subClassOf PMDCo:Temperature ;
+    skos:definition "The nominal operating cell temperature (NOCT) of a solar module" ;
+    PMDCo:unit QUDT:DEG_C .
+
+PMDCo:Component
+    rdf:label "Component" ;
+    a owl:Class .
+
+PMDCo:MaterialDesignation
+    rdf:label "MaterialDesignation" ;
+    a owl:Class .
+
+PMDCo:NodeSerialNumber
+    rdf:label "NodeSerialNumber" ;
+    a owl:Class .
+
+PMDCo:ProcessingNode
+    rdf:label "ProcessingNode" ;
+    a owl:Class .
+
+PMDCo:Temperature
+    rdf:label "Temperature" ;
+    a owl:Class .
+
+PMDCo:ValueObject
+    rdf:label "ValueObject" ;
+    a owl:Class .
+
+pmd:AgingTemperature
+    a owl:Class ;
+    rdfs:isDefinedBy <https://w3id.org/pmd/co> ;
+    rdfs:label "Aging Temperature", "Alterungstemperatur" ;
+    rdfs:subClassOf pmd:Temperature ;
+    skos:definition "Variable Temperature during an Aging Process depending on the desired deposition formations." .
+
+pmd:Component
+    rdf:label "Component" ;
+    a owl:Class ;
+    rdfs:isDefinedBy <https://w3id.org/pmd/co> ;
+    rdfs:label "Component", "Komponente" ;
+    rdfs:subClassOf pmd:Object ;
+    skos:definition "An object that serves a specific technical application. Constituent part of a compound of parts that builds a technical application.", "Ein Objekt, das einer bestimmten technischen Anwendung dient. Bestandteil einer Zusammensetzung von Teilen, die eine technische Anwendung bilden." .
+
+pmd:EnvironmentalTemperature
+    a owl:Class ;
+    rdfs:isDefinedBy <https://w3id.org/pmd/co> ;
+    rdfs:label "Environmental Temperature", "Umgebungstemperatur" ;
+    rdfs:subClassOf pmd:Temperature ;
+    skos:definition "Diese Eigenschaft beschreibt die beobachtete Temperatur in der Umgebung eines betrachteten materiellen Objekts. Dazu können die Raumtemperatur und die in Prüfkammern gemessenen Temperaturen gehören.", "This property describes the observed temperature surrounding a tangible object considered. This may include room temperature and temperatures measured in test chambers." .
+
+pmd:Length
+    rdf:label "Length" ;
+    a owl:Class ;
+    rdfs:isDefinedBy <https://w3id.org/pmd/co> ;
+    rdfs:label "Length", "Länge" ;
+    rdfs:subClassOf pmd:ValueObject ;
+    skos:definition "A measured distance or dimension of an object, usually the longer or longest dimension of the object.", "Eine gemessene Entfernung oder Abmessung eines Objekts, normalerweise die längere oder längste Abmessung des Objekts." ;
+    PMDCo:unit QUDT:CentiM ;
+    pmd:definitionSource <https://www.merriam-webster.com/dictionary/length> .
+
+pmd:Manufacturer
+    rdf:label "Manufacturer" ;
+    a owl:Class ;
+    rdfs:isDefinedBy <https://w3id.org/pmd/co> ;
+    rdfs:label "Hersteller", "Manufacturer" ;
+    skos:definition "Processing Node's manufacturer name, e.g.: \"Ipsen\", \"UPC\" or \"Bosch\"" .
+
+pmd:MaterialDesignation
+    rdf:label "MaterialDesignation" ;
+    a owl:Class ;
+    rdfs:isDefinedBy <https://w3id.org/pmd/co> ;
+    rdfs:label "Material Designation", "Materialbezeichnung" ;
+    rdfs:subClassOf PMDCo:ProcessingNode, pmd:MaterialRelated ;
+    skos:definition """It is a name or identifier of a material type. It designates a material. 
+E.g. \"steel\", \"aluminium\", \"wood\", \"plastic\", \"rubber\".""" ;
+    <http://www.w3.org/ns/prov#editorialNote> "former \"Material\" : \"It is a substance or mixture of substances that constitutes an object. represented by the sum of material properties and material structure\"" .
+
+pmd:NodeSerialNumber
+    rdf:label "NodeSerialNumber" ;
+    a owl:Class ;
+    rdfs:isDefinedBy <https://w3id.org/pmd/co> ;
+    rdfs:label "Knoten-Seriennummer", "Node Serial Number" ;
+    rdfs:subClassOf pmd:NodeInfo, pmd:ProvidedIdentifier ;
+    skos:definition "A unique identifier of a processing node, typically provided by the manufacturer (manufacturer serial number,  s/n)." .
+
+pmd:ProcessingNode
+    rdf:label "ProcessingNode" ;
+    a owl:Class ;
+    rdfs:isDefinedBy <https://w3id.org/pmd/co> ;
+    rdfs:label "Processing Node", "Prozessknoten" ;
+    rdfs:subClassOf <http://www.w3.org/ns/prov#Agent> ;
+    skos:definition "Processing nodes are tools, equipment and accessories as well as software that are relevant for the performance of processes, such as e.g. mechanical and chemical test as well as simulation, prediction, and machine learning. Accordingly, processing nodes may be machines, parts of machines, and software applications.", "Prozessknoten sind Werkzeuge, Geräte und Zubehör sowie Software, die für die Durchführung von Prozessen relevant sind, wie z. B. mechanische und chemische Tests sowie Simulationen, Vorhersagen und maschinelles Lernen. Dementsprechend können Prozessknoten Maschinen, Teile von Maschinen und Softwareanwendungen sein." .
+
+pmd:Temperature
+    rdf:label "Temperature" ;
+    a owl:Class ;
+    rdfs:isDefinedBy <https://w3id.org/pmd/co> ;
+    rdfs:label "Temperatur", "Temperature" ;
+    rdfs:subClassOf pmd:ValueObject ;
+    skos:definition "The degree of hotness or coldness measured on a definite scale." ;
+    pmd:definitionSource "“Temperature.” Merriam-Webster.com Dictionary, Merriam-Webster, https://www.merriam-webster.com/dictionary/temperature. Accessed 25 Nov. 2022." .
+
+pmd:Thickness
+    rdf:label "Thickness" ;
+    a owl:Class ;
+    rdfs:isDefinedBy <https://w3id.org/pmd/co> ;
+    rdfs:label "Dicke", "Thickness" ;
+    rdfs:subClassOf pmd:ValueObject ;
+    skos:definition "Diese Entität beschreibt die gemessene Dimension in einer Richtung eines Prüfstücks.", "This entity describes the measured dimension in one direction of a test piece." ;
+    PMDCo:unit QUDT:CentiM .
+
+pmd:ValueObject
+    rdf:label "ValueObject" ;
+    a owl:Class ;
+    rdfs:isDefinedBy <https://w3id.org/pmd/co> ;
+    rdfs:label "Value Object", "Wertobjekt" ;
+    rdfs:subClassOf <http://www.w3.org/ns/prov#Entity> ;
+    skos:definition """A :ValueObject is an entity which represents a specific value. This value can be a numerical, textual, or a more complex data structure. If a literal value is to be specified, the :value datatype property has to be used. In cases where the value is represented by a resource (e.g. URI), the :resource object property has to be used.
+
+A value object, respectively its value, is always associated with an entity of type :Process, :ProcessingNode, :Object (e.g. :Specimen), :DigitalEntity, :Project, or other :ValueObject. The value is meant to be a charactaristic of the associated entity. To express this association it is indended to use the :characteristic object property if the value decribes some \\\"quality\\\", or the :participant (:input,:output) if it is participating a process.
+
+A value object might also refer to a unit. The :unit property might be used (e.g. with QUDT ontology).
+
+Instances of a value object might also be a type of :ValueScope, namely a :SetPoint (nominal value), or :Measurement (measured value). With :Setpoint the intend is to express, that the value is meant to be some preset, setting or nominal value. :Measurement expresses, that the value has been measured or determined somehow (see example).
+
+Instances of a value object might also be specified in a specific :DataScope (:Metadata, :PrimaryData, :SecondaryData).""" ;
+    skos:example """- the length of a specimen
+- the model number of a machine
+- a person involved in a process
+- a force on an object""", """:Length rdfs:subClass :ValueObject .
+ex:vo1 a :Length .
+ex:vo1 a :Measurement .
+ex:vo1 a :PrimaryData .
+ex:vo1 :unit qudt:MilliM . 
+ex:vo1 :value \"123.45\"
+ex:p1 a :LengthMeasuringProcess .
+ex:p1 :characteristic ex:vo1 .""", "The length of a specimen, which has been measured as primary data. Its actual value is 123.45 millimeters." .
+
+pmd:Weight
+    rdf:label "Weight" ;
+    a owl:Class ;
+    rdfs:isDefinedBy <https://w3id.org/pmd/co> ;
+    rdfs:label "Gewicht", "Weight" ;
+    rdfs:subClassOf pmd:ValueObject ;
+    skos:definition "The force with which a body is attracted toward the earth or a celestial body by gravitation and which is equal to the product of the mass and the local gravitational acceleration." ;
+    PMDCo:unit QUDT:KiloGM ;
+    pmd:definitionSource "“Weight.” Merriam-Webster.com Dictionary, Merriam-Webster, https://www.merriam-webster.com/dictionary/weight. Accessed 5 Dec. 2022." .
+
+pmd:Width
+    rdf:label "Width" ;
+    a owl:Class ;
+    rdfs:isDefinedBy <https://w3id.org/pmd/co> ;
+    rdfs:label "Breite", "Width" ;
+    rdfs:subClassOf pmd:ValueObject ;
+    skos:definition "Diese Entität bezeichnet eine horizontale Messung, die im rechten Winkel zur Länge eines Objekts vorgenommen wird.", "This entity describes a horizontal measurement of an object taken at right angles to the length of the object." ;
+    PMDCo:unit QUDT:CentiM ;
+    pmd:definitionSource <https://www.merriam-webster.com/dictionary/width> .
+
+pmd:characteristic
+    a owl:ObjectProperty ;
+    rdfs:domain mds:ProdBacksheet, mds:ProdEncapsulant, mds:ProdModule ;
+    rdfs:range mds:BacksheetColor, mds:BacksheetMaterial, mds:CellCount, mds:EncapsulantMaterial, mds:FluorescencePattern, mds:FrameColor, mds:ModuleEfficiency, mds:PowerSTC, mds:TemperatureNOCT, pmd:Length, pmd:Manufacturer, pmd:NodeSerialNumber, pmd:Thickness, pmd:Weight, pmd:Width .
+
+pmd:component
+    a owl:ObjectProperty ;
+    rdfs:domain mds:ProdModule ;
+    rdfs:range mds:ProdBacksheet, mds:ProdEncapsulant, mds:ProdJunctionBox .
+
+pmd:value
+    a owl:DatatypeProperty ;
+    rdfs:domain mds:BacksheetColor, mds:BacksheetMaterial, mds:CellCount, mds:EncapsulantMaterial, mds:FluorescencePattern, mds:FrameColor, mds:ModuleEfficiency, mds:PowerSTC, mds:ProdModuleID, mds:TemperatureNOCT, pmd:Length, pmd:Manufacturer, pmd:Thickness, pmd:Weight, pmd:Width ;
+    rdfs:range sd:float, sd:integer, sd:string .
+
