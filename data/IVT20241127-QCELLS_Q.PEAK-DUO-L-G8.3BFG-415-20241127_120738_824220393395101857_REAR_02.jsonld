@@ -1,0 +1,27 @@
+{
+  "@context": {
+    "mds": "https://cwrusdle.bitbucket.io/mds/"
+  },
+  "@id": "mds:29168",
+  "@type": "mds:CurrentVoltageResults",
+  "mds:SerialNumber": "824220393395101857",
+  "mds:CurrentVoltageSample": "p-type",
+  "mds:CurrentVoltageResultsTimestamp": "08:53.9",
+  "mds:ShortCircuitCurrent": 6.304514,
+  "mds:OpenCircuitVoltage": 46.819365,
+  "mds:CurrentAtMaxPower": 4.510227,
+  "mds:VoltageAtMaxPower": 40.826558,
+  "mds:MaximumPowerPoint": 184.137035,
+  "mds:FillFactor": 62.382675,
+  "mds:CellEfficiency": 8.594895,
+  "mds:ShuntResistance": 4975.590168,
+  "mds:SeriesResistance": 0.718553,
+  "mds:SunIntensity": 1.0,
+  "mds:SampleCellArea": 119.8,
+  "mds:SampleTotalArea": 21424.0,
+  "mds:NumberOfCellsPerString": 72,
+  "mds:NumberStrings": 2,
+  "mds:SampleResistivity": 0.954276,
+  "mds:CellReferenceConstant": 0.244789,
+  "mds:VoltageTemperatureCoefficient": 1.8221
+}
