@@ -8,4 +8,8 @@ Author: Lauren Mutugi
 """
 
 import pandas as pd
+import requests
 
+
+class GraphDB:
+    def _init_(self, base_url, repository):
