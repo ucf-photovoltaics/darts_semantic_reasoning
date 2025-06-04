@@ -1,0 +1,139 @@
+@prefix rr: <http://www.w3.org/ns/r2rml#> .
+@prefix mds: <https://cwrusdle.bitbucket.io/mds#> .
+@prefix co: <https://w3id.org/pmd/co#> .
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#> .
+@prefix ex: <http://example.org/> .
+
+<#ModuleMetadataTriplesMap>
+  a rr:TriplesMap ;
+  rr:logicalTable [ rr:tableName "module_metadata" ] ;
+
+  rr:subjectMap [
+    rr:template "http://example.org/module/{module_id}" ;
+    rr:class mds:PhotovoltaicModule ;
+  ] ;
+
+  rr:predicateObjectMap [
+    rr:predicate mds:ProdModuleID ;
+    rr:objectMap [ rr:column "module_id" ]
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate co:NodeSerialNumber ;
+    rr:objectMap [ rr:column "serial_number" ]
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate co:Manufacturer ;
+    rr:objectMap [ rr:column "make" ]
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate mds:ModuleModel ;
+    rr:objectMap [ rr:column "model" ]
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate mds:NameplateMaximumPower ;
+    rr:objectMap [ rr:column "nameplate_pmp" ]
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate mds:NameplateVoltageAtMaximumPower ;
+    rr:objectMap [ rr:column "nameplate_vmp" ]
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate mds:NameplateCurrentAtMaximumPower ;
+    rr:objectMap [ rr:column "nameplate_imp" ]
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate mds:NameplateOpenCircuitVoltage ;
+    rr:objectMap [ rr:column "nameplate_voc" ]
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate mds:NameplateShortCircuitCurrent ;
+    rr:objectMap [ rr:column "nameplate_isc" ]
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate mds:VoltageTemperatureCoefficient ;
+    rr:objectMap [ rr:column "temperature_coefficient_voltage" ]
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate mds:PowerTemperatureCoefficient ;
+    rr:objectMap [ rr:column "temperature_coefficient_power" ]
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate mds:CurrentTemperatureCoefficient ;
+    rr:objectMap [ rr:column "temperature_coefficient_current" ]
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate mds:ModulePackaging ;
+    rr:objectMap [ rr:column "module_packaging" ]
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate mds:InterconnectionScheme ;
+    rr:objectMap [ rr:column "interconnection_scheme" ]
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate mds:NumberOfParallelStrings ;
+    rr:objectMap [ rr:column "number_parallel_strings" ]
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate mds:CellsPerString ;
+    rr:objectMap [ rr:column "cells_per_string" ]
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate mds:ModuleARC ;
+    rr:objectMap [ rr:column "module_arc" ]
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate mds:ConnectorType ;
+    rr:objectMap [ rr:column "connector_type" ]
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate mds:JunctionBoxLocation ;
+    rr:objectMap [ rr:column "junction_box_locations" ]
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate mds:NumberOfJunctionBoxes ;
+    rr:objectMap [ rr:column "number_junction_box" ]
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate mds:NumberOfBusbars ;
+    rr:objectMap [ rr:column "number_busbars" ]
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate mds:CellArea ;
+    rr:objectMap [ rr:column "cell_area" ]
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate mds:ModuleArea ;
+    rr:objectMap [ rr:column "module_area" ]
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate mds:CellTechnology ;
+    rr:objectMap [ rr:column "cell_technology" ]
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate mds:WaferDopingPolarity ;
+    rr:objectMap [ rr:column "wafer_doping_polarity" ]
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate mds:WaferCrystallinity ;
+    rr:objectMap [ rr:column "wafer_crystallinity" ]
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate mds:EncapsulantMaterial ;
+    rr:objectMap [ rr:column "encapsulant" ]
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate mds:BacksheetMaterial ;
+    rr:objectMap [ rr:column "backsheet" ]
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate mds:FrameMaterial ;
+    rr:objectMap [ rr:column "frame_material" ]
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate geo:lat ;
+    rr:objectMap [ rr:column "x" ]
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate geo:long ;
+    rr:objectMap [ rr:column "y" ]
+  ] .
