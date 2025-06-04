@@ -11,7 +11,7 @@ import pandas as pd
 import requests
 
 
-class GraphDB:
+class graph_database:
     def __init__(self, base_url, repository):
         self.base_url = base_url
         self.repository = repository
