@@ -20,7 +20,7 @@ class graph_database:
     def query(self, query):
         url = f"{self.base_url}/repositories/{self.repository}/statements"
         response = self.session.post(url, json={"query": query})
-        response.raise_for_status()
+        response.raise_for_status() #throws an exception if there is an HTTP error
         return response.json()
 
     def close(self):
