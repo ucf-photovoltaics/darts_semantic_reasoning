@@ -12,7 +12,7 @@ import requests
 
 
 class graph_database:
-    def __init__(self, base_url, repository):
+    def __init__(self, base_url, repository = "darts_semantic_reasoning"):
         self.base_url = base_url
         self.repository = repository
         self.session = requests.Session()
