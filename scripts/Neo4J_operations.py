@@ -2,7 +2,7 @@
 Created on June 3 2025 at 4:30 PM
 Updated on June 10 2025
 
-Graph Databases operations module
+Neo4j operations module
 
 Author: Lauren Mutugi
 
@@ -34,7 +34,7 @@ class Neo4j_operations:
         self._driver = None
         self.logger = logging.getLogger(__name__)
         
-        # Initialize connection
+       "Initialize connection"
         self._connect()
     
     def _connect(self) -> None:
@@ -57,12 +57,7 @@ class Neo4j_operations:
             self._driver.close()
             self.logger.info("Neo4j connection closed")
     
-    def execute_query(
-        self,
-        query: str,
-        parameters: Optional[Dict[str, Any]] = None,
-        database: Optional[str] = None
-    ) -> List[Dict[str, Any]]:
+    def execute_query(self, query: str, parameters: Optional[Dict[str, Any]] = None, database: Optional[str] = None) -> List[Dict[str, Any]]:
         """
         Run a Cypher query and return results.
         
@@ -82,12 +77,7 @@ class Neo4j_operations:
             self.logger.error(f"Query execution failed: {str(e)}")
             raise
     
-    def create_node(
-        self,
-        label: str,
-        properties: Dict[str, Any],
-        database: Optional[str] = None
-    ) -> Dict[str, Any]:
+    def create_node(self, label: str, properties: Dict[str, Any], database: Optional[str] = None) -> Dict[str, Any]:
         """
         Create a new node in database.
         
@@ -106,18 +96,10 @@ class Neo4j_operations:
         result = self.execute_query(query, {"properties": properties}, database)
         return result[0] if result else None
     
-    def create_relationship(
-        self,
-        start_node_label: str,
-        start_node_property: Dict[str, Any],
-        end_node_label: str,
-        end_node_property: Dict[str, Any],
-        relationship_type: str,
-        relationship_properties: Optional[Dict[str, Any]] = None,
-        database: Optional[str] = None
-    ) -> Dict[str, Any]:
+    def create_relationship(self, start_node_label: str, start_node_property: Dict[str, Any], end_node_label: str, end_node_property: Dict[str, Any], relationship_type: str,
+        relationship_properties: Optional[Dict[str, Any]] = None, database: Optional[str] = None) -> Dict[str, Any]:
         """
-        Create a relationship between two nodes.
+        Make a connection between two nodes.
         
         Parameters:
             start_node_label (str)- Starting node label
@@ -145,12 +127,7 @@ class Neo4j_operations:
         result = self.execute_query(query, params, database)
         return result[0] if result else None
     
-    def get_node(
-        self,
-        label: str,
-        properties: Dict[str, Any],
-        database: Optional[str] = None
-    ) -> Optional[Dict[str, Any]]:
+    def get_node(self, label: str, properties: Dict[str, Any], database: Optional[str] = None) -> Optional[Dict[str, Any]]:
         """
         Get a node based on properties and label.
         
@@ -170,15 +147,9 @@ class Neo4j_operations:
         result = self.execute_query(query, {"properties": properties}, database)
         return result[0] if result else None
     
-    def update_node(
-        self,
-        label: str,
-        match_properties: Dict[str, Any],
-        new_properties: Dict[str, Any],
-        database: Optional[str] = None
-    ) -> Optional[Dict[str, Any]]:
+    def update_node(self, label: str, match_properties: Dict[str, Any], new_properties: Dict[str, Any], database: Optional[str] = None) -> Optional[Dict[str, Any]]:
         """
-        Update node properties.
+        Update the node properties.
         
         Parameters:
             label (str) - Node label
@@ -202,12 +173,7 @@ class Neo4j_operations:
         result = self.execute_query(query, params, database)
         return result[0] if result else None
     
-    def delete_node(
-        self,
-        label: str,
-        properties: Dict[str, Any],
-        database: Optional[str] = None
-    ) -> bool:
+    def delete_node(self, label: str, properties: Dict[str, Any], database: Optional[str] = None) -> bool:
         """
         Delete a node and its connections.
         
@@ -231,11 +197,7 @@ class Neo4j_operations:
             self.logger.error(f"Failed to delete node: {str(e)}")
             return False
     
-    def get_all_nodes(
-        self,
-        label: Optional[str] = None,
-        database: Optional[str] = None
-    ) -> List[Dict[str, Any]]:
+    def get_all_nodes(self, label: Optional[str] = None, database: Optional[str] = None) -> List[Dict[str, Any]]:
         """
         Retrieve all nodes with optional label filter.
         
