@@ -12,11 +12,10 @@ import pandas as pd
 
 
 class Neo4J_operations: #abstracts all graph database operations, specifically Neo4j operations
-    def __init__(self, read_data,stores_data, import_data):
-        self.read_data = read_data
-        self.stores_data = stores_data
-        self.import_data = import_data
-    
+    def __init__(self, name, type, column):
+        self.name = name
+        self.type = type
+        self.column = column
         
         
 Neo4J_operations.close()
