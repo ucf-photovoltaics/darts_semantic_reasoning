@@ -16,8 +16,7 @@ class Neo4J_operations: #abstracts all graph database operations, specifically N
         self.read_data = read_data
         self.stores_data = stores_data
         self.import_data = import_data
-        
-        #need a few more defs to do the abstraction stuff
+    
         
         
 Neo4J_operations.close()
