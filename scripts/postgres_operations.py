@@ -11,6 +11,11 @@ import pandas as pd
 from sqlalchemy import create_engine, text
 from sqlalchemy.exc import SQLAlchemyError
 
+class GetCommentError(Exception):
+    """Indicates an incorrect path to a column"""
+    def __str__(self):
+        return "Must specify path to column"
+
 class PostgresDB:
     def __init__(self, username, password, host="34.73.180.136", port=5432, database="fsecdatabase"):
         self.username = username
@@ -49,14 +54,54 @@ class PostgresDB:
         """
         return self.read_records_from_postgres(query, (start_date, end_date))
 
-    def get_table_names_and_comments(self):
-        query = """
-        SELECT c.relname AS table_name, obj_description(c.oid) AS table_comment
-        FROM pg_class c
-        LEFT JOIN pg_namespace n ON n.oid = c.relnamespace
-        WHERE c.relkind = 'r' AND n.nspname NOT IN ('pg_catalog', 'information_schema');
+    def get_comments(self,schema='public', table_name='table_name', column_name='column_name'):
         """
-        return self.read_records_from_postgres(query)
+        Retrieve comment(s) from a database
+
+        Parameters: 
+            schema (str) - Database schema name
+            table_name (str) - Table name
+            column_name (str) - Column name
+        """     
+        
+        try:
+            #No table or column specified
+            if table_name == 'table_name' and column_name == 'column_name':
+                query = """
+                SELECT c.relname AS table_name, obj_description(c.oid) AS table_comment
+                FROM pg_class c
+                LEFT JOIN pg_namespace n ON n.oid = c.relnamespace
+                WHERE c.relkind = 'r' AND n.nspname NOT IN ('pg_catalog', 'information_schema');
+                """
+                return self.read_records_from_postgres(query)
+            #Table specified but no column
+            elif table_name != 'table_name' and column_name == 'column_name':
+                query = f""" 
+                SELECT c.column_name
+                FROM information_schema.columns c
+                WHERE c.table_schema = '{schema}' AND c.table_name = '{table_name}'
+                """
+                df = pd.DataFrame(columns = ['table_name', 'column_name', 'column_comment'])
+
+                for column in self.read_records_from_postgres(query)['column_name']:
+                    df = pd.concat([df, self.get_comments(schema=schema, table_name=table_name, column_name=column)], ignore_index=True)
+                
+                return df
+            #Table and column specified
+            elif table_name != 'table_name' and column_name != 'column_name':
+                query = f"""
+                SELECT c.table_name, c.column_name, col_description('{table_name}'::regclass, c.ordinal_position) AS column_comment
+                FROM information_schema.columns c
+                WHERE c.table_schema = '{schema}' AND c.table_name = '{table_name}' AND c.column_name = '{column_name}';
+                """ 
+                return self.read_records_from_postgres(query)
+            #Column but no table specified
+            else:
+                raise GetCommentError
+        except GetCommentError as e:
+            self.handle_error(e, "specifying column path")
+            return -1
+
 
     def get_table_schema(self, table_name):
         query = """
@@ -113,7 +158,7 @@ class PostgresDB:
         
     def add_comment(self, schema='public', table='table_name', column='name_of_column', comment='ontology URI, definition'):
         """
-        Add a comment to a column in table
+        Add a comment to a table or a column in a table
         
         Parameters: 
             schema (str) - Database schema name
