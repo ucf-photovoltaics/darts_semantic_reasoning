@@ -110,7 +110,29 @@ class PostgresDB:
         except Exception as e:
             self.handle_error(e, "get_el_pairs")
             return {"error": str(e)}
-
+        
+    def add_comment(self, schema='public', table='table_name', column='name_of_column', comment='ontology URI, definition'):
+        """
+        Add a comment to a column in table
+        
+        Parameters: 
+            schema (str) - Database schema name
+            table (str) -  Table name
+            column (str) -  Column name
+            comment (str) -  Comment text to add
+        """
+        try:
+            if column == 'name_of_column':
+                query = text(f'COMMENT ON TABLE {schema}.{table} IS :comment')
+            else:
+                query = text(f'COMMENT ON COLUMN {schema}.{table}.{column} IS :comment')
+            with self.engine.connect() as connection:
+                connection.execute(query, {"comment": comment})
+                connection.commit()
+            return True
+        except SQLAlchemyError as e:
+            self.handle_error(e, query)
+            return False
 
 # Example usage:
 db = PostgresDB(username="dpv", password="sun")
