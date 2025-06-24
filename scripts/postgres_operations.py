@@ -179,18 +179,7 @@ class PostgresDB:
             self.handle_error(e, query)
             return False
 
-    def read_shacl(self, schema = 'public'):
-        """
-        Convert shacl file to a dictionary
-        
-        Parameters: 
-            schema (str) = Database schema name
-        """
-        shacl_dict = {
-            #format is name: path mds
-            "Cell_Area_(cm2)": "SampleCellArea",
-            
-        }
+
         
 # Example usage:
 db = PostgresDB(username="dpv", password="sun")
