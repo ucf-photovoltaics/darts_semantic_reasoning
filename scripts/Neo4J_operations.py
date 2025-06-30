@@ -67,7 +67,8 @@ class Neo4j_operations:
             parameters (dict, optional) - Query parameters
             database (str, optional) - Choose which database to query
 
-        What is Returned:
+        Returns:
+
             List[Dict]: List of results from query
         """
         try:
@@ -111,7 +112,8 @@ class Neo4j_operations:
             relationship_properties (dict, optional) - Relationship properties
             database (str, optional) - Specific database to use
 
-        What is returned:
+        Returns:
+
             dict: Created relationship properties
         """
         query = (
@@ -137,7 +139,8 @@ class Neo4j_operations:
             properties (dict) - Node properties to match
             database (str, optional) - Specific database to use
 
-        What is returned:
+        Returns:
+
             Optional[dict] - if found, there is a node. Otherwise, there is None
         """
         query = (
@@ -158,7 +161,8 @@ class Neo4j_operations:
             new_properties (dict) - New properties to set
             database (str, optional) - Specific database to use
 
-        What is Returned:
+        Returns:
+
             Optional[dict] - Updated node if found, None otherwise
         """
         query = (
@@ -183,7 +187,8 @@ class Neo4j_operations:
             properties (dict) - Properties to identify the node
             database (str, optional) - Specific database to use
 
-        What is returned:
+        Returns:
+
             boolean - If node was deleted, return True, False otherwise
         """
         query = (
@@ -206,7 +211,8 @@ class Neo4j_operations:
             label (str, optional) -  Node label to filter by
             database (str, optional) - Specific database to use
 
-        What is returned:
+        Returns:
+
             List[dict] - List of nodes
         """
         query = "MATCH (n{}) RETURN n".format(f":{label}" if label else "")
@@ -220,4 +226,3 @@ class Neo4j_operations:
         """Exit context manager."""
         self.close()
 
-  
