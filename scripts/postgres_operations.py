@@ -74,7 +74,7 @@ class PostgresDB:
                 WHERE c.relkind = 'r' AND n.nspname NOT IN ('pg_catalog', 'information_schema');
                 """
                 return self.read_records_from_postgres(query)
-            #Table specified but no column
+            #Gets comments from all columns of an individual table
             elif table_name != 'table_name' and column_name == 'column_name':
                 query = f""" 
                 SELECT c.column_name
@@ -87,7 +87,7 @@ class PostgresDB:
                     df = pd.concat([df, self.get_comments(schema=schema, table_name=table_name, column_name=column)], ignore_index=True)
                 
                 return df
-            #Table and column specified
+            #Gets comment from an individual column of a table
             elif table_name != 'table_name' and column_name != 'column_name':
                 query = f"""
                 SELECT c.table_name, c.column_name, col_description('{table_name}'::regclass, c.ordinal_position) AS column_comment
@@ -95,7 +95,7 @@ class PostgresDB:
                 WHERE c.table_schema = '{schema}' AND c.table_name = '{table_name}' AND c.column_name = '{column_name}';
                 """ 
                 return self.read_records_from_postgres(query)
-            #Column but no table specified
+            #Path to individual column not specified
             else:
                 raise GetCommentError
         except GetCommentError as e:
@@ -156,21 +156,32 @@ class PostgresDB:
             self.handle_error(e, "get_el_pairs")
             return {"error": str(e)}
         
-    def add_comment(self, schema='public', table='table_name', column='name_of_column', comment='ontology URI, definition'):
+    def add_comments(self, schema='public', table_name='table_name', column_name='name_of_column', comment='ontology URI, definition'):
         """
-        Add a comment to a table or a column in a table
+        Add comment(s) to database
         
         Parameters: 
             schema (str) - Database schema name
-            table (str) -  Table name
-            column (str) -  Column name
+            table_name (str) -  Table name or Dictionary of table names (keys) and comments (values)
+            column_name (str) -  Column name or Dictionary of column names (keys) and comments (values)
             comment (str) -  Comment text to add
         """
         try:
-            if column == 'name_of_column':
-                query = text(f'COMMENT ON TABLE {schema}.{table} IS :comment')
+            #Adds comments to multiple tables of the same schema
+            if isinstance(table_name, dict):
+                for key, value in table_name.items():
+                    self.add_comments(schema=schema, table_name=key, comment_name=value)
+            #Adds comments to multiple columns of the same table 
+            elif isinstance(column_name, dict):
+                for key, value in column_name.items():
+                    self.add_comments(schema=schema, table_name=table_name, column_name=key, comment=value)
+            #Query to add comment to a table
+            elif column_name == 'name_of_column':
+                query = text(f'COMMENT ON TABLE {schema}.{table_name} IS :comment')
+            #Query to add comment to a column
             else:
-                query = text(f'COMMENT ON COLUMN {schema}.{table}.{column} IS :comment')
+                query = text(f'COMMENT ON COLUMN {schema}.{table_name}.{column_name} IS :comment')
+            #Executes query
             with self.engine.connect() as connection:
                 connection.execute(query, {"comment": comment})
                 connection.commit()
