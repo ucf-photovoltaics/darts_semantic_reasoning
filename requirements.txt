@@ -4,4 +4,4 @@ numpy
 rdflib
 rdfpandas
 sqlalchemy
-psycopg2
+psycopg2-binary
