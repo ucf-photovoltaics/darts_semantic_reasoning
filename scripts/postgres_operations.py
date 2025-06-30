@@ -198,6 +198,6 @@ class PostgresDB:
 
         
 # Example usage:
-db = PostgresDB(username="dpv", password="sun")
+#db = PostgresDB(username="dpv", password="sun")
 #db.create_postgres_records_from_dataframe("table_name", dataframe)
  
