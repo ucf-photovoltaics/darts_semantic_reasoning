@@ -47,6 +47,22 @@ class PostgresDB:
             self.handle_error(e, "fetching data with SQLAlchemy")
             return None
 
+    def get_table_names_and_comments(self):
+        query = """
+        SELECT c.relname AS table_name, obj_description(c.oid) AS table_comment
+        FROM pg_class c
+        LEFT JOIN pg_namespace n ON n.oid = c.relnamespace
+        WHERE c.relkind = 'r' AND n.nspname NOT IN ('pg_catalog', 'information_schema');
+        """
+        return self.read_records_from_postgres(query)
+
+    def get_table_schema(self, table_name):
+        query = """
+        SELECT column_name, data_type, character_maximum_length, is_nullable, column_default
+        FROM information_schema.columns
+        WHERE table_name = %s;
+        """
+        return self.read_records_from_postgres(query, (table_name,))
     def fetch_data_by_date(self, table_name, start_date, end_date):
         query = f"""
         SELECT * FROM {table_name} 
