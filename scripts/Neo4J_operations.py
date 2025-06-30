@@ -1,12 +1,13 @@
 """
 Created on June 3 2025 at 4:30 PM
-Updated on June 10 2025
+Updated on June 24 2025
 
 Neo4j operations module
 
 Author: Lauren Mutugi
 
 """
+
 
 from neo4j import GraphDatabase
 from typing import Optional, List, Dict, Any
@@ -67,6 +68,7 @@ class Neo4j_operations:
             database (str, optional) - Choose which database to query
 
         Returns:
+
             List[Dict]: List of results from query
         """
         try:
@@ -111,6 +113,7 @@ class Neo4j_operations:
             database (str, optional) - Specific database to use
 
         Returns:
+
             dict: Created relationship properties
         """
         query = (
@@ -137,6 +140,7 @@ class Neo4j_operations:
             database (str, optional) - Specific database to use
 
         Returns:
+
             Optional[dict] - if found, there is a node. Otherwise, there is None
         """
         query = (
@@ -158,6 +162,7 @@ class Neo4j_operations:
             database (str, optional) - Specific database to use
 
         Returns:
+
             Optional[dict] - Updated node if found, None otherwise
         """
         query = (
@@ -183,6 +188,7 @@ class Neo4j_operations:
             database (str, optional) - Specific database to use
 
         Returns:
+
             boolean - If node was deleted, return True, False otherwise
         """
         query = (
@@ -206,6 +212,7 @@ class Neo4j_operations:
             database (str, optional) - Specific database to use
 
         Returns:
+
             List[dict] - List of nodes
         """
         query = "MATCH (n{}) RETURN n".format(f":{label}" if label else "")
@@ -218,3 +225,4 @@ class Neo4j_operations:
     def __exit__(self, exc_type, exc_val, exc_tb):
         """Exit context manager."""
         self.close()
+
