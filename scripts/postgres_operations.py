@@ -11,15 +11,6 @@ import pandas as pd
 from sqlalchemy import create_engine, text
 from sqlalchemy.exc import SQLAlchemyError
 
-class GetCommentError(Exception):
-    """Indicates an incorrect path to a column"""
-    def __str__(self):
-        return "Must specify path to column"
-
-import pandas as pd
-from sqlalchemy import create_engine
-from sqlalchemy.exc import SQLAlchemyError
-
 class PostgresDB:
     def __init__(self, username, password, host="34.73.180.136", port=5432, database="fsecdatabase"):
         self.username = username
