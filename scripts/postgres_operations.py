@@ -190,6 +190,8 @@ class PostgresDB:
             self.handle_error(e, query)
             return False
 
+
+        
 # Example usage:
 db = PostgresDB(username="dpv", password="sun")
 #db.create_postgres_records_from_dataframe("table_name", dataframe)
