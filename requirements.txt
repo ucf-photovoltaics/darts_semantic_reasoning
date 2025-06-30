@@ -4,3 +4,4 @@ numpy
 rdflib
 rdfpandas
 sqlalchemy
+psycopg2
