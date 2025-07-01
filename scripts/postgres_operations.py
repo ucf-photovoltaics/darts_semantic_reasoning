@@ -90,7 +90,7 @@ class PostgresDB:
             #Gets comment from an individual column of a table
             elif table_name != 'table_name' and column_name != 'column_name':
                 query = f"""
-                SELECT c.table_name, c.column_name, col_description('{table_name}'::regclass, c.ordinal_position) AS column_comment
+                SELECT c.table_name, c.column_name, col_description('{schema}.{table_name}'::regclass, c.ordinal_position) AS column_comment
                 FROM information_schema.columns c
                 WHERE c.table_schema = '{schema}' AND c.table_name = '{table_name}' AND c.column_name = '{column_name}';
                 """ 
@@ -156,7 +156,17 @@ class PostgresDB:
             self.handle_error(e, "get_el_pairs")
             return {"error": str(e)}
         
-    def add_comments(self, schema='public', table_name='table_name', column_name='name_of_column', comment='ontology URI, definition'):
+    def execute_query(self, query, comment):
+        try:
+            with self.engine.connect() as connection:
+                connection.execute(text(query), {"comment": comment})
+                connection.commit()
+                return True
+        except SQLAlchemyError as e:
+            self.handle_error(e, query)
+            return False
+        
+    def add_comments(self, schema='public', table_name=None, column_name=None, comment=None):
         """
         Add comment(s) to database
         
@@ -166,31 +176,21 @@ class PostgresDB:
             column_name (str) -  Column name or Dictionary of column names (keys) and comments (values)
             comment (str) -  Comment text to add
         """
-        try:
-            #Adds comments to multiple tables of the same schema
-            if isinstance(table_name, dict):
-                for key, value in table_name.items():
-                    self.add_comments(schema=schema, table_name=key, comment_name=value)
-            #Adds comments to multiple columns of the same table 
-            elif isinstance(column_name, dict):
-                for key, value in column_name.items():
-                    self.add_comments(schema=schema, table_name=table_name, column_name=key, comment=value)
-            #Query to add comment to a table
-            elif column_name == 'name_of_column':
-                query = text(f'COMMENT ON TABLE {schema}.{table_name} IS :comment')
-            #Query to add comment to a column
-            else:
-                query = text(f'COMMENT ON COLUMN {schema}.{table_name}.{column_name} IS :comment')
-            #Executes query
-            with self.engine.connect() as connection:
-                connection.execute(query, {"comment": comment})
-                connection.commit()
-            return True
-        except SQLAlchemyError as e:
-            self.handle_error(e, query)
-            return False
 
-
+        #Adds comments to multiple tables of the same schema
+        if isinstance(table_name, dict):
+            for key, value in table_name.items():
+                print(self.add_comments(schema=schema, table_name=key, comment=value))
+        #Adds comments to multiple columns of the same table 
+        elif isinstance(column_name, dict):
+            for key, value in column_name.items():
+                print(self.add_comments(schema=schema, table_name=table_name, column_name=key, comment=value))
+        #Query to add comment to a table
+        elif column_name == None:
+            return self.execute_query(f'COMMENT ON TABLE "{schema}"."{table_name}" IS :comment', comment)
+        #Query to add comment to a column
+        else:
+            return self.execute_query(f'COMMENT ON COLUMN "{schema}"."{table_name}"."{column_name}" IS :comment', comment)
         
 # Example usage:
 db = PostgresDB(username="dpv", password="sun")
