@@ -10,6 +10,7 @@ import pandas as pd
 from rdflib import Graph, Namespace, URIRef, Literal
 from rdflib.namespace import SH, RDF, RDFS, XSD
 from io import StringIO # To read uploaded file content
+import os # used for connecting the ontology file to fairmapper
 
 from rdfpandas.graph import to_dataframe
 
@@ -77,22 +78,30 @@ def load_db_columns(table_name):
         st.error(f"Error loading columns for table '{table_name}': {e}")
         return []
 
-def load_ontology_terms(uploaded_file):
+def load_ontology_terms(filename="MDS-Onto-BuiltEnv-PV-Module-v0.3.0.0.ttl"):
     """Loads ontology terms from an uploaded RDF file."""
-    if uploaded_file is not None:
-        try:
-            # Read the file content as a string
-            string_data = uploaded_file.getvalue().decode("utf-8")
-            g = Graph()
-            # Use StringIO to parse string content as if it were a file
-            # rdflib can auto-detect format if not specified, but explicit is safer
-            g.parse(source=StringIO(string_data), format='turtle')
-            ontology_df = to_dataframe(g)
-            return list(ontology_df.index)
-        except Exception as e:
-            st.error(f"Error parsing ontology file: {e}")
-            return []
-    return []
+
+    try:
+        # Get the absolute path to the ontology file
+        script_dir = os.path.dirname(os.path.abspath(__file__))
+        file_path = os.path.join(script_dir, filename)
+
+
+        g = Graph()
+        g.parse(file_path, format='turtle')
+        ontology_df = to_dataframe(g)
+        all_terms = list(ontology_df.index)
+
+        # Get namespaces from URIs
+        namespaces = sorted(set(
+            uri.rsplit("#", 1)[0] if "#" in uri else uri.rsplit("/", 1)[0]
+            for uri in all_terms
+        ))
+
+        return all_terms, namespaces
+    except Exception as e:
+        st.error(f"Error loading ontology file '{file_path}': {e}")
+        return [], []
 
 def generate_shacl_file(mappings, db_table_name="DatabaseTable"):
     """
@@ -171,11 +180,7 @@ with col_config_left:
 
 with col_config_right:
     st.subheader("Upload Ontology File")
-    uploaded_file = st.file_uploader(
-        "Upload Ontology File (.ttl, .rdf, .owl)",
-        type=['ttl', 'rdf', 'owl'], # Define allowed file types
-        key="ontology_file_uploader"
-    )
+    
 
 # --- Data Loading ---
 database_list = []
@@ -184,8 +189,8 @@ ontology_list = []
 if st.session_state.selected_db_table:
     database_list = load_db_columns(st.session_state.selected_db_table)
 
-if uploaded_file:
-    ontology_list = load_ontology_terms(uploaded_file)
+ontology_list, available_namespaces = load_ontology_terms()
+
 
 # Create DataFrames for display and interaction
 df1 = pd.DataFrame({'term': database_list})
