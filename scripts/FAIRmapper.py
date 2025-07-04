@@ -2,7 +2,7 @@
 """
 Created on Mon Jun 30 13:50:13 2025
 
-@author: Brent Thompson
+@author: Brent Thompson, Lauren Mutugi
 """
 
 import streamlit as st
@@ -235,19 +235,20 @@ with col2:
     if not df2.empty:
         st.dataframe(df2, use_container_width=True, hide_index=True)
         st.markdown("---")
-        for _, row in df2.iterrows():
-            field = row['field']
-            # Check if this ontology term is already a *destination* in any mapping
-            is_mapped_destination = field in st.session_state.mappings.values()
-
-            st.button(
-                f"Map to: **{field}**",
-                key=f"df2_{field}",
-                on_click=handle_df2_click,
-                args=(field,),
-                disabled=is_mapped_destination or not st.session_state.selected_term_1,
-                use_container_width=True
+        # Only show dropdown if a database term is selected
+        if st.session_state.selected_term_1:
+            # Exclude ontology terms already mapped as destinations
+            unmapped_ontology_terms = [field for field in df2['field'] if field not in st.session_state.mappings.values()]
+            selected_ontology_term = st.selectbox(
+                f"Map to: (Ontology term for '{st.session_state.selected_term_1}')",
+                options=[''] + unmapped_ontology_terms,
+                index=0,
+                key=f"ontology_dropdown_{st.session_state.selected_term_1}"
             )
+            if selected_ontology_term:
+                handle_df2_click(selected_ontology_term)
+        else:
+            st.info("Select a database column on the left to map to an ontology term.")
     else:
         st.info("Please upload an ontology file above to load its terms.")
 
