@@ -20,7 +20,7 @@ from postgres_operations import PostgresDB
 # --- Database Connection Initialization ---
 # It's good practice to initialize this once, maybe outside functions that get re-run
 # Consider adding configuration for host, user, password if not hardcoded in PostgresDB
-DPV = PostgresDB('dpv', 'sun')
+DPV = PostgresDB(username='dpv', password='sun')
 
 # --- Page Configuration ---
 st.set_page_config(
@@ -63,7 +63,8 @@ def get_all_db_tables():
         return DPV.get_table_names_and_comments()
     except Exception as e:
         st.error(f"Error fetching database tables: {e}")
-        return pd.DataFrame(columns=['table_name', 'table_comment']) # Return empty DataFrame on error
+        # Return empty DataFrame with proper structure
+        return pd.DataFrame({'table_name': [], 'table_comment': []})
 
 def load_db_columns(table_name):
     """Loads column names for a given database table."""
@@ -73,7 +74,11 @@ def load_db_columns(table_name):
         # Limit 0 fetches only schema information, no actual rows
         query = f"SELECT * FROM instrument_data.{table_name} LIMIT 0"
         df_schema = DPV.read_records_from_postgres(query)
-        return list(df_schema.columns)
+        # Add null check for df_schema
+        if df_schema is not None:
+            return list(df_schema.columns)
+        else:
+            return []
     except Exception as e:
         st.error(f"Error loading columns for table '{table_name}': {e}")
         return []
@@ -162,7 +167,7 @@ with col_config_left:
     if st.session_state.all_db_tables_info is None:
         st.session_state.all_db_tables_info = get_all_db_tables()
 
-    if not st.session_state.all_db_tables_info.empty:
+    if st.session_state.all_db_tables_info is not None and not st.session_state.all_db_tables_info.empty:
         st.dataframe(st.session_state.all_db_tables_info, use_container_width=True, hide_index=True)
         table_names = st.session_state.all_db_tables_info['table_name'].tolist()
         selected_db_table = st.selectbox(
@@ -262,7 +267,9 @@ if st.session_state.mappings:
     st.subheader("SHACL Input (JSON representation of mappings):")
     st.json(st.session_state.mappings)
     
-    shacl_content = generate_shacl_file(st.session_state.mappings, st.session_state.selected_db_table)
+    # Ensure db_table_name is a string, default to "DatabaseTable" if None
+    db_table_name = st.session_state.selected_db_table if st.session_state.selected_db_table is not None else "DatabaseTable"
+    shacl_content = generate_shacl_file(st.session_state.mappings, db_table_name)
     st.subheader("Generated SHACL File Content (Turtle):")
     st.code(shacl_content, language='turtle')
 
@@ -270,7 +277,7 @@ if st.session_state.mappings:
     st.download_button(
         label="Download SHACL Mappings (.ttl)",
         data=shacl_content,
-        file_name=f"shacl_mappings_{st.session_state.selected_db_table or 'default'}.ttl",
+        file_name=f"shacl_mappings_{st.session_state.selected_db_table if st.session_state.selected_db_table is not None else 'default'}.ttl",
         mime="text/turtle",
         use_container_width=True,
         type="primary"
